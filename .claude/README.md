@@ -42,8 +42,6 @@ Commands are shortcuts to invoke skills. Type `/` followed by the command name:
 | `/requirements-analyst` | Analyze and decompose requirements                |
 | `/atlassian`            | Jira/Confluence integration                       |
 | `/skill-creator`        | Create new skills                                 |
-| `/setup`                | Development environment setup                     |
-| `/review-cqrs`          | CQRS pattern code review                          |
 | `/frontend-design`      | Create distinctive UI designs                     |
 
 **Example:**
