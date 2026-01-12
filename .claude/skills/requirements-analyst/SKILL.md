@@ -1,0 +1,135 @@
+---
+name: requirements-analyst
+description: Analyze requirements from Confluence pages, decompose into actionable tasks, and validate completeness. Use when user asks to analyze requirements, break down features, create tasks from specs, parse Confluence docs, or validate requirements. Triggers on "analyze requirements", "break down feature", "create tasks from", "parse confluence", "requirements from", "decompose into tasks".
+---
+
+# Requirements Analyst
+
+## Overview
+
+Parse requirements from various sources (Confluence, specs, user requests), decompose into actionable tasks, and validate completeness.
+
+**Announce at start:** "I'm using the requirements-analyst skill to analyze and decompose these requirements."
+
+## The Process
+
+### Step 1: Gather Requirements
+
+**From Confluence/Documents:**
+- Use Atlassian MCP tools if available
+- Extract functional and non-functional requirements
+- Note acceptance criteria
+
+**From User Input:**
+- Ask clarifying questions (one at a time). **Use AskUserQuestion tool.**
+- Prefer multiple choice when possible
+- Extract implicit requirements
+
+### Step 2: Analyze and Categorize
+
+**Requirement Categories:**
+
+| Category | Description | Examples |
+|----------|-------------|----------|
+| Functional | What the system should do | "Users can upload files" |
+| Non-Functional | Quality attributes | "Response time < 200ms" |
+| Business Rules | Domain constraints | "Orders over $100 get free shipping" |
+| Integration | External systems | "Sync with Stripe API" |
+| Security | Auth/Authorization | "Only admins can delete users" |
+
+### Step 3: Decompose to Tasks
+
+**For each requirement, identify:**
+
+```markdown
+## Requirement: [Name]
+
+### Backend Tasks
+- [ ] Entity: [EntityName]
+- [ ] Repository: [Entity]Repository
+- [ ] Service: [Entity]Service
+- [ ] Controller: [Entity]Controller
+- [ ] DTO: [Action][Entity]Dto
+
+### Frontend Tasks
+- [ ] Component: [ComponentName]
+- [ ] State: [state management needs]
+- [ ] API Integration: [endpoints to call]
+
+### Testing Tasks
+- [ ] Unit Tests: services, repositories
+- [ ] Integration Tests: controllers, APIs
+- [ ] E2E Tests: user flows
+```
+
+### Step 4: Validate Completeness
+
+**Validation Checklist:**
+
+- [ ] All functional requirements mapped to tasks
+- [ ] Happy path covered
+- [ ] Error cases identified
+- [ ] Edge cases considered
+- [ ] Security requirements addressed
+- [ ] Performance requirements noted
+- [ ] Testing strategy defined
+
+### Step 5: Output Requirements Document
+
+```markdown
+# [Feature Name] Requirements
+
+## Overview
+[Brief description]
+
+## Source
+[Confluence link / User request / etc.]
+
+## Functional Requirements
+1. FR-001: [Requirement]
+   - Acceptance: [Criteria]
+   - Priority: [High/Medium/Low]
+
+## Non-Functional Requirements
+1. NFR-001: [Requirement]
+   - Metric: [Measurable criteria]
+
+## Business Rules
+1. BR-001: [Rule]
+
+## Task Breakdown
+
+### Entities
+| Entity | Properties | Relations |
+|--------|------------|-----------|
+| X | name, status | belongs to Y |
+
+### Services
+| Service | Purpose | Methods |
+|---------|---------|---------|
+| XService | Handle X operations | create, update, delete |
+
+### Controllers
+| Controller | Endpoints | Purpose |
+|------------|-----------|---------|
+| XController | /api/x | CRUD for X |
+
+## Gap Analysis
+- [ ] [Any unclear requirements]
+- [ ] [Missing information]
+
+## Next Steps
+1. → `brainstorming` for design decisions
+2. → `architect` for architecture review
+3. → `writing-plans` for implementation plan
+```
+
+## Integration
+
+**Called by:**
+- `new-feature` - Phase 1
+- `atlassian-skill` - After fetching Confluence
+
+**Calls:**
+- `brainstorming` - For design decisions
+- `architect` - For architecture review
