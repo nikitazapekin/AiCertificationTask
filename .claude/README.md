@@ -6,13 +6,46 @@ This directory contains skills, commands, agents, and hooks that extend Claude C
 
 ```
 .claude/
-├── agents/          # Agent definitions (workers + orchestrators)
+├── agents/          # Agent definitions (execute skills in isolation)
 ├── commands/        # Slash commands (user-invocable shortcuts)
 ├── hooks/           # Shell commands triggered by events
 ├── skills/          # Detailed skill implementations
 ├── settings.json    # Team configuration (permissions, hooks)
 └── settings.local.json  # Personal settings (gitignored)
 ```
+
+## Architecture: Command -> Agent -> Skill
+
+The system uses a **manual flow** where each command runs in isolation and suggests the next step. This keeps context clean and prevents hallucination.
+
+```
+User runs: /requirements-analyst [prompt]
+              │
+              ▼
+    ┌─────────────────────┐
+    │   Command Spawns    │
+    │   Agent             │
+    └─────────────────────┘
+              │
+              ▼
+    ┌─────────────────────┐
+    │   Agent Executes    │
+    │   Skill             │
+    └─────────────────────┘
+              │
+              ▼
+    ┌─────────────────────┐
+    │   Output with       │
+    │   Context Summary   │
+    │   + Next Steps      │
+    └─────────────────────┘
+```
+
+**Key Benefits:**
+- Each command runs in isolated context (prevents hallucination)
+- Context summaries allow handoff to next command
+- User controls the flow (no automatic chaining)
+- Main conversation stays clean
 
 ## Quick Start
 
@@ -22,27 +55,26 @@ Commands are shortcuts to invoke skills. Type `/` followed by the command name:
 
 | Command                 | Description                                       |
 | ----------------------- | ------------------------------------------------- |
+| `/requirements-analyst` | Analyze and decompose requirements                |
 | `/brainstorm`           | Explore ideas and create designs through dialogue |
-| `/new-feature`          | Complete feature implementation workflow          |
-| `/coder`                | Implement backend features                        |
-| `/coder-frontend`       | Implement frontend features                       |
-| `/test-generator`       | Generate unit, integration, and E2E tests         |
-| `/debugger`             | Systematic debugging with root cause analysis     |
-| `/code-reviewer`        | Code quality and best practices review            |
+| `/writing-plans`        | Create detailed implementation plans              |
 | `/architect`            | System architecture decisions                     |
 | `/api-designer`         | REST API design with Swagger                      |
-| `/writing-plans`        | Create detailed implementation plans              |
 | `/executing-plans`      | Execute plans in batches                          |
 | `/git-worktrees`        | Create isolated workspaces                        |
+| `/coder`                | Implement backend features                        |
+| `/coder-frontend`       | Implement frontend features                       |
+| `/frontend-design`      | Create distinctive UI designs                     |
+| `/code-reviewer`        | Code quality and best practices review            |
+| `/test-generator`       | Generate unit, integration, and E2E tests         |
+| `/debugger`             | Systematic debugging with root cause analysis     |
 | `/finishing-branch`     | Complete branch work and merge/PR                 |
 | `/verify`               | Verify claims with evidence before completion     |
 | `/docs-generator`       | Generate project documentation                    |
 | `/reflect`              | Capture lessons learned                           |
 | `/project-generator`    | Scaffold new NestJS project structure             |
-| `/requirements-analyst` | Analyze and decompose requirements                |
 | `/atlassian`            | Jira/Confluence integration                       |
 | `/skill-creator`        | Create new skills                                 |
-| `/frontend-design`      | Create distinctive UI designs                     |
 
 **Example:**
 
@@ -50,12 +82,45 @@ Commands are shortcuts to invoke skills. Type `/` followed by the command name:
 /brainstorm user authentication with OAuth
 ```
 
+### Context Handoff
+
+Each command outputs a context summary. Pass this to the next command:
+
+```
+/brainstorm Design user authentication feature
+
+[Agent completes and outputs context summary]
+
+/writing-plans Based on auth design: JWT with refresh tokens,
+  endpoints for login/logout/refresh, middleware for protected routes
+```
+
+## Skill Flow
+
+See `skills/SKILL FLOW.md` for the complete visual diagram.
+
+### Quick Reference: Next by Flow
+
+| Current Command | Next by Flow | Why |
+|-----------------|--------------|-----|
+| `/requirements-analyst` | `/brainstorm` | Turn requirements into design |
+| `/brainstorm` | `/writing-plans` | Create implementation tasks |
+| `/writing-plans` | `/architect` | Review architecture |
+| `/architect` | `/api-designer` | Design APIs |
+| `/api-designer` | `/executing-plans` | Start implementation |
+| `/executing-plans` | `/git-worktrees` | Create workspace |
+| `/git-worktrees` | `/coder` or `/frontend-design` | Start coding |
+| `/coder` | `/code-reviewer` | Review code |
+| `/code-reviewer` | `/test-generator` | Generate tests |
+| `/test-generator` | `/debugger` or `/finishing-branch` | Debug or finish |
+| `/finishing-branch` | `/verify` | Verify before merge |
+| `/verify` | `/docs-generator` | Document changes |
+| `/docs-generator` | `/reflect` | Capture lessons |
+| `/reflect` | (end) | Flow complete |
+
 ## Skills
 
-Skills are detailed instruction sets that define how Claude performs specific tasks. Each skill contains:
-
-- **SKILL.md**: Core instructions, templates, and workflows
-- **Metadata**: Name, description, and trigger keywords
+Skills are detailed instruction sets that define how Claude performs specific tasks.
 
 ### Skill Categories
 
@@ -104,64 +169,34 @@ Skills are detailed instruction sets that define how Claude performs specific ta
 
 #### Utility
 
-| Skill             | Purpose                                 |
-| ----------------- | --------------------------------------- |
-| `atlassian-skill` | Jira/Confluence integration             |
-| `skill-creator`   | Create new skills                       |
-| `using-skills`    | Meta-skill for finding and using skills |
-
-### Skill Flow
-
-```
-Requirements Analyst → Brainstorm → Writing Plan
-                                        ↓
-                    Architect → API Designer → Executing Plans
-                                                    ↓
-                                          Git Worktrees
-                                         /           \
-                            Frontend Branch      Backend Branch
-                                   ↓                    ↓
-                            Frontend Design         Coder
-                                   ↓                    ↓
-                            Coder Frontend      Code Reviewer
-                                   ↓                    ↓
-                            Code Reviewer       Test Generator
-                                   ↓                    ↓
-                            Test Generator      Debugger
-                                   ↓                    ↓
-                            Debugger            Finishing Branch
-                                   ↓                    ↓
-                            Finishing Branch    Verification
-                                   ↓                    ↓
-                                   └──────┬────────────┘
-                                          ↓
-                                Documentation Generator
-                                          ↓
-                                       Reflect
-```
+| Skill             | Purpose                     |
+| ----------------- | --------------------------- |
+| `atlassian-skill` | Jira/Confluence integration |
+| `skill-creator`   | Create new skills           |
 
 ## Agents
 
-Agents are autonomous workers that execute specific skills. There are two types:
+Agents are workers that execute skills in isolation and return structured output.
 
-### 1. Orchestrator Agent
+### Agent Behavior
 
-- **`new-feature-orchestrator-agent`**: Manages the complete feature workflow
-- Calls worker agents in sequence
-- Tracks phase completion
-- Makes workflow decisions
+Every agent:
+1. Uses the Skill tool to invoke its skill
+2. Executes the skill completely
+3. **STOPS** when done (no automatic chaining)
+4. Provides:
+   - **Context Summary**: 2-3 sentences of what was accomplished
+   - **Next Steps**: Suggestions for next command
 
-### 2. Worker Agents
-
-All other agents focus on a single skill:
+### Agent List
 
 | Agent                           | Skill                          | Purpose                     |
 | ------------------------------- | ------------------------------ | --------------------------- |
-| `brainstorming-agent`           | brainstorming                  | Design through dialogue     |
 | `requirements-analyst-agent`    | requirements-analyst           | Parse requirements          |
+| `brainstorming-agent`           | brainstorming                  | Design through dialogue     |
+| `writing-plans-agent`           | writing-plans                  | Create implementation plans |
 | `architect-agent`               | architect                      | Architecture decisions      |
 | `api-designer-agent`            | api-designer                   | REST API design             |
-| `writing-plans-agent`           | writing-plans                  | Create implementation plans |
 | `executing-plans-agent`         | executing-plans                | Execute plans               |
 | `using-git-worktrees-agent`     | using-git-worktrees            | Create isolated workspaces  |
 | `coder-agent`                   | coder                          | Backend implementation      |
@@ -178,19 +213,15 @@ All other agents focus on a single skill:
 | `skill-creator-agent`           | skill-creator                  | Create new skills           |
 | `project-generator-agent`       | project-generator              | Scaffold projects           |
 
-### Key Principle: No Flow Interference
+### Key Principle: Stop After Completion
 
-Worker agents must NOT:
+Agents must:
+- Execute ONLY their specific skill
+- STOP when done
+- NOT chain to other skills automatically
+- NOT make workflow decisions
 
-- Call other skills directly
-- Proceed to the next phase
-- Make workflow decisions
-
-Worker agents SHOULD:
-
-- Execute their specific skill
-- Return structured results
-- Report blockers to the orchestrator
+The **user** decides the next step based on suggestions.
 
 ## Hooks
 
@@ -214,46 +245,6 @@ Hooks are shell commands that execute in response to Claude Code events.
 | `0`  | Success, continue               |
 | `1`  | Failure, but continue (warning) |
 | `2`  | Failure, block operation        |
-
-### Custom Hook Examples
-
-**Auto-lint after file changes:**
-
-```json
-{
-  "PostToolUse": [
-    {
-      "matcher": "Write|Edit",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "bash -c 'FILE=$(echo \"$0\" | jq -r \".tool_input.file_path\"); npx eslint --fix \"$FILE\" 2>/dev/null || true'",
-          "timeout": 15000
-        }
-      ]
-    }
-  ]
-}
-```
-
-**Block .env modifications:**
-
-```json
-{
-  "PreToolUse": [
-    {
-      "matcher": "Write|Edit",
-      "hooks": [
-        {
-          "type": "command",
-          "command": "bash -c 'FILE=$(echo \"$0\" | jq -r \".tool_input.file_path\"); if [[ \"$FILE\" =~ \\.env ]]; then echo \"Cannot modify .env\" && exit 2; fi'",
-          "timeout": 1000
-        }
-      ]
-    }
-  ]
-}
-```
 
 See `hooks/README.md` for more examples.
 
@@ -297,6 +288,17 @@ Personal overrides (gitignored):
    ## Overview
 
    ...
+
+   ---
+
+   ## Next Steps
+
+   After skill is complete, STOP and present these options:
+
+   **Next by flow:** `/next-command [context]` - Why use this.
+
+   **Alternatives:**
+   - `/alt-command [context]` - Why use this.
    ```
 
 3. **Create command** (optional): `.claude/commands/<skill-name>.md`
@@ -306,57 +308,59 @@ Use `/skill-creator` for guided skill creation.
 
 ## Usage Examples
 
-### Complete Feature Workflow
+### Start a New Feature
 
 ```
-/new-feature user profile management
+/requirements-analyst Parse the user story for payment processing
 ```
 
-### Design-Only Session
+After completion, agent suggests: `/brainstorm [context]`
 
 ```
-/brainstorm payment processing integration
+/brainstorm Based on requirements: payment processing for subscriptions,
+  supports Stripe/PayPal, needs webhooks for status updates
 ```
 
 ### Implementation Session
 
 ```
-/coder implement user registration endpoint
+/coder Implement the PaymentService with Stripe integration
+```
+
+After completion, agent suggests: `/code-reviewer [context]`
+
+```
+/code-reviewer Review the PaymentService implementation in
+  src/payment/payment.service.ts
 ```
 
 ### Debugging Session
 
 ```
-/debugger fix authentication token refresh
-```
-
-### Review Code
-
-```
-/code-reviewer review src/auth/auth.service.ts
+/debugger Fix authentication token refresh not working
 ```
 
 ### Generate Tests
 
 ```
-/test-generator generate tests for UserService
+/test-generator Generate tests for PaymentService
 ```
 
-### Create Documentation
+### Complete Feature
 
 ```
-/docs-generator create API documentation
+/finishing-branch Complete payment feature branch
 ```
 
 ## Best Practices
 
-1. **Start with brainstorming** for new features
-2. **Use git worktrees** for isolated development
-3. **Verify before claiming completion** - run tests and build
-4. **Review code** before merging
-5. **Reflect** after completing features to improve process
-6. **Keep skills focused** - one skill, one purpose
-7. **Document decisions** in design docs
+1. **Follow the flow** - Use suggested next steps
+2. **Pass context** - Include context summaries when calling next command
+3. **Use git worktrees** for isolated development
+4. **Verify before claiming completion** - Run tests and build
+5. **Review code** before merging
+6. **Reflect** after completing features to improve process
+7. **Keep skills focused** - One skill, one purpose
 
 ## Troubleshooting
 
@@ -366,17 +370,17 @@ Use `/skill-creator` for guided skill creation.
 - Verify SKILL.md frontmatter syntax
 - Ensure skill directory exists
 
-### Hook failing?
+### Agent not stopping?
 
-- Test hook command manually
-- Check timeout settings
-- Review return codes
+- Check agent constraints in agent file
+- Verify skill has "Next Steps" section
+- Report if agent chains automatically
 
-### Agent not executing?
+### Context getting polluted?
 
-- Verify agent file exists in `agents/`
-- Check agent constraints match task
-- Review flow position
+- Use commands instead of asking directly
+- Each command runs in isolated context
+- Pass context summaries, not full history
 
 ## References
 

@@ -157,12 +157,15 @@ These indicate a reflection is overdue:
 | Process improvements | Relevant skill file |
 | Session notes | `docs/reflections/` (optional) |
 
-## Integration
+---
 
-**Called by:**
-- `documentation-generator` - After completing documentation
-- `finishing-branch` - After completing feature
-- `new-feature` - Final reflection phase
+## Next Steps
 
-**Pairs with:**
-- `documentation-generator` - To document discoveries
+After reflection is complete, the workflow is DONE.
+
+**This is the end of the standard flow.**
+
+**Optional follow-ups:**
+- `/requirements-analyst [new feature]` - Start a new feature from requirements.
+- `/brainstorm [new idea]` - Explore a new idea for the project.
+- `/skill-creator [improvement]` - Create or update a skill based on learnings.

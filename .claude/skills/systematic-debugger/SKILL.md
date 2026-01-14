@@ -136,10 +136,14 @@ If you catch yourself thinking:
 | 3. Hypothesis | Form theory, test minimally | Confirmed or new hypothesis |
 | 4. Implementation | Create test, fix, verify | Bug resolved, tests pass |
 
-## Integration
+---
 
-**Standalone skill** - use for any debugging
+## Next Steps
 
-**Pairs with:**
-- `test-generator` - For creating failing test case
-- `verification-before-completion` - Verify fix worked
+After debugging is complete and fix is verified, STOP and present these options:
+
+**Next by flow:** `/test-generator [context]` - Generate/update tests to prevent regression.
+
+**Alternatives:**
+- `/code-reviewer [context]` - Review the fix for quality issues.
+- `/finishing-branch [context]` - Complete branch if fix was the last blocker.

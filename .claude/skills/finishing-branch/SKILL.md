@@ -140,12 +140,14 @@ git worktree remove <worktree-path>
 - Delete work without confirmation
 - Force-push without explicit request
 
-## Integration
+---
 
-**Called by:**
-- `executing-plans` - After all tasks complete
-- `new-feature` - Final phase
+## Next Steps
 
-**Pairs with:**
-- `using-git-worktrees` - Cleans up worktree created by that skill
-- `verification-before-completion` - Verify before completing
+After branch is finished (merged, PR created, or kept), STOP and present these options:
+
+**Next by flow:** `/verify [context]` - Verify implementation meets requirements.
+
+**Alternatives:**
+- `/docs-generator [context]` - Update documentation for the changes.
+- `/reflect [context]` - Capture lessons learned from this work.

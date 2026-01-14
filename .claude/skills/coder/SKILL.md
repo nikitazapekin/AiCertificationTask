@@ -192,12 +192,14 @@ Before completing any implementation:
 - [ ] Tests pass
 - [ ] Build succeeds
 
-## Integration
+---
 
-**Called by:**
-- `executing-plans` - During implementation
-- `new-feature` - Phase 3
+## Next Steps
 
-**Calls:**
-- `test-generator` - For tests
-- `code-reviewer` - For review
+After implementation is complete, STOP and present these options:
+
+**Next by flow:** `/code-reviewer [context]` - Review the implemented code for quality and issues.
+
+**Alternatives:**
+- `/test-generator [context]` - Generate tests for the implementation.
+- `/debugger [context]` - Debug if there are issues with the implementation.

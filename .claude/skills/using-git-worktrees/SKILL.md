@@ -128,12 +128,14 @@ Ready to implement <feature-name>
 - **Assuming directory location** - Creates inconsistency
 - **Proceeding with failing tests** - Can't distinguish new bugs from pre-existing
 
-## Integration
+---
 
-**Called by:**
-- `brainstorming` - When ready to implement
-- `writing-plans` - For isolated development
-- `executing-plans` - For parallel development
+## Next Steps
 
-**Pairs with:**
-- `finishing-branch` - Cleans up worktree after work complete
+After worktree is created and verified, STOP and present these options:
+
+**Next by flow:** `/coder [context]` - Start backend implementation in the worktree.
+
+**Alternatives:**
+- `/frontend-design [context]` - Design UI before frontend implementation.
+- `/coder-frontend [context]` - Start frontend implementation directly.

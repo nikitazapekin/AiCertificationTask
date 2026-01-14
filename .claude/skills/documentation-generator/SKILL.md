@@ -214,13 +214,14 @@ When you discover new patterns:
 \`\`\`
 ```
 
-## Integration
+---
 
-**Called by:**
-- `new-feature` - Final documentation phase
+## Next Steps
 
-**Output locations:**
-- `libs/<name>/README.md` - Library docs
-- `docs/adrs/` - Architecture decisions
-- `CHANGELOG.md` - Version history
-- `CLAUDE.md` - AI context patterns
+After documentation is complete, STOP and present these options:
+
+**Next by flow:** `/reflect [context]` - Capture lessons learned from this work.
+
+**Alternatives:**
+- `/finishing-branch [context]` - Complete the branch if not already done.
+- `/code-reviewer [context]` - Review documentation accuracy.

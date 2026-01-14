@@ -80,12 +80,14 @@ After all tasks complete and verified:
 - Between batches: just report and wait
 - Stop when blocked, don't guess
 
-## Integration
+---
 
-**Called by:**
-- `writing-plans` - After plan is written
-- `new-feature` - For plan execution
+## Next Steps
 
-**Calls:**
-- `verification-before-completion` - Before claiming task complete
-- `finishing-branch` - When all tasks done
+After all plan tasks are complete, STOP and present these options:
+
+**Next by flow:** `/git-worktrees [context]` - Create isolated workspace if not already in one.
+
+**Alternatives:**
+- `/coder [context]` - Continue with implementation in current workspace.
+- `/finishing-branch [context]` - Complete the branch if implementation is done.

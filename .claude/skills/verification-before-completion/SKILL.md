@@ -106,11 +106,14 @@ Run the command. Read the output. THEN claim the result.
 
 This is non-negotiable.
 
-## Integration
+---
 
-**Called by:**
-- `executing-plans` - Before claiming task complete
-- `finishing-branch` - Before completing branch
-- `coder` - After implementation
+## Next Steps
 
-**Standalone** - use before any completion claim
+After verification is complete, STOP and present these options:
+
+**Next by flow:** `/finishing-branch [context]` - Complete the branch if all verifications pass.
+
+**Alternatives:**
+- `/debugger [context]` - Debug issues if verification failed.
+- `/docs-generator [context]` - Update documentation for verified changes.

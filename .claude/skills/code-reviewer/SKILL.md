@@ -129,12 +129,14 @@ Format feedback as:
 | Major | Bug, poor performance, maintainability | N+1 query, duplicate code |
 | Minor | Style, naming, small improvements | Variable naming, comments |
 
-## Integration
+---
 
-**Called by:**
-- `coder` - After implementation
-- `coder-frontend` - After implementation
-- `executing-plans` - During review phase
+## Next Steps
 
-**Calls:**
-- None - standalone review skill
+After code review is complete, STOP and present these options:
+
+**Next by flow:** `/test-generator [context]` - Generate tests for the reviewed code.
+
+**Alternatives:**
+- `/coder [context]` - Fix issues identified in the review.
+- `/finishing-branch [context]` - Complete branch if review passes and tests exist.

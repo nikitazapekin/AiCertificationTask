@@ -215,12 +215,14 @@ export class UserController {
 }
 ```
 
-## Integration
+---
 
-**Called by:**
-- `architect` - After architecture design
-- `new-feature` - Phase 3
+## Next Steps
 
-**Calls:**
-- `coder` - For implementation
-- `test-generator` - For API tests
+After API design is complete, STOP and present these options:
+
+**Next by flow:** `/executing-plans [context]` - Start implementing the designed API endpoints.
+
+**Alternatives:**
+- `/coder [context]` - Implement the API directly without a formal plan.
+- `/test-generator [context]` - Generate API integration tests first (TDD approach).

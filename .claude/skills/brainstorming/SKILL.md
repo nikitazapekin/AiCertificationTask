@@ -85,12 +85,14 @@ Start by understanding the current project context, then ask questions one at a 
 - **Incremental validation** - Present design in sections, validate each
 - **Be flexible** - Go back and clarify when something doesn't make sense
 
-## Integration
+---
 
-**Called by:**
-- `requirements-analyst` - After requirements are gathered
-- `new-feature` - As part of feature workflow
+## Next Steps
 
-**Calls:**
-- `using-git-worktrees` - When ready to implement
-- `writing-plans` - To create implementation plan
+After brainstorming is complete and design is documented, STOP and present these options:
+
+**Next by flow:** `/writing-plans [context]` - Create detailed implementation tasks from the design.
+
+**Alternatives:**
+- `/architect [context]` - Review architecture implications before creating the plan.
+- `/api-designer [context]` - Design REST APIs if the feature involves API work.

@@ -118,18 +118,18 @@ Parse requirements from various sources (Confluence, specs, user requests), deco
 - [ ] [Any unclear requirements]
 - [ ] [Missing information]
 
-## Next Steps
-1. → `brainstorming` for design decisions
-2. → `architect` for architecture review
-3. → `writing-plans` for implementation plan
+## Next Steps (Suggested)
+[Do not auto-execute, present to user]
 ```
 
-## Integration
+---
 
-**Called by:**
-- `new-feature` - Phase 1
-- `atlassian-skill` - After fetching Confluence
+## Next Steps
 
-**Calls:**
-- `brainstorming` - For design decisions
-- `architect` - For architecture review
+After requirements analysis is complete, STOP and present these options:
+
+**Next by flow:** `/brainstorm [context]` - Refine requirements into a concrete design through collaborative dialogue.
+
+**Alternatives:**
+- `/architect [context]` - Skip brainstorming if requirements are clear and jump to architecture decisions.
+- `/writing-plans [context]` - Create implementation plan directly if design is already established.

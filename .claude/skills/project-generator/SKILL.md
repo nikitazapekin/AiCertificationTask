@@ -146,3 +146,15 @@ After generation, verify:
 - [ ] Repositories have TypeORM/Prisma setup
 - [ ] `app.module.ts` imports all modules
 - [ ] `ARCHITECTURE.md` is complete
+
+---
+
+## Next Steps
+
+After project structure is generated, STOP and present these options:
+
+**Next by flow:** `/coder [context]` - Implement the first feature in the scaffolded project.
+
+**Alternatives:**
+- `/requirements-analyst [context]` - Analyze requirements before implementation.
+- `/brainstorm [context]` - Design features through dialogue.

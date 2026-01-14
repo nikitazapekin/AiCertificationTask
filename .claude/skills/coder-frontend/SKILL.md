@@ -382,12 +382,14 @@ export function useModal() {
 - [ ] Tests written
 - [ ] Lint passes
 
-## Integration
+---
 
-**Called by:**
-- `frontend-design` - After design is complete
-- `executing-plans` - During frontend implementation
+## Next Steps
 
-**Calls:**
-- `test-generator` - For test creation
-- `code-reviewer` - For review
+After frontend implementation is complete, STOP and present these options:
+
+**Next by flow:** `/code-reviewer [context]` - Review the frontend code for quality and issues.
+
+**Alternatives:**
+- `/test-generator [context]` - Generate component and hook tests.
+- `/debugger [context]` - Debug any issues with the implementation.

@@ -354,3 +354,14 @@ After testing the skill, users may request improvements. Often this happens righ
 2. Notice struggles or inefficiencies
 3. Identify how SKILL.md or bundled resources should be updated
 4. Implement changes and test again
+
+---
+
+## Next Steps
+
+After skill creation/update is complete, this is a **standalone** workflow.
+
+**Suggested follow-ups:**
+- Test the new skill by using its command.
+- `/reflect [context]` - Capture learnings from the skill creation process.
+- `/docs-generator [context]` - Document the new skill if needed.

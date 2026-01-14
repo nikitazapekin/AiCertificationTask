@@ -268,12 +268,14 @@ export function createMockUser(overrides: Partial<User> = {}): User {
 - [ ] Mocks used appropriately
 - [ ] No flaky tests
 
-## Integration
+---
 
-**Called by:**
-- `coder` - After implementation
-- `coder-frontend` - After implementation
-- `executing-plans` - For test steps
+## Next Steps
 
-**Pairs with:**
-- `verification-before-completion` - Verify tests pass
+After tests are generated, STOP and present these options:
+
+**Next by flow:** `/debugger [context]` - Debug any failing tests to find root cause.
+
+**Alternatives:**
+- `/finishing-branch [context]` - Complete the branch if all tests pass.
+- `/coder [context]` - Fix implementation issues found during testing.

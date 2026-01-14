@@ -1,41 +1,129 @@
-flowchart TD
-A[Requirements Analyst] -->|Parse requirements, decompose to tasks| B[Brainstorm]
-B -->|Structured dialogue to refine ideas into designs| C[Writing Plan]
+# Skill Flow Reference
 
-    subgraph Shared Tasks
-        direction LR
-        C -->|Create granular implementation tasks| D[Architect]
-        D -->|High-level architecture decisions| E[API Designer]
-        E -->|Design REST API with Swagger| F[Executing Plans]
-        F -->|Manage implementation tasks| G[Using Git Worktrees]
-    end
+This document defines the recommended order of skills. Each skill stops after completion and suggests the next step - the user decides whether to continue.
 
-    subgraph Frontend Branch
-        direction LR
-        G -->|Execute tasks for frontend implementation| H[Frontend Design]
-        H -->|Create distinctive, production-grade frontend UI| I[Coder Frontend]
-        I -->|Code review for frontend implementation| J[Code Reviewer]
-        J -->|Generate unit, integration, E2E tests for frontend| K[Test Generator]
-        K -->|Debug frontend issues| L[Systematic Debugger]
-        L -->|Finalize frontend branch| M[Finishing Branch]
-        M -->|Verification before completion| N[Verification Before Completion]
-    end
+## Flow Diagram
 
-    subgraph Backend Branch
-        direction LR
-        G -->|Execute backend implementation tasks| O[Coder Backend]
-        O -->|Comprehensive code review including security, performance, architecture| P[Code Reviewer]
-        P -->|Generate unit, integration, E2E tests for backend| Q[Test Generator]
-        Q -->|Debug backend issues| R[Systematic Debugger]
-        R -->|Finalize backend branch| S[Finishing Branch]
-        S -->|Verification before completion| T[Verification Before Completion]
-    end
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                     PHASE 1: UNDERSTANDING                          │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   /requirements-analyst ──────────► /brainstorm                     │
+│   (parse & decompose)               (refine into design)            │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+                                  │
+                                  ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                     PHASE 2: PLANNING                               │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   /writing-plans ─► /architect ─► /api-designer ─► /executing-plans │
+│   (granular tasks)  (decisions)   (REST design)    (batch execute)  │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+                                  │
+                                  ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                     PHASE 3: EXECUTION                              │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   /git-worktrees (create isolated workspace)                        │
+│         │                                                           │
+│         ├─────────────────────┬─────────────────────┐               │
+│         ▼                     ▼                     │               │
+│   ┌───────────────┐    ┌───────────────┐            │               │
+│   │ FRONTEND      │    │ BACKEND       │            │               │
+│   ├───────────────┤    ├───────────────┤            │               │
+│   │ /frontend-    │    │ /coder        │            │               │
+│   │   design      │    │     │         │            │               │
+│   │     │         │    │     ▼         │            │               │
+│   │     ▼         │    │ /code-reviewer│            │               │
+│   │ /coder-       │    │     │         │            │               │
+│   │   frontend    │    │     ▼         │            │               │
+│   │     │         │    │ /test-        │            │               │
+│   │     ▼         │    │   generator   │            │               │
+│   │ /code-reviewer│    │     │         │            │               │
+│   │     │         │    │     ▼         │            │               │
+│   │     ▼         │    │ /debugger     │            │               │
+│   │ /test-        │    │  (if needed)  │            │               │
+│   │   generator   │    │     │         │            │               │
+│   │     │         │    │     ▼         │            │               │
+│   │     ▼         │    │ /finishing-   │            │               │
+│   │ /debugger     │    │   branch      │            │               │
+│   │  (if needed)  │    │     │         │            │               │
+│   │     │         │    │     ▼         │            │               │
+│   │     ▼         │    │ /verify       │            │               │
+│   │ /finishing-   │    └───────────────┘            │               │
+│   │   branch      │            │                    │               │
+│   │     │         │            │                    │               │
+│   │     ▼         │            │                    │               │
+│   │ /verify       │            │                    │               │
+│   └───────────────┘            │                    │               │
+│         │                      │                    │               │
+│         └──────────────────────┴────────────────────┘               │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+                                  │
+                                  ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                     PHASE 4: FINALIZATION                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   /docs-generator ──────────────────► /reflect                      │
+│   (update documentation)               (lessons learned)            │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
-    N -->|Generate project-level documentation| U[Documentation Generator]
-    T -->|Generate project-level documentation| U
+## Quick Reference: Next by Flow
 
-    U -->|Reflect on lessons learned and improve processes| V[Reflect]
+| Current Command | Next by Flow | Why |
+|-----------------|--------------|-----|
+| `/requirements-analyst` | `/brainstorm` | Turn requirements into design |
+| `/brainstorm` | `/writing-plans` | Create implementation tasks from design |
+| `/writing-plans` | `/architect` | Review architecture for the plan |
+| `/architect` | `/api-designer` | Design APIs based on architecture |
+| `/api-designer` | `/executing-plans` | Start implementing the designed API |
+| `/executing-plans` | `/git-worktrees` | Create isolated workspace for coding |
+| `/git-worktrees` | `/coder` or `/frontend-design` | Start implementation |
+| `/frontend-design` | `/coder-frontend` | Implement the designed UI |
+| `/coder-frontend` | `/code-reviewer` | Review the frontend code |
+| `/coder` | `/code-reviewer` | Review the backend code |
+| `/code-reviewer` | `/test-generator` | Generate tests for reviewed code |
+| `/test-generator` | `/debugger` or `/finishing-branch` | Debug failures or finish |
+| `/debugger` | `/test-generator` | Re-run tests after fix |
+| `/finishing-branch` | `/verify` | Verify before merge |
+| `/verify` | `/docs-generator` | Document the changes |
+| `/docs-generator` | `/reflect` | Capture lessons learned |
+| `/reflect` | (end) | Flow complete |
 
-    %% Skills Integration
-    A -->|Atlassian tools for requirement tracking| W[Atlassian Skill]
+## Utility Commands (No Fixed Flow Position)
 
+| Command | When to Use |
+|---------|-------------|
+| `/atlassian` | Fetch requirements from Jira/Confluence |
+| `/skill-creator` | Create a new skill |
+| `/project-generator` | Scaffold a new project |
+
+## How It Works
+
+1. **User runs a command** (e.g., `/requirements-analyst [prompt]`)
+2. **Command spawns an agent** that runs in isolation
+3. **Agent executes the skill** following its instructions
+4. **Agent stops and outputs:**
+   - Context summary (what was done)
+   - Next step suggestion by flow
+   - Alternative suggestions
+5. **User decides** whether to run the next command
+
+## Context Handoff
+
+Each command's output includes a context summary. Pass this to the next command:
+
+```
+/brainstorm Based on requirements analysis: [paste context summary]
+```
+
+This keeps the main conversation clean while preserving continuity.

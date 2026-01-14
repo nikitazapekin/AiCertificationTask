@@ -183,13 +183,14 @@ mcp__atlassian__jira_add_comment(issueKey: "PROJ-123", body: "Comment text")
 mcp__atlassian__jira_create_issue(project: "PROJ", issueType: "Task", summary: "...")
 ```
 
-## Integration
+---
 
-**Called by:**
-- `requirements-analyst` - To fetch requirements from Confluence
-- `new-feature` - For requirement tracking
-- `finishing-branch` - To update status on completion
+## Next Steps
 
-**Pairs with:**
-- `requirements-analyst` - Parse fetched requirements
-- `documentation-generator` - Sync docs to Confluence
+After Atlassian operations are complete, STOP and present these options:
+
+**Next by flow:** `/requirements-analyst [context]` - Analyze requirements fetched from Confluence/Jira.
+
+**Alternatives:**
+- `/brainstorm [context]` - Explore the requirements through dialogue.
+- `/writing-plans [context]` - Create implementation plan from the requirements.

@@ -107,12 +107,14 @@ After saving the plan, offer execution choice:
 
 **Which approach?"**
 
-## Integration
+---
 
-**Called by:**
-- `brainstorming` - After design is complete
-- `new-feature` - Phase 4
+## Next Steps
 
-**Calls:**
-- `executing-plans` - To execute the plan
-- `using-git-worktrees` - For isolated development
+After the plan is complete and saved, STOP and present these options:
+
+**Next by flow:** `/architect [context]` - Review architecture decisions before executing the plan.
+
+**Alternatives:**
+- `/executing-plans [context]` - Start implementing the plan task-by-task.
+- `/git-worktrees [context]` - Create isolated workspace first for parallel development.

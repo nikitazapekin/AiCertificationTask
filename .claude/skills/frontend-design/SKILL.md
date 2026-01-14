@@ -175,13 +175,14 @@ Elegance comes from executing the vision well.
 
 **Remember**: Claude is capable of extraordinary creative work. Don't hold back - show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
 
-## Integration
+---
 
-**Called by:**
+## Next Steps
 
-- `new-feature` - For frontend design decisions
-- `brainstorming` - For UI/UX ideation
+After frontend design is complete, STOP and present these options:
 
-**Calls:**
+**Next by flow:** `/coder-frontend [context]` - Implement the designed UI components.
 
-- `coder-frontend` - For implementation after design is defined
+**Alternatives:**
+- `/brainstorm [context]` - Further refine the design through dialogue.
+- `/architect [context]` - Review frontend architecture decisions.

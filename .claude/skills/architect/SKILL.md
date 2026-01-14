@@ -128,13 +128,14 @@ modules/<module>/
 | Background job | Queue + worker pattern |
 | Real-time updates | WebSockets or SSE |
 
-## Integration
+---
 
-**Called by:**
-- `requirements-analyst` - After requirements analysis
-- `brainstorming` - For architecture decisions
-- `new-feature` - Phase 2
+## Next Steps
 
-**Calls:**
-- `api-designer` - For API design
-- `coder` - For implementation guidance
+After architecture decisions are made, STOP and present these options:
+
+**Next by flow:** `/api-designer [context]` - Design REST APIs based on the architecture.
+
+**Alternatives:**
+- `/writing-plans [context]` - Create implementation plan if APIs are already defined.
+- `/coder [context]` - Start implementation if architecture is simple and clear.
