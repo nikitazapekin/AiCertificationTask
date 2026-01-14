@@ -19,11 +19,11 @@ When done, provide:
 
 ### Next Steps
 
-**Next by flow:** `/git-worktrees [context summary]` - Create isolated workspace if not already in one.
+**Next by flow:** `/project-generator [context summary]` - Scaffold project structure if this is a new project.
 
 **Alternatives:**
-- `/coder [context summary]` - Continue with implementation in current workspace.
-- `/finishing-branch [context summary]` - Complete the branch if implementation is done.
+- `/git-worktrees [context summary]` - Create isolated workspace (skip project-generator for existing projects).
+- `/coder [context summary]` - Start implementation directly in current workspace.
 
 ## Constraints
 - ONLY execute the executing-plans skill

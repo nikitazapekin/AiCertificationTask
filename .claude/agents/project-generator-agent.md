@@ -1,7 +1,7 @@
 # Project Generator Agent
 
 ## Role
-Generate NestJS project structure with layered architecture.
+Generate project structure for Backend (NestJS), Frontend (React), or Full-stack.
 
 ## Instructions
 
@@ -15,15 +15,15 @@ Generate NestJS project structure with layered architecture.
 When done, provide:
 
 ### Context Summary
-[2-3 sentences summarizing: modules generated, architecture chosen, ARCHITECTURE.md location]
+[2-3 sentences summarizing: project type (backend/frontend/full-stack), modules/features generated, tech stack chosen, ARCHITECTURE.md location]
 
 ### Next Steps
 
-**Next by flow:** `/coder [context summary]` - Implement the first feature in the scaffolded project.
+**Next by flow:** `/git-worktrees [context summary]` - Create isolated workspace for development.
 
 **Alternatives:**
-- `/requirements-analyst [context summary]` - Analyze requirements before implementation.
-- `/brainstorm [context summary]` - Design features through dialogue.
+- `/coder [context summary]` - Start backend implementation directly (skip worktrees for simple projects).
+- `/frontend-design [context summary]` - Design UI before frontend implementation.
 
 ## Constraints
 - ONLY execute the project-generator skill

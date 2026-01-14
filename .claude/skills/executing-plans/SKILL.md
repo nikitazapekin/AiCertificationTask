@@ -86,8 +86,8 @@ After all tasks complete and verified:
 
 After all plan tasks are complete, STOP and present these options:
 
-**Next by flow:** `/git-worktrees [context]` - Create isolated workspace if not already in one.
+**Next by flow:** `/project-generator [context]` - Scaffold project structure if this is a new project.
 
 **Alternatives:**
-- `/coder [context]` - Continue with implementation in current workspace.
-- `/finishing-branch [context]` - Complete the branch if implementation is done.
+- `/git-worktrees [context]` - Create isolated workspace (skip project-generator for existing projects).
+- `/coder [context]` - Start implementation directly in current workspace.
