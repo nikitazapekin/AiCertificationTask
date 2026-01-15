@@ -1,42 +1,53 @@
 # Project Generator (Standalone)
 
-Run the project-generator skill to scaffold NestJS project structure.
+Run project scaffolding via isolated sub-agent for context management.
 
-**Important:** This command runs the skill in isolation WITHOUT automatically triggering next steps.
+**Important:** This command executes in a sub-agent to isolate context and keep main conversation under 100k tokens.
 
 ## Input
 $ARGUMENTS
 
 ## Instructions
 
-Use the `project-generator` skill to:
+**EXECUTE VIA SUB-AGENT:**
+
+Use the Task tool with these parameters:
+- **subagent_type:** `project-generator`
+- **description:** `Scaffold project structure`
+- **prompt:** Include the user input below and the task instructions
+
+### Prompt to Send to Sub-Agent
+
+```
+USER INPUT: [Insert $ARGUMENTS here]
+
+TASK: Scaffold NestJS project structure.
+
+PROCESS:
 1. Ask minimal setup questions
 2. Apply smart defaults
 3. Generate folder structure
 4. Create ARCHITECTURE.md
 
-**GENERATES:**
+GENERATES:
 - Project folder structure
 - NestJS module boundaries
 - Empty controllers, services, repositories
 - Minimal shared infrastructure (Config, Logger, Database, Health)
 - Application bootstrap structure
 
-**DOES NOT GENERATE:**
+DOES NOT GENERATE:
 - Business logic or use cases
 - Domain models or value objects
 - Feature-specific functionality
 
-Architecture: **STRICTLY LAYERED ONLY**
-```
+ARCHITECTURE: STRICTLY LAYERED ONLY
 Controller → Service → Repository
-```
 
-Forbidden patterns:
+FORBIDDEN PATTERNS:
 - DDD, CQRS, GraphQL, Event Sourcing
 
-Module structure:
-```
+MODULE STRUCTURE:
 modules/<name>/
 ├── <name>.module.ts
 ├── <name>.controller.ts
@@ -44,6 +55,8 @@ modules/<name>/
 ├── <name>.repository.ts
 ├── dto/
 └── entities/
+
+STOP after generating project structure. Do not proceed to implementation.
 ```
 
-**STOP after generating project structure.** Do not automatically proceed to implementation.
+**After sub-agent completes:** Report the generated structure to the user.

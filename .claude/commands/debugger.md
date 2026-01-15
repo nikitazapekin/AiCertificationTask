@@ -1,43 +1,60 @@
 # Systematic Debugger (Standalone)
 
-Run the systematic-debugger skill to find root cause before fixing bugs.
+Run debugging via isolated sub-agent for context management.
 
-**Important:** This command runs the skill in isolation WITHOUT automatically triggering next steps.
+**Important:** This command executes in a sub-agent to isolate context and keep main conversation under 100k tokens.
 
 ## Input
 $ARGUMENTS
 
 ## Instructions
 
-Use the `systematic-debugger` skill with the iron law:
-**NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST**
+**EXECUTE VIA SUB-AGENT:**
 
-Four phases:
-1. **Root Cause Investigation**
+Use the Task tool with these parameters:
+- **subagent_type:** `systematic-debugger`
+- **description:** `Debug issue`
+- **prompt:** Include the user input below and the task instructions
+
+### Prompt to Send to Sub-Agent
+
+```
+USER INPUT: [Insert $ARGUMENTS here]
+
+TASK: Find root cause before fixing bugs.
+
+IRON LAW: NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST
+
+FOUR PHASES:
+
+1. ROOT CAUSE INVESTIGATION
    - Read error messages carefully
    - Reproduce consistently
    - Check recent changes
    - Trace data flow
 
-2. **Pattern Analysis**
+2. PATTERN ANALYSIS
    - Find working examples
    - Compare against references
    - Identify differences
 
-3. **Hypothesis and Testing**
+3. HYPOTHESIS AND TESTING
    - Form single hypothesis
    - Make smallest possible change
    - Verify before continuing
 
-4. **Implementation**
+4. IMPLEMENTATION
    - Create failing test case
    - Implement single fix
    - Verify fix
 
-Red flags (STOP):
+RED FLAGS (STOP):
 - "Quick fix for now"
 - "Just try changing X"
 - "Skip the test"
 - "I don't fully understand but..."
 
-**STOP after fixing the issue.** Do not automatically proceed to other skills.
+STOP after fixing the issue. Do not proceed to other skills.
+```
+
+**After sub-agent completes:** Report the fix and root cause to the user.

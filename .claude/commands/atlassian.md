@@ -1,28 +1,40 @@
 # Atlassian Integration (Standalone)
 
-Run the atlassian-skill to integrate with Jira and Confluence.
+Run Atlassian operations via isolated sub-agent for context management.
 
-**Important:** This command runs the skill in isolation WITHOUT automatically triggering next steps.
+**Important:** This command executes in a sub-agent to isolate context and keep main conversation under 100k tokens.
 
 ## Input
 $ARGUMENTS
 
 ## Instructions
 
-Use the `atlassian-skill` to:
+**EXECUTE VIA SUB-AGENT:**
 
-**Confluence Operations:**
+Use the Task tool with these parameters:
+- **subagent_type:** `atlassian-skill`
+- **description:** `Atlassian integration`
+- **prompt:** Include the user input below and the task instructions
+
+### Prompt to Send to Sub-Agent
+
+```
+USER INPUT: [Insert $ARGUMENTS here]
+
+TASK: Integrate with Jira and Confluence.
+
+CONFLUENCE OPERATIONS:
 - Fetch requirements from pages
 - Extract acceptance criteria
 - Create/update documentation
 
-**Jira Operations:**
+JIRA OPERATIONS:
 - Fetch issue details
 - Update issue status
 - Create new issues
 - Add comments with evidence
 
-Status transitions:
+STATUS TRANSITIONS:
 | Event | Jira Action |
 |-------|-------------|
 | Starting work | → "In Progress" |
@@ -30,8 +42,11 @@ Status transitions:
 | Tests passing | Add comment with evidence |
 | Complete | → "Done" |
 
-Prerequisites:
+PREREQUISITES:
 - MCP tools for Atlassian (mcp__atlassian__*)
 - If unavailable, inform user to configure Atlassian MCP server
 
-**STOP after completing Atlassian operations.** Do not automatically proceed to other skills.
+STOP after completing Atlassian operations. Do not proceed to other skills.
+```
+
+**After sub-agent completes:** Report the Atlassian actions to the user.

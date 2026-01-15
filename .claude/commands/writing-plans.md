@@ -1,22 +1,36 @@
 # Writing Plans (Standalone)
 
-Run the writing-plans skill to create detailed implementation plans.
+Run plan creation via isolated sub-agent for context management.
 
-**Important:** This command runs the skill in isolation WITHOUT automatically triggering next steps (executing-plans, using-git-worktrees, etc.).
+**Important:** This command executes in a sub-agent to isolate context and keep main conversation under 100k tokens.
 
 ## Input
 $ARGUMENTS
 
 ## Instructions
 
-Use the `writing-plans` skill to:
+**EXECUTE VIA SUB-AGENT:**
+
+Use the Task tool with these parameters:
+- **subagent_type:** `writing-plans`
+- **description:** `Create implementation plan`
+- **prompt:** Include the user input below and the task instructions
+
+### Prompt to Send to Sub-Agent
+
+```
+USER INPUT: [Insert $ARGUMENTS here]
+
+TASK: Create detailed implementation plan with bite-sized tasks.
+
+PROCESS:
 1. Create comprehensive implementation plan
 2. Break into bite-sized tasks (2-5 minutes each)
 3. Include exact file paths for each task
 4. Provide complete code snippets (not "add validation")
 5. Include test commands with expected output
 
-Save plan to: `docs/plans/YYYY-MM-DD-<feature-name>.md`
+SAVE PLAN TO: docs/plans/YYYY-MM-DD-<feature-name>.md
 
 Each task should follow TDD:
 1. Write the failing test
@@ -25,4 +39,7 @@ Each task should follow TDD:
 4. Run test to verify it passes
 5. Commit
 
-**STOP after saving the plan.** Do not automatically proceed to executing-plans or creating worktrees.
+STOP after saving the plan. Do not proceed to executing-plans or creating worktrees.
+```
+
+**After sub-agent completes:** Report the plan location to the user.
