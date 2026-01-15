@@ -124,9 +124,24 @@ Parse requirements from various sources (Confluence, specs, user requests), deco
 
 ---
 
+## Final Output (MANDATORY)
+
+**Before presenting next steps, you MUST write the requirements document to a file:**
+
+1. Create the directory if it doesn't exist: `docs/analysis/requirements/`
+2. Write the file: `docs/analysis/requirements/YYYY-MM-DD-<feature-name>-requirements.md`
+3. Use the Requirements Document Template from Step 5 as the structure
+4. Include all gathered requirements, task breakdown, and gap analysis
+
+**Example filename:** `docs/analysis/requirements/2024-01-15-user-authentication-requirements.md`
+
+This file preserves the analysis context so the conversation can be cleared before implementation.
+
+---
+
 ## Next Steps
 
-After requirements analysis is complete, STOP and present these options:
+After requirements document is written to file, STOP and present these options:
 
 **Next by flow:** `/brainstorm [context]` - Refine requirements into a concrete design through collaborative dialogue.
 

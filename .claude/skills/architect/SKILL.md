@@ -130,9 +130,29 @@ modules/<module>/
 
 ---
 
+## Final Output (MANDATORY)
+
+**Before presenting next steps, you MUST write the architecture document to a file:**
+
+1. Create the directory if it doesn't exist: `docs/analysis/architecture/`
+2. Write the file: `docs/analysis/architecture/YYYY-MM-DD-<feature-name>-architecture.md`
+3. Include:
+   - Module placement decisions
+   - Pattern choices with rationale
+   - Entity relationships
+   - Security considerations
+   - Scalability considerations
+   - Key architectural decisions table
+
+**Example filename:** `docs/analysis/architecture/2024-01-15-payment-system-architecture.md`
+
+This file preserves the architecture context so the conversation can be cleared before implementation.
+
+---
+
 ## Next Steps
 
-After architecture decisions are made, STOP and present these options:
+After architecture document is written to file, STOP and present these options:
 
 **Next by flow:** `/api-designer [context]` - Design REST APIs based on the architecture.
 

@@ -177,9 +177,30 @@ Elegance comes from executing the vision well.
 
 ---
 
+## Final Output (MANDATORY)
+
+**Before presenting next steps, you MUST write the frontend design document to a file:**
+
+1. Create the directory if it doesn't exist: `docs/analysis/frontend-design/`
+2. Write the file: `docs/analysis/frontend-design/YYYY-MM-DD-<feature-name>-ui.md`
+3. Use the Design Deliverables Template and include:
+   - Aesthetic direction and rationale
+   - Typography choices (specific fonts, hierarchy)
+   - Color palette (hex values, CSS variables)
+   - Motion/animation strategy
+   - Memorable element description
+   - Component visual specs with states
+   - Responsive behavior
+
+**Example filename:** `docs/analysis/frontend-design/2024-01-15-dashboard-ui.md`
+
+This file preserves the design context so the conversation can be cleared before implementation.
+
+---
+
 ## Next Steps
 
-After frontend design is complete, STOP and present these options:
+After frontend design document is written to file, STOP and present these options:
 
 **Next by flow:** `/coder-frontend [context]` - Implement the designed UI components.
 

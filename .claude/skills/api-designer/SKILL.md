@@ -217,9 +217,29 @@ export class UserController {
 
 ---
 
+## Final Output (MANDATORY)
+
+**Before presenting next steps, you MUST write the API design document to a file:**
+
+1. Create the directory if it doesn't exist: `docs/analysis/api-design/`
+2. Write the file: `docs/analysis/api-design/YYYY-MM-DD-<feature-name>-api.md`
+3. Include:
+   - REST endpoints with HTTP methods
+   - Request DTOs with validation rules
+   - Response DTOs with examples
+   - Error responses and status codes
+   - Swagger decorator specifications
+   - Controller structure outline
+
+**Example filename:** `docs/analysis/api-design/2024-01-15-order-management-api.md`
+
+This file preserves the API design context so the conversation can be cleared before implementation.
+
+---
+
 ## Next Steps
 
-After API design is complete, STOP and present these options:
+After API design document is written to file, STOP and present these options:
 
 **Next by flow:** `/executing-plans [context]` - Start implementing the designed API endpoints.
 

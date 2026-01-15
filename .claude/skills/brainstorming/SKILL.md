@@ -65,16 +65,18 @@ Start by understanding the current project context, then ask questions one at a 
 [Any unresolved decisions]
 ```
 
-## After the Design
+## Final Output (MANDATORY)
 
-**Documentation:**
-- Write the validated design to `docs/plans/YYYY-MM-DD-<topic>-design.md`
-- Commit the design document to git
+**Before presenting next steps, you MUST write the design document to a file:**
 
-**Implementation (if continuing):**
-- Ask: "Ready to set up for implementation?" **Use AskUserQuestion tool.**
-- Use `using-git-worktrees` to create isolated workspace
-- Use `writing-plans` to create detailed implementation plan
+1. Create the directory if it doesn't exist: `docs/analysis/brainstorm/`
+2. Write the file: `docs/analysis/brainstorm/YYYY-MM-DD-<feature-name>-design.md`
+3. Use the Design Document Template as the structure
+4. Include all design decisions, architecture, data model, API design, and open questions
+
+**Example filename:** `docs/analysis/brainstorm/2024-01-15-user-notifications-design.md`
+
+This file preserves the design context so the conversation can be cleared before implementation.
 
 ## Key Principles
 
@@ -89,7 +91,7 @@ Start by understanding the current project context, then ask questions one at a 
 
 ## Next Steps
 
-After brainstorming is complete and design is documented, STOP and present these options:
+After design document is written to file, STOP and present these options:
 
 **Next by flow:** `/writing-plans [context]` - Create detailed implementation tasks from the design.
 
