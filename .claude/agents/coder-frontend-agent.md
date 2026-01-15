@@ -1,3 +1,9 @@
+---
+name: coder-frontend
+description: "Use this agent to implement frontend features following component-based architecture and modern best practices. For React/Vue/Angular development, component creation, state management, and frontend bug fixes.\n\nExamples:\n\n<example>\nContext: The user wants to implement a frontend component.\nuser: \"Create the user profile component with form validation\"\nassistant: \"I'll use the coder-frontend agent to implement the component.\"\n<Task tool call to coder-frontend agent>\n</example>\n\n<example>\nContext: The user needs frontend state management.\nuser: \"Implement the shopping cart state management\"\nassistant: \"I'll use the coder-frontend agent to implement the state management solution.\"\n<Task tool call to coder-frontend agent>\n</example>"
+model: sonnet
+---
+
 # Coder Frontend Agent
 
 ## Role

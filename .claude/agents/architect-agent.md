@@ -1,3 +1,9 @@
+---
+name: architect
+description: "Use this agent for system architecture decisions in NestJS projects. Helps with choosing patterns, evaluating scalability/security, module placement, and technology choices.\n\nExamples:\n\n<example>\nContext: The user needs architecture guidance for a new feature.\nuser: \"Should I use CQRS or simple services for this module?\"\nassistant: \"I'll use the architect agent to evaluate the architecture patterns for your use case.\"\n<Task tool call to architect agent>\n</example>\n\n<example>\nContext: The user wants to design module structure.\nuser: \"Help me decide where to place this new functionality in the architecture\"\nassistant: \"I'll use the architect agent to make the module placement decision.\"\n<Task tool call to architect agent>\n</example>"
+model: opus
+---
+
 # Architect Agent
 
 ## Role

@@ -1,3 +1,9 @@
+---
+name: verification
+description: "Use this agent before claiming work is complete, fixed, or passing. Requires running verification commands and confirming output before making any success claims - evidence before assertions.\n\nExamples:\n\n<example>\nContext: The user wants to verify their implementation works.\nuser: \"Verify that my changes don't break anything\"\nassistant: \"I'll use the verification agent to run verification commands and confirm results.\"\n<Task tool call to verification agent>\n</example>\n\n<example>\nContext: Before committing or creating PRs.\nuser: \"Make sure everything passes before I commit\"\nassistant: \"I'll use the verification agent to verify all tests and builds pass.\"\n<Task tool call to verification agent>\n</example>"
+model: haiku
+---
+
 # Verification Agent
 
 ## Role

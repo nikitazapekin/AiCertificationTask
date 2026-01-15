@@ -1,3 +1,9 @@
+---
+name: atlassian-skill
+description: "Use this agent to integrate with Atlassian tools (Jira, Confluence) for requirement tracking and documentation. Fetches requirements, creates/updates issues, and syncs work status.\n\nExamples:\n\n<example>\nContext: The user wants to fetch requirements from Confluence.\nuser: \"Get the requirements from the Confluence page\"\nassistant: \"I'll use the atlassian-skill agent to fetch the requirements.\"\n<Task tool call to atlassian-skill agent>\n</example>\n\n<example>\nContext: The user needs to create Jira issues.\nuser: \"Create Jira tickets for these tasks\"\nassistant: \"I'll use the atlassian-skill agent to create the Jira issues.\"\n<Task tool call to atlassian-skill agent>\n</example>"
+model: haiku
+---
+
 # Atlassian Skill Agent
 
 ## Role

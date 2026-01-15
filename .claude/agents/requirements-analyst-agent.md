@@ -1,3 +1,9 @@
+---
+name: requirements-analyst
+description: "Use this agent to analyze requirements from various sources (Confluence, specifications, user stories), decompose them into actionable tasks, and validate completeness.\n\nExamples:\n\n<example>\nContext: The user wants to break down a feature specification.\nuser: \"Analyze the requirements from the payment gateway spec\"\nassistant: \"I'll use the requirements-analyst agent to parse the specification and create actionable tasks.\"\n<Task tool call to requirements-analyst agent>\n</example>\n\n<example>\nContext: The user has a Confluence page with requirements.\nuser: \"Break down the requirements from this Confluence page into tasks\"\nassistant: \"I'll use the requirements-analyst agent to analyze the Confluence requirements and decompose them.\"\n<Task tool call to requirements-analyst agent>\n</example>"
+model: sonnet
+---
+
 # Requirements Analyst Agent
 
 ## Role

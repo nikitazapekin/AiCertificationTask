@@ -1,3 +1,9 @@
+---
+name: writing-plans
+description: "Use this agent to create detailed implementation plans with bite-sized tasks for engineers with zero codebase context. Plans are saved to docs/plans/.\n\nExamples:\n\n<example>\nContext: The user has a spec and wants an implementation plan.\nuser: \"Create an implementation plan for the authentication module\"\nassistant: \"I'll use the writing-plans agent to create a detailed plan with actionable tasks.\"\n<Task tool call to writing-plans agent>\n</example>\n\n<example>\nContext: The user wants to break down a complex feature into steps.\nuser: \"I need a step-by-step plan to implement this feature\"\nassistant: \"I'll use the writing-plans agent to create detailed implementation tasks.\"\n<Task tool call to writing-plans agent>\n</example>"
+model: sonnet
+---
+
 # Writing Plans Agent
 
 ## Role

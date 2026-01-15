@@ -1,3 +1,9 @@
+---
+name: reflect
+description: "Use this agent after completing features to capture lessons learned, update documentation with discovered patterns, and improve processes. Typically used at the end of the workflow.\n\nExamples:\n\n<example>\nContext: The user finished a feature and wants to capture learnings.\nuser: \"Let's reflect on what we learned from this implementation\"\nassistant: \"I'll use the reflect agent to capture lessons learned and process improvements.\"\n<Task tool call to reflect agent>\n</example>\n\n<example>\nContext: After completing documentation or finishing a branch.\nuser: \"What patterns did we discover that should be documented?\"\nassistant: \"I'll use the reflect agent to identify and document the patterns.\"\n<Task tool call to reflect agent>\n</example>"
+model: haiku
+---
+
 # Reflect Agent
 
 ## Role

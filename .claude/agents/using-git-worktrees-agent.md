@@ -1,3 +1,9 @@
+---
+name: using-git-worktrees
+description: "Use this agent to create isolated git worktrees for parallel development with proper setup and verification. Essential before executing implementation plans or when starting feature work that needs isolation.\n\nExamples:\n\n<example>\nContext: The user wants to work on a feature in isolation.\nuser: \"Create a worktree for the new payment feature\"\nassistant: \"I'll use the using-git-worktrees agent to set up an isolated workspace.\"\n<Task tool call to using-git-worktrees agent>\n</example>\n\n<example>\nContext: The user needs parallel development environment.\nuser: \"I need to work on this without affecting my current branch\"\nassistant: \"I'll use the using-git-worktrees agent to create an isolated worktree.\"\n<Task tool call to using-git-worktrees agent>\n</example>"
+model: haiku
+---
+
 # Using Git Worktrees Agent
 
 ## Role

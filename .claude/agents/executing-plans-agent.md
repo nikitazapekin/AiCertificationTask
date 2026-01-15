@@ -1,3 +1,9 @@
+---
+name: executing-plans
+description: "Use this agent when you have a written implementation plan to execute. Loads plans from docs/plans/, reviews critically, and executes tasks in batches with architect review between batches.\n\nExamples:\n\n<example>\nContext: The user has a plan ready to execute.\nuser: \"Execute the implementation plan for the user module\"\nassistant: \"I'll use the executing-plans agent to execute the plan with verification checkpoints.\"\n<Task tool call to executing-plans agent>\n</example>\n\n<example>\nContext: The user wants to continue executing a plan.\nuser: \"Continue with the next batch of tasks from the plan\"\nassistant: \"I'll use the executing-plans agent to execute the next batch.\"\n<Task tool call to executing-plans agent>\n</example>"
+model: sonnet
+---
+
 # Executing Plans Agent
 
 ## Role
