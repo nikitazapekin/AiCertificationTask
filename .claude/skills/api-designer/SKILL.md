@@ -241,8 +241,8 @@ This file preserves the API design context so the conversation can be cleared be
 
 After API design document is written to file, STOP and present these options:
 
-**Next by flow:** `/executing-plans [context]` - Start implementing the designed API endpoints.
+**Next by flow:** `/git-worktrees [context]` - Create isolated workspace for API implementation.
 
 **Alternatives:**
-- `/coder [context]` - Implement the API directly without a formal plan.
+- `/coder [context]` - Implement the API directly in current workspace.
 - `/test-generator [context]` - Generate API integration tests first (TDD approach).

@@ -60,7 +60,6 @@ Commands are shortcuts to invoke skills. Type `/` followed by the command name:
 | `/writing-plans`        | Create detailed implementation plans              |
 | `/architect`            | System architecture decisions                     |
 | `/api-designer`         | REST API design with Swagger                      |
-| `/executing-plans`      | Execute plans in batches                          |
 | `/git-worktrees`        | Create isolated workspaces                        |
 | `/coder`                | Implement backend features                        |
 | `/coder-frontend`       | Implement frontend features                       |
@@ -107,8 +106,7 @@ See `skills/SKILL FLOW.md` for the complete visual diagram.
 | `/brainstorm` | `/writing-plans` | Create implementation tasks |
 | `/writing-plans` | `/architect` | Review architecture |
 | `/architect` | `/api-designer` | Design APIs |
-| `/api-designer` | `/executing-plans` | Start implementation |
-| `/executing-plans` | `/git-worktrees` | Create workspace |
+| `/api-designer` | `/git-worktrees` | Create workspace |
 | `/git-worktrees` | `/coder` or `/frontend-design` | Start coding |
 | `/coder` | `/code-reviewer` | Review code |
 | `/code-reviewer` | `/test-generator` | Generate tests |
@@ -138,7 +136,6 @@ Skills are detailed instruction sets that define how Claude performs specific ta
 | `architect`           | High-level architecture decisions    |
 | `api-designer`        | REST API design, DTOs, Swagger docs  |
 | `writing-plans`       | Create granular implementation plans |
-| `executing-plans`     | Execute plans in batches with review |
 | `using-git-worktrees` | Create isolated git worktrees        |
 
 #### Implementation Phase
@@ -197,7 +194,6 @@ Every agent:
 | `writing-plans-agent`           | writing-plans                  | Create implementation plans |
 | `architect-agent`               | architect                      | Architecture decisions      |
 | `api-designer-agent`            | api-designer                   | REST API design             |
-| `executing-plans-agent`         | executing-plans                | Execute plans               |
 | `using-git-worktrees-agent`     | using-git-worktrees            | Create isolated workspaces  |
 | `coder-agent`                   | coder                          | Backend implementation      |
 | `coder-frontend-agent`          | coder-frontend                 | Frontend implementation     |

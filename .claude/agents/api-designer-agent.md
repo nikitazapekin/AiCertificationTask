@@ -25,10 +25,10 @@ When done, provide:
 
 ### Next Steps
 
-**Next by flow:** `/executing-plans [context summary]` - Start implementing the designed API endpoints.
+**Next by flow:** `/git-worktrees [context summary]` - Create isolated workspace for API implementation.
 
 **Alternatives:**
-- `/coder [context summary]` - Implement the API directly without a formal plan.
+- `/coder [context summary]` - Implement the API directly in current workspace.
 - `/test-generator [context summary]` - Generate API integration tests first (TDD approach).
 
 ## Constraints
