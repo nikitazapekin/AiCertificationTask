@@ -101,8 +101,7 @@ When done, provide:
 |-------|-------|--------------|
 | `writing-plans-agent` | writing-plans | architect |
 | `architect-agent` | architect | api-designer |
-| `api-designer-agent` | api-designer | executing-plans |
-| `executing-plans-agent` | executing-plans | git-worktrees |
+| `api-designer-agent` | api-designer | git-worktrees |
 | `using-git-worktrees-agent` | using-git-worktrees | coder / coder-frontend |
 
 ### Implementation Phase

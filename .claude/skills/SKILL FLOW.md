@@ -19,8 +19,8 @@ This document defines the recommended order of skills. Each skill stops after co
 │                     PHASE 2: PLANNING                               │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
-│   /writing-plans ─► /architect ─► /api-designer ─► /executing-plans │
-│   (granular tasks)  (decisions)   (REST design)    (batch execute)  │
+│   /writing-plans ──────► /architect ──────► /api-designer           │
+│   (granular tasks)       (decisions)        (REST design)           │
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
                                   │
@@ -88,8 +88,7 @@ This document defines the recommended order of skills. Each skill stops after co
 | `/brainstorm`           | `/writing-plans`                         | Create implementation tasks from design |
 | `/writing-plans`        | `/architect`                             | Review architecture for the plan        |
 | `/architect`            | `/api-designer`                          | Design APIs based on architecture       |
-| `/api-designer`         | `/executing-plans`                       | Start implementing the designed API     |
-| `/executing-plans`      | `/project-generator` or `/git-worktrees` | Scaffold if new, then create workspace  |
+| `/api-designer`         | `/project-generator` or `/git-worktrees` | Scaffold if new, then create workspace  |
 | `/project-generator`    | `/git-worktrees`                         | Create isolated workspace for coding    |
 | `/git-worktrees`        | `/coder` or `/frontend-design`           | Start implementation                    |
 | `/frontend-design`      | `/coder-frontend`                        | Implement the designed UI               |
@@ -121,7 +120,7 @@ Choose your starting point based on your situation:
 | ----------------------------- | --------------------------- |
 | Have requirements/specs       | `/requirements-analyst`     |
 | Have an idea to explore       | `/brainstorm`               |
-| Have a plan ready             | `/executing-plans`          |
+| Have a plan ready             | `/git-worktrees` → `/coder` |
 | Existing project, add feature | `/git-worktrees` → `/coder` |
 | Fix a bug                     | `/debugger`                 |
 

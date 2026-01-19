@@ -29,7 +29,7 @@ Write comprehensive implementation plans assuming the engineer has zero context 
 ```markdown
 # [Feature Name] Implementation Plan
 
-> **For Claude:** REQUIRED SUB-SKILL: Use `executing-plans` to implement this plan task-by-task.
+> **For Claude:** Use `using-git-worktrees` to create isolated workspace, then implement with `coder` skill.
 
 **Goal:** [One sentence describing what this builds]
 
@@ -99,11 +99,11 @@ git commit -m "feat(domain): add specific feature"
 
 After saving the plan, offer execution choice:
 
-**"Plan complete and saved to `docs/plans/<filename>.md`. Two execution options:**
+**"Plan complete and saved to `docs/plans/<filename>.md`. Execution options:**
 
-**1. Execute Now (this session)** - Use `executing-plans` to implement task-by-task with review checkpoints
+**1. Execute Now** - Use `/coder` to implement in current workspace
 
-**2. Parallel Development** - Use `using-git-worktrees` for isolated workspace, then `executing-plans`
+**2. Isolated Workspace** - Use `/git-worktrees` to create isolated workspace, then `/coder`
 
 **Which approach?"**
 
@@ -113,8 +113,8 @@ After saving the plan, offer execution choice:
 
 After the plan is complete and saved, STOP and present these options:
 
-**Next by flow:** `/architect [context]` - Review architecture decisions before executing the plan.
+**Next by flow:** `/architect [context]` - Review architecture decisions before implementation.
 
 **Alternatives:**
-- `/executing-plans [context]` - Start implementing the plan task-by-task.
-- `/git-worktrees [context]` - Create isolated workspace first for parallel development.
+- `/git-worktrees [context]` - Create isolated workspace for development.
+- `/coder [context]` - Start implementing directly in current workspace.

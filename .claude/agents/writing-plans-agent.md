@@ -25,11 +25,11 @@ When done, provide:
 
 ### Next Steps
 
-**Next by flow:** `/architect [context summary]` - Review architecture decisions before executing the plan.
+**Next by flow:** `/architect [context summary]` - Review architecture decisions before implementation.
 
 **Alternatives:**
-- `/executing-plans [context summary]` - Start implementing the plan task-by-task.
-- `/git-worktrees [context summary]` - Create isolated workspace first for parallel development.
+- `/git-worktrees [context summary]` - Create isolated workspace for development.
+- `/coder [context summary]` - Start implementing directly in current workspace.
 
 ## Constraints
 - ONLY execute the writing-plans skill
