@@ -9,6 +9,17 @@ description: Implement frontend features following component-based architecture 
 
 Implement frontend features following component-based architecture, modern frameworks, and best practices.
 
+## Performance Guidelines
+
+**For React/Next.js projects:** Apply the performance patterns from `.claude/skills/react-best-practices/AGENTS.md`. Key priorities:
+
+1. **CRITICAL - Eliminate Waterfalls**: Use `Promise.all()` for parallel operations, defer `await` to branches where used, use Suspense boundaries
+2. **CRITICAL - Bundle Size**: Import directly (avoid barrels), use dynamic imports for heavy components, defer third-party scripts
+3. **HIGH - Server Performance**: Use `React.cache()` for deduplication, minimize client serialization, parallelize server fetches
+4. **MEDIUM - Re-renders**: Memoize expensive components, use primitive dependencies, derive state instead of subscribing to raw values
+
+Read the full guidelines in `.claude/skills/react-best-practices/AGENTS.md` when working on React/Next.js code.
+
 ## Implementation Workflow
 
 ```

@@ -58,6 +58,23 @@ Review code for quality, standards compliance, security issues, and performance 
 - [ ] Tests are readable
 - [ ] Mocks used appropriately
 
+### 7. Frontend-Specific (when reviewing UI code)
+
+When reviewing React/Vue/Angular components or frontend code:
+
+1. **Fetch Web Interface Guidelines**: Use WebFetch to retrieve the latest rules from:
+   ```
+   https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md
+   ```
+
+2. **Apply the fetched guidelines** to check for:
+   - Accessibility compliance
+   - UX best practices
+   - Interaction patterns
+   - Visual design consistency
+
+3. **Output format**: Use the terse `file:line` format as specified in the fetched guidelines
+
 ## Code Smells
 
 | Smell | Issue | Fix |
