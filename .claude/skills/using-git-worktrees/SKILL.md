@@ -18,19 +18,28 @@ Git worktrees create isolated workspaces sharing the same repository, allowing w
 **Ask user what worktrees to create. Use AskUserQuestion tool:**
 
 ```
-What type of worktree(s) do you need?
+How would you like to organize your worktree(s)?
 
-1. Backend only - Single worktree for backend development
-2. Frontend only - Single worktree for frontend development
-3. Both (parallel) - Separate worktrees for backend and frontend
+1. Single worktree (unified)
+   Best for: small-to-medium features, tightly coupled changes, or when you prefer working in one place. All backend and frontend work happens in one isolated branch.
+
+2. Separate worktrees (backend + frontend)
+   Best for: large features, parallel development by different sessions, or when backend and frontend have independent lifecycles. Creates two isolated branches that can be merged separately.
+
+3. Single worktree (backend only)
+   Best for: API-only work, backend services, or when the feature has no frontend component.
+
+4. Single worktree (frontend only)
+   Best for: UI-only changes, styling updates, or when backend is already complete/unchanged.
 
 Which option?
 ```
 
 **Branch naming convention:**
+- Single unified: `feature/<name>`
 - Backend only: `feature/<name>`
 - Frontend only: `feature/<name>`
-- Both: `feature/<name>-backend` and `feature/<name>-frontend`
+- Separate (both): `feature/<name>-backend` and `feature/<name>-frontend`
 
 ## Step 2: Directory Selection
 
@@ -84,7 +93,7 @@ git check-ignore -q .worktrees 2>/dev/null
 
 ## Step 4: Create Worktree(s)
 
-### Single Worktree (Backend or Frontend)
+### Single Worktree (Unified, Backend-only, or Frontend-only)
 
 ```bash
 # Create worktree with new branch
@@ -92,7 +101,7 @@ git worktree add <worktree-dir>/<feature-name> -b feature/<feature-name>
 cd <worktree-dir>/<feature-name>
 ```
 
-### Parallel Worktrees (Both Backend and Frontend)
+### Separate Worktrees (Backend + Frontend)
 
 ```bash
 # Create backend worktree
@@ -125,10 +134,13 @@ if [ -f go.mod ]; then go mod download; fi
 Run tests to ensure worktree starts clean:
 
 ```bash
-# For backend worktree
+# For unified worktree (both backend and frontend)
+npx nx test backend && npx nx test frontend
+
+# For backend-only worktree
 npx nx test backend
 
-# For frontend worktree
+# For frontend-only worktree
 npx nx test frontend
 ```
 
@@ -138,16 +150,27 @@ npx nx test frontend
 
 ## Step 7: Report Location(s)
 
-### Single Worktree
+### Single Worktree (Unified)
 
 ```
 Worktree ready at <full-path>
 Branch: feature/<feature-name>
+Type: Unified (backend + frontend in one branch)
+Tests passing (backend: <N>, frontend: <M>)
+Ready to implement <feature-name>
+```
+
+### Single Worktree (Backend-only or Frontend-only)
+
+```
+Worktree ready at <full-path>
+Branch: feature/<feature-name>
+Type: <Backend-only | Frontend-only>
 Tests passing (<N> tests, 0 failures)
 Ready to implement <feature-name>
 ```
 
-### Parallel Worktrees
+### Separate Worktrees
 
 ```
 Worktrees ready for parallel development:
@@ -175,14 +198,17 @@ Ready for parallel implementation of <feature-name>
 | Neither exists | Check CLAUDE.md → Ask user (Use AskUserQuestion tool) |
 | Directory not ignored | Add to .gitignore + commit |
 | Tests fail during baseline | Report failures + ask (Use AskUserQuestion tool) |
-| Parallel development needed | Create separate backend/frontend worktrees |
+| Small/medium feature, tightly coupled | Single unified worktree |
+| Large feature, independent lifecycles | Separate backend/frontend worktrees |
+| Backend-only or frontend-only work | Single worktree for that layer |
 
 ## Common Mistakes
 
 - **Skipping ignore verification** - Worktree contents get tracked
 - **Assuming directory location** - Creates inconsistency
 - **Proceeding with failing tests** - Can't distinguish new bugs from pre-existing
-- **Using single worktree for full-stack** - Limits parallel development
+- **Not asking user preference** - Different features benefit from different setups
+- **Using separate worktrees for tightly coupled work** - Creates merge coordination overhead
 
 ---
 
@@ -190,24 +216,33 @@ Ready for parallel implementation of <feature-name>
 
 After worktree(s) created and verified, STOP and present these options:
 
-### For Single Backend Worktree
+### For Single Worktree (Unified)
+
+**Next by flow:** Start with whichever layer makes sense for the feature:
+- `/coder [context]` - Start with backend implementation
+- `/frontend-design [context]` - Start with UI design
+- `/coder-frontend [context]` - Start with frontend implementation
+
+**Note:** All changes stay in one branch, making it easy to coordinate tightly-coupled backend and frontend work.
+
+### For Single Worktree (Backend-only)
 
 **Next by flow:** `/coder [context]` - Start backend implementation in the worktree.
 
 **Alternatives:**
 - `/code-reviewer [context]` - Review existing code before implementing.
 
-### For Single Frontend Worktree
+### For Single Worktree (Frontend-only)
 
 **Next by flow:** `/frontend-design [context]` - Design UI before frontend implementation.
 
 **Alternatives:**
 - `/coder-frontend [context]` - Start frontend implementation directly.
 
-### For Parallel Worktrees (Both)
+### For Separate Worktrees (Backend + Frontend)
 
 **Next by flow:** Start implementation in both worktrees:
 - Backend: `/coder [context]` in the backend worktree
 - Frontend: `/frontend-design [context]` or `/coder-frontend [context]` in the frontend worktree
 
-**Note:** With parallel worktrees, you can work on backend and frontend independently and merge when both are complete.
+**Note:** With separate worktrees, you can work on backend and frontend independently and merge when both are complete. Ideal for parallel sessions or when changes have different review cycles.

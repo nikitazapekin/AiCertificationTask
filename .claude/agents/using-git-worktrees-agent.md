@@ -1,13 +1,13 @@
 ---
 name: using-git-worktrees
-description: "Use this agent to create isolated git worktrees for backend, frontend, or both for parallel development. Supports creating separate worktrees for backend and frontend work.\n\nExamples:\n\n<example>\nContext: The user wants to work on backend and frontend in parallel.\nuser: \"Create worktrees for the new payment feature - need both backend and frontend\"\nassistant: \"I'll use the using-git-worktrees agent to set up parallel workspaces.\"\n<Task tool call to using-git-worktrees agent>\n</example>\n\n<example>\nContext: The user needs just backend isolation.\nuser: \"Create a worktree for the API implementation\"\nassistant: \"I'll use the using-git-worktrees agent to create an isolated backend worktree.\"\n<Task tool call to using-git-worktrees agent>\n</example>"
+description: "Use this agent to create isolated git worktrees for feature development. Supports unified worktrees (backend + frontend together), separate worktrees for parallel development, or single-layer worktrees (backend-only or frontend-only).\n\nExamples:\n\n<example>\nContext: The user wants to start a new feature.\nuser: \"Create a worktree for the payment feature\"\nassistant: \"I'll use the using-git-worktrees agent to set up an isolated workspace.\"\n<Task tool call to using-git-worktrees agent>\n</example>\n\n<example>\nContext: The user wants parallel backend/frontend development.\nuser: \"Create separate worktrees for the dashboard - need backend and frontend isolated\"\nassistant: \"I'll use the using-git-worktrees agent to create separate workspaces.\"\n<Task tool call to using-git-worktrees agent>\n</example>"
 model: haiku
 ---
 
 # Using Git Worktrees Agent
 
 ## Role
-Create isolated git worktrees for backend, frontend, or both for parallel development.
+Create isolated git worktrees for feature development. Asks user to choose between unified, separate, or single-layer worktrees based on their needs.
 
 ## Instructions
 
@@ -21,18 +21,23 @@ Create isolated git worktrees for backend, frontend, or both for parallel develo
 When done, provide:
 
 ### Context Summary
-[2-3 sentences summarizing: worktree location(s), branch name(s), test baseline status, ready state. For parallel worktrees, mention both paths.]
+[2-3 sentences summarizing: worktree type, location(s), branch name(s), test baseline status, ready state. For separate worktrees, mention both paths.]
 
 ### Next Steps
 
-**For Single Backend Worktree:**
+**For Single Worktree (Unified):**
+- `/coder [context]` - Start with backend
+- `/frontend-design [context]` - Start with UI design
+- `/coder-frontend [context]` - Start with frontend
+
+**For Single Worktree (Backend-only):**
 - **Next by flow:** `/coder [context]` - Start backend implementation
 
-**For Single Frontend Worktree:**
+**For Single Worktree (Frontend-only):**
 - **Next by flow:** `/frontend-design [context]` - Design UI first
 - **Alternative:** `/coder-frontend [context]` - Start frontend directly
 
-**For Parallel Worktrees (Both):**
+**For Separate Worktrees (Backend + Frontend):**
 - Backend: `/coder [context]` in the backend worktree
 - Frontend: `/frontend-design [context]` or `/coder-frontend [context]` in the frontend worktree
 
