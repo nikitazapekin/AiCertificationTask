@@ -55,14 +55,11 @@ This document defines the recommended order of skills. Each skill stops after co
 │   │     │         │    │     ▼         │            │               │
 │   │     ▼         │    │ /finishing-   │            │               │
 │   │ /debugger     │    │   branch      │            │               │
-│   │  (if needed)  │    │     │         │            │               │
-│   │     │         │    │     ▼         │            │               │
-│   │     ▼         │    │ /verify       │            │               │
-│   │ /finishing-   │    └───────────────┘            │               │
-│   │   branch      │            │                    │               │
+│   │  (if needed)  │    └───────────────┘            │               │
 │   │     │         │            │                    │               │
 │   │     ▼         │            │                    │               │
-│   │ /verify       │            │                    │               │
+│   │ /finishing-   │            │                    │               │
+│   │   branch      │            │                    │               │
 │   └───────────────┘            │                    │               │
 │         │                      │                    │               │
 │         └──────────────────────┴────────────────────┘               │
@@ -97,8 +94,7 @@ This document defines the recommended order of skills. Each skill stops after co
 | `/code-reviewer`        | `/test-generator`                        | Generate tests for reviewed code        |
 | `/test-generator`       | `/debugger` or `/finishing-branch`       | Debug failures or finish                |
 | `/debugger`             | `/test-generator`                        | Re-run tests after fix                  |
-| `/finishing-branch`     | `/verify`                                | Verify before merge                     |
-| `/verify`               | `/docs-generator`                        | Document the changes                    |
+| `/finishing-branch`     | `/docs-generator`                        | Document the changes                    |
 | `/docs-generator`       | `/reflect`                               | Capture lessons learned                 |
 | `/reflect`              | (end)                                    | Flow complete                           |
 
