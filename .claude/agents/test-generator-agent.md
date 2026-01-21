@@ -28,6 +28,7 @@ When done, provide:
 **Next by flow:** `/debugger [context summary]` - Debug any failing tests to find root cause.
 
 **Alternatives:**
+- `/changelog-generator [context summary]` - Document changes before finishing branch.
 - `/finishing-branch [context summary]` - Complete the branch if all tests pass.
 - `/coder [context summary]` - Fix implementation issues found during testing.
 

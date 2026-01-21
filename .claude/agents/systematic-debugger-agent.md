@@ -28,6 +28,7 @@ When done, provide:
 **Next by flow:** `/test-generator [context summary]` - Generate/update tests to prevent regression.
 
 **Alternatives:**
+- `/changelog-generator [context summary]` - Document the fix before finishing branch.
 - `/code-reviewer [context summary]` - Review the fix for quality issues.
 - `/finishing-branch [context summary]` - Complete branch if fix was the last blocker.
 

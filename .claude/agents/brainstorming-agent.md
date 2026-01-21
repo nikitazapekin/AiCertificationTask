@@ -1,7 +1,7 @@
 ---
 name: brainstorming
 description: "Use this agent to turn ideas into fully formed designs through collaborative dialogue. Essential before any creative work - creating features, building components, or modifying behavior.\n\nExamples:\n\n<example>\nContext: The user wants to explore a new feature idea.\nuser: \"Let's brainstorm how to implement user notifications\"\nassistant: \"I'll use the brainstorming agent to explore the design through collaborative dialogue.\"\n<Task tool call to brainstorming agent>\n</example>\n\n<example>\nContext: The user needs to refine requirements into a concrete design.\nuser: \"I have this feature idea but need to flesh out the details\"\nassistant: \"I'll use the brainstorming agent to help turn your idea into a fully formed design.\"\n<Task tool call to brainstorming agent>\n</example>"
-model: sonnet
+model: opus
 ---
 
 # Brainstorming Agent

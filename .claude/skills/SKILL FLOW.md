@@ -92,8 +92,9 @@ This document defines the recommended order of skills. Each skill stops after co
 | `/coder-frontend`       | `/code-reviewer`                         | Review the frontend code                |
 | `/coder`                | `/code-reviewer`                         | Review the backend code                 |
 | `/code-reviewer`        | `/test-generator`                        | Generate tests for reviewed code        |
-| `/test-generator`       | `/debugger` or `/finishing-branch`       | Debug failures or finish                |
+| `/test-generator`       | `/debugger` or `/changelog-generator`    | Debug failures or document changes      |
 | `/debugger`             | `/test-generator`                        | Re-run tests after fix                  |
+| `/changelog-generator`  | `/finishing-branch`                      | Complete the branch                     |
 | `/finishing-branch`     | `/docs-generator`                        | Document the changes                    |
 | `/docs-generator`       | `/reflect`                               | Capture lessons learned                 |
 | `/reflect`              | (end)                                    | Flow complete                           |
@@ -163,6 +164,7 @@ This keeps the main conversation clean while preserving continuity.
 → /coder-frontend Implement frontend
 → /code-reviewer Review all code
 → /test-generator Generate tests
+→ /changelog-generator Document changes
 → /finishing-branch Complete feature
 ```
 
@@ -176,6 +178,7 @@ This keeps the main conversation clean while preserving continuity.
 → /git-worktrees Create workspace
 → /coder Implement features
 → /test-generator Generate tests
+→ /changelog-generator Document changes
 → /finishing-branch Complete
 ```
 
@@ -188,5 +191,6 @@ This keeps the main conversation clean while preserving continuity.
 → /coder Implement feature
 → /code-reviewer Review code
 → /test-generator Generate tests
+→ /changelog-generator Document changes
 → /finishing-branch Complete
 ```

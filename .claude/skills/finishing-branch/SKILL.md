@@ -11,6 +11,8 @@ Guide completion of development work by presenting clear options and handling ch
 
 **Core principle:** Verify tests → Present options → Execute choice → Clean up.
 
+**Prerequisite:** Consider running `/changelog-generator` first to document changes before completing the branch.
+
 **Announce at start:** "I'm using the finishing-branch skill to complete this work."
 
 ## The Process

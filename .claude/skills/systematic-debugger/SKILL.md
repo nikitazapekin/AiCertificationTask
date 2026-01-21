@@ -145,5 +145,6 @@ After debugging is complete and fix is verified, STOP and present these options:
 **Next by flow:** `/test-generator [context]` - Generate/update tests to prevent regression.
 
 **Alternatives:**
+- `/changelog-generator [context]` - Document the fix before finishing branch.
 - `/code-reviewer [context]` - Review the fix for quality issues.
 - `/finishing-branch [context]` - Complete branch if fix was the last blocker.
