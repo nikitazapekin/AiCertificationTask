@@ -132,30 +132,72 @@ modules/<module>/
 
 ## Final Output (MANDATORY)
 
-**Before presenting next steps, you MUST write the architecture document to a file:**
+**Before presenting next steps, you MUST update the living specification:**
 
-1. Create the directory if it doesn't exist: `docs/analysis/architecture/`
-2. Write the file: `docs/analysis/architecture/YYYY-MM-DD-<feature-name>-architecture.md`
-3. Include:
-   - Module placement decisions
-   - Pattern choices with rationale
-   - Entity relationships
-   - Security considerations
-   - Scalability considerations
-   - Key architectural decisions table
+### Living Specification Update Process
 
-**Example filename:** `docs/analysis/architecture/2024-01-15-payment-system-architecture.md`
+1. **Read project context:**
+   - Read `specs/MANIFEST.md` to understand the project overview
+   - This is the entry point for all specifications
 
-This file preserves the architecture context so the conversation can be cleared before implementation.
+2. **Read existing architecture:**
+   - If `specs/architecture.md` exists, read it to understand existing architecture
+   - If it doesn't exist, you'll create it using the structure from `/home/illia/accelerator-core/spec-desc.md`
+
+3. **Get task number:**
+   - If coming from previous skills, use the task number from context (e.g., "TASK-001")
+   - Task number should be included in all section headers
+
+4. **Update architecture.md:**
+   - **If file doesn't exist:** Create using the structure template from spec-desc.md
+   - **If file exists:** Append new sections with `### [TASK-N] Feature Name` prefix
+   - Include date in section: `### [TASK-001] User Authentication (2026-01-22)`
+   - Document:
+     - Module placement decisions
+     - Pattern choices with rationale
+     - Entity relationships
+     - Security considerations
+     - Scalability considerations
+     - Key architectural decisions
+
+5. **Update MANIFEST.md if needed:**
+   - Update "Last Updated" date for architecture.md entry
+   - Add new modules to "Key Decisions" section if applicable
+   - Update "Tech Stack" if new technologies are introduced
+
+**Example section in architecture.md:**
+```markdown
+### [TASK-001] User Authentication (2026-01-22)
+
+**Module:** `modules/auth/`
+
+**Pattern:** Layered Architecture with JWT tokens
+
+**Entities:**
+- User (id, email, passwordHash, createdAt)
+
+**Security:**
+- bcrypt for password hashing
+- JWT with 15min expiry
+- Refresh token rotation
+
+**Scalability:**
+- Stateless authentication
+- Redis for token blacklist
+```
+
+This incremental update ensures living documentation that grows with the project.
 
 ---
 
 ## Next Steps
 
-After architecture document is written to file, STOP and present these options:
+After updating specs/architecture.md and specs/MANIFEST.md, STOP and present these options:
 
-**Next by flow:** `/api-designer [context]` - Design REST APIs based on the architecture.
+**Next by flow:** `/api-designer [TASK-{N} context]` - Design REST APIs based on the architecture.
+
+**Pass to next skill:** Include the task number in your context summary (e.g., "TASK-001: Authentication architecture documented")
 
 **Alternatives:**
-- `/writing-plans [context]` - Create implementation plan if APIs are already defined.
-- `/coder [context]` - Start implementation if architecture is simple and clear.
+- `/writing-plans [TASK-{N} context]` - Create implementation plan if APIs are already defined.
+- `/coder [TASK-{N} context]` - Start implementation if architecture is simple and clear.

@@ -219,30 +219,82 @@ export class UserController {
 
 ## Final Output (MANDATORY)
 
-**Before presenting next steps, you MUST write the API design document to a file:**
+**Before presenting next steps, you MUST update the living specification:**
 
-1. Create the directory if it doesn't exist: `docs/analysis/api-design/`
-2. Write the file: `docs/analysis/api-design/YYYY-MM-DD-<feature-name>-api.md`
-3. Include:
-   - REST endpoints with HTTP methods
-   - Request DTOs with validation rules
-   - Response DTOs with examples
-   - Error responses and status codes
-   - Swagger decorator specifications
-   - Controller structure outline
+### Living Specification Update Process
 
-**Example filename:** `docs/analysis/api-design/2024-01-15-order-management-api.md`
+1. **Read project context:**
+   - Read `specs/MANIFEST.md` to understand the project overview
+   - Read `specs/architecture.md` to understand system architecture
 
-This file preserves the API design context so the conversation can be cleared before implementation.
+2. **Read existing API spec:**
+   - If `specs/api-spec.md` exists, read it to understand existing endpoints
+   - If it doesn't exist, you'll create it using the structure from `/home/illia/accelerator-core/spec-desc.md`
+
+3. **Get task number:**
+   - If coming from previous skills, use the task number from context (e.g., "TASK-001")
+   - Task number should be included in all section headers
+
+4. **Update api-spec.md:**
+   - **If file doesn't exist:** Create using the structure template from spec-desc.md
+   - **If file exists:** Append new endpoints with `### [TASK-N] HTTP_METHOD /path` prefix
+   - Include date in section: `### [TASK-001] POST /auth/login (2026-01-22)`
+   - Organize endpoints by module/domain
+   - Document:
+     - REST endpoints with HTTP methods
+     - Request DTOs with validation rules
+     - Response DTOs with examples
+     - Error responses and status codes
+     - Swagger decorator specifications
+     - Controller structure outline
+   - Keep DTOs grouped logically within modules
+
+5. **Update MANIFEST.md if needed:**
+   - Update "Last Updated" date for api-spec.md entry
+   - Add new API domains to "Key Decisions" section if applicable
+
+**Example section in api-spec.md:**
+```markdown
+### [TASK-001] POST /auth/login (2026-01-22)
+
+**Module:** Auth
+
+**Request DTO:**
+```typescript
+class LoginDto {
+  @IsEmail() email: string;
+  @IsNotEmpty() password: string;
+}
+```
+
+**Response DTO:**
+```typescript
+class LoginResponseDto {
+  accessToken: string;
+  refreshToken: string;
+  user: UserResponseDto;
+}
+```
+
+**Status Codes:**
+- 200: Success
+- 401: Invalid credentials
+- 429: Too many attempts
+```
+
+This incremental update ensures living documentation that grows with the project.
 
 ---
 
 ## Next Steps
 
-After API design document is written to file, STOP and present these options:
+After updating specs/api-spec.md and specs/MANIFEST.md, STOP and present these options:
 
-**Next by flow:** `/git-worktrees [context]` - Create isolated workspace for API implementation.
+**Next by flow:** `/frontend-design [TASK-{N} context]` - Design UI based on the API specification.
+
+**Pass to next skill:** Include the task number in your context summary (e.g., "TASK-001: Authentication API endpoints documented")
 
 **Alternatives:**
-- `/coder [context]` - Implement the API directly in current workspace.
-- `/test-generator [context]` - Generate API integration tests first (TDD approach).
+- `/git-worktrees [TASK-{N} context]` - Skip UI design and create isolated workspace for implementation.
+- `/coder [TASK-{N} context]` - Implement the API directly in current workspace.
+- `/test-generator [TASK-{N} context]` - Generate API integration tests first (TDD approach).

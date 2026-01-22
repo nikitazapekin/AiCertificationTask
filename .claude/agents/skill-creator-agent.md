@@ -29,7 +29,6 @@ When done, provide:
 
 **Suggested follow-ups:**
 - Test the new skill by using its command.
-- `/reflect [context summary]` - Capture learnings from the skill creation process.
 - `/docs-generator [context summary]` - Document the new skill if needed.
 
 ## Constraints

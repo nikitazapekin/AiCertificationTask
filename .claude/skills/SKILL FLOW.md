@@ -6,21 +6,24 @@ This document defines the recommended order of skills. Each skill stops after co
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                     PHASE 1: UNDERSTANDING                          │
+│             PHASE 1: UNDERSTANDING (Temporary task docs)            │
+│                        Output: tasks/TASK-N/                        │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
 │   /requirements-analyst ──────────► /brainstorm                     │
-│   (parse & decompose)               (refine into design)            │
+│   (requirements.md)                 (design.md)                     │
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
                                   │
                                   ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                     PHASE 2: PLANNING                               │
+│             PHASE 2: PLANNING (Updates living specs)                │
+│                        Output: specs/ + tasks/                      │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
-│   /writing-plans ──────► /architect ──────► /api-designer           │
-│   (granular tasks)       (decisions)        (REST design)           │
+│   /writing-plans ──► /architect ──► /api-designer ──► /frontend-   │
+│   (plan.md)          (arch.md)      (api-spec.md)     design       │
+│                                                        (frontend.md)│
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
                                   │
@@ -29,9 +32,6 @@ This document defines the recommended order of skills. Each skill stops after co
 │                     PHASE 3: EXECUTION                              │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
-│   /project-generator (scaffold if new project)                      │
-│         │                                                           │
-│         ▼                                                           │
 │   /git-worktrees (create isolated workspace)                        │
 │         │                                                           │
 │         ├─────────────────────┬─────────────────────┐               │
@@ -39,27 +39,23 @@ This document defines the recommended order of skills. Each skill stops after co
 │   ┌───────────────┐    ┌───────────────┐            │               │
 │   │ FRONTEND      │    │ BACKEND       │            │               │
 │   ├───────────────┤    ├───────────────┤            │               │
-│   │ /frontend-    │    │ /coder        │            │               │
-│   │   design      │    │     │         │            │               │
+│   │ /coder-       │    │ /coder        │            │               │
+│   │   frontend    │    │     │         │            │               │
 │   │     │         │    │     ▼         │            │               │
 │   │     ▼         │    │ /code-reviewer│            │               │
-│   │ /coder-       │    │     │         │            │               │
-│   │   frontend    │    │     ▼         │            │               │
-│   │     │         │    │ /test-        │            │               │
-│   │     ▼         │    │   generator   │            │               │
 │   │ /code-reviewer│    │     │         │            │               │
 │   │     │         │    │     ▼         │            │               │
-│   │     ▼         │    │ /debugger     │            │               │
-│   │ /test-        │    │  (if needed)  │            │               │
+│   │     ▼         │    │ /test-        │            │               │
+│   │ /test-        │    │   generator   │            │               │
 │   │   generator   │    │     │         │            │               │
 │   │     │         │    │     ▼         │            │               │
+│   │     ▼         │    │ /debugger     │            │               │
+│   │ /debugger     │    │  (if needed)  │            │               │
+│   │  (if needed)  │    │     │         │            │               │
+│   │     │         │    │     ▼         │            │               │
 │   │     ▼         │    │ /finishing-   │            │               │
-│   │ /debugger     │    │   branch      │            │               │
-│   │  (if needed)  │    └───────────────┘            │               │
-│   │     │         │            │                    │               │
-│   │     ▼         │            │                    │               │
-│   │ /finishing-   │            │                    │               │
-│   │   branch      │            │                    │               │
+│   │ /finishing-   │    │   branch      │            │               │
+│   │   branch      │    └───────────────┘            │               │
 │   └───────────────┘            │                    │               │
 │         │                      │                    │               │
 │         └──────────────────────┴────────────────────┘               │
@@ -68,11 +64,11 @@ This document defines the recommended order of skills. Each skill stops after co
                                   │
                                   ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                     PHASE 4: FINALIZATION                           │
+│             PHASE 4: FINALIZATION (Updates ongoing docs)            │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
-│   /docs-generator ──────────────────► /reflect                      │
-│   (update documentation)               (lessons learned)            │
+│   /changelog-generator ──► /docs-generator ──► /finishing-branch   │
+│   (CHANGELOG.md)            (README, ADRs, etc)  (merge/PR/cleanup)│
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
 ```
@@ -85,10 +81,9 @@ This document defines the recommended order of skills. Each skill stops after co
 | `/brainstorm`           | `/writing-plans`                         | Create implementation tasks from design |
 | `/writing-plans`        | `/architect`                             | Review architecture for the plan        |
 | `/architect`            | `/api-designer`                          | Design APIs based on architecture       |
-| `/api-designer`         | `/project-generator` or `/git-worktrees` | Scaffold if new, then create workspace  |
-| `/project-generator`    | `/git-worktrees`                         | Create isolated workspace for coding    |
-| `/git-worktrees`        | `/coder` or `/frontend-design`           | Start implementation                    |
-| `/frontend-design`      | `/coder-frontend`                        | Implement the designed UI               |
+| `/api-designer`         | `/frontend-design`                       | Design UI based on API design           |
+| `/frontend-design`      | `/git-worktrees`                         | Create isolated workspace               |
+| `/git-worktrees`        | `/coder` or `/coder-frontend`            | Start implementation                    |
 | `/coder-frontend`       | `/code-reviewer`                         | Review the frontend code                |
 | `/coder`                | `/code-reviewer`                         | Review the backend code                 |
 | `/code-reviewer`        | `/test-generator`                        | Generate tests for reviewed code        |
@@ -96,18 +91,7 @@ This document defines the recommended order of skills. Each skill stops after co
 | `/debugger`             | `/test-generator`                        | Re-run tests after fix                  |
 | `/changelog-generator`  | `/finishing-branch`                      | Complete the branch                     |
 | `/finishing-branch`     | `/docs-generator`                        | Document the changes                    |
-| `/docs-generator`       | `/reflect`                               | Capture lessons learned                 |
-| `/reflect`              | (end)                                    | Flow complete                           |
-
-## When to Use project-generator
-
-Use `/project-generator` only when you need to scaffold a new project:
-
-| Situation                                | Use project-generator?               |
-| ---------------------------------------- | ------------------------------------ |
-| New project (backend, frontend, or both) | Yes, before `/git-worktrees`         |
-| Adding feature to existing project       | No, skip to `/git-worktrees`         |
-| New module in existing project           | No, `/coder` handles module creation |
+| `/docs-generator`       | `/finishing-branch` or (end)             | Complete workflow                       |
 
 ## Entry Points
 
@@ -155,12 +139,9 @@ This keeps the main conversation clean while preserving continuity.
 
 ```
 /brainstorm Design e-commerce app
-→ /architect Review architecture decisions
-→ /api-designer Design REST endpoints
-→ /project-generator Scaffold backend + frontend
+→ /writing-plans Create implementation tasks
 → /git-worktrees Create workspace
 → /coder Implement backend features
-→ /frontend-design Design UI
 → /coder-frontend Implement frontend
 → /code-reviewer Review all code
 → /test-generator Generate tests
@@ -172,9 +153,7 @@ This keeps the main conversation clean while preserving continuity.
 
 ```
 /brainstorm Design user management API
-→ /architect Review architecture
-→ /api-designer Design endpoints
-→ /project-generator Scaffold backend
+→ /writing-plans Create implementation tasks
 → /git-worktrees Create workspace
 → /coder Implement features
 → /test-generator Generate tests

@@ -29,7 +29,6 @@ When done, provide:
 
 **Alternatives:**
 - `/docs-generator [context summary]` - Update documentation for the changes.
-- `/reflect [context summary]` - Capture lessons learned from this work.
 
 ## Constraints
 - ONLY execute the finishing-branch skill

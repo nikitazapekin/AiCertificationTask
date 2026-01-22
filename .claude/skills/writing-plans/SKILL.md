@@ -11,7 +11,21 @@ Write comprehensive implementation plans assuming the engineer has zero context 
 
 **Announce at start:** "I'm using the writing-plans skill to create the implementation plan."
 
-**Save plans to:** `docs/plans/YYYY-MM-DD-<feature-name>.md`
+## Task Numbering
+
+**Before creating the plan:**
+
+1. **Check if task number provided:**
+   - If coming from `/requirements-analyst` or `/brainstorm`, use the task number from context (e.g., "TASK-001")
+   - If no task number: run task counter logic
+
+2. **Task counter logic (if no task number provided):**
+   - If `tasks/.task-counter` exists: read the number, use it, increment and write back
+   - If missing: scan `tasks/` for existing `TASK-*` directories, use max(N) + 1, create counter file
+
+3. **Create task directory:** `tasks/TASK-{N}/` (if not already created)
+
+4. **Save plan to:** `tasks/TASK-{N}/plan.md`
 
 ## Bite-Sized Task Granularity
 
@@ -28,6 +42,8 @@ Write comprehensive implementation plans assuming the engineer has zero context 
 
 ```markdown
 # [Feature Name] Implementation Plan
+
+**Task:** TASK-{N}
 
 > **For Claude:** Use `using-git-worktrees` to create isolated workspace, then implement with `coder` skill.
 
@@ -87,6 +103,72 @@ git commit -m "feat(domain): add specific feature"
 \`\`\`
 ```
 
+## Project Structure Reference
+
+When creating plans for new projects, use these standard structures:
+
+### Backend (NestJS)
+
+```
+apps/backend/src/
+├── main.ts
+├── app.module.ts
+├── shared/
+│   ├── config/           # Environment configuration
+│   ├── logger/           # Structured logging
+│   ├── database/         # TypeORM/Prisma connection
+│   ├── errors/           # Global error handling
+│   └── health/           # Health check endpoints
+└── modules/
+    └── <name>/
+        ├── <name>.module.ts
+        ├── <name>.controller.ts
+        ├── <name>.service.ts
+        ├── <name>.repository.ts
+        ├── dto/
+        │   ├── create-<name>.dto.ts
+        │   └── update-<name>.dto.ts
+        └── entities/
+            └── <name>.entity.ts
+```
+
+### Frontend (React)
+
+```
+apps/frontend/src/
+├── main.tsx
+├── App.tsx
+├── api/
+│   ├── client.ts              # Axios/fetch wrapper
+│   └── endpoints/             # API functions per feature
+├── components/
+│   ├── ui/                    # Reusable UI components
+│   └── layout/                # Layout components
+├── features/
+│   └── <feature>/
+│       ├── components/        # Feature-specific components
+│       ├── hooks/             # Feature-specific hooks
+│       └── types/             # Feature types
+├── hooks/                     # Shared hooks
+├── pages/                     # Page components
+├── providers/                 # Context providers
+├── routes/                    # Route definitions
+├── styles/                    # Global styles
+├── types/                     # Shared types
+└── utils/                     # Utility functions
+```
+
+### Full-Stack
+
+```
+project-root/
+├── apps/
+│   ├── backend/     # NestJS structure above
+│   └── frontend/    # React structure above
+├── libs/            # Shared libraries (types, utils)
+└── package.json     # Workspaces config
+```
+
 ## Remember
 
 - Exact file paths always
@@ -99,7 +181,7 @@ git commit -m "feat(domain): add specific feature"
 
 After saving the plan, offer execution choice:
 
-**"Plan complete and saved to `docs/plans/<filename>.md`. Execution options:**
+**"Plan complete and saved to `tasks/TASK-{N}/plan.md`. Execution options:**
 
 **1. Execute Now** - Use `/coder` to implement in current workspace
 
@@ -113,8 +195,10 @@ After saving the plan, offer execution choice:
 
 After the plan is complete and saved, STOP and present these options:
 
-**Next by flow:** `/architect [context]` - Review architecture decisions before implementation.
+**Next by flow:** `/architect [TASK-{N} context]` - Review architecture decisions before implementation.
+
+**Pass to next skill:** Include the task number in your context summary (e.g., "TASK-001: User authentication plan created")
 
 **Alternatives:**
-- `/git-worktrees [context]` - Create isolated workspace for development.
-- `/coder [context]` - Start implementing directly in current workspace.
+- `/git-worktrees [TASK-{N} context]` - Create isolated workspace for development.
+- `/coder [TASK-{N} context]` - Start implementing directly in current workspace.

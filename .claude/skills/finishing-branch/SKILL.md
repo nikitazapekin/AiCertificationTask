@@ -152,4 +152,3 @@ After branch is finished (merged, PR created, or kept), STOP and present these o
 
 **Alternatives:**
 - `/docs-generator [context]` - Update documentation for the changes.
-- `/reflect [context]` - Capture lessons learned from this work.

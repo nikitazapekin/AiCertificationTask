@@ -47,6 +47,23 @@ User runs: /requirements-analyst [prompt]
 - User controls the flow (no automatic chaining)
 - Main conversation stays clean
 
+## Documentation System
+
+### Temporary Task Docs (tasks/)
+- Created by: requirements-analyst, brainstorming, writing-plans
+- Location: `tasks/TASK-N/` (N auto-increments)
+- Files: requirements.md, design.md, plan.md
+- Lifecycle: Delete manually after implementation complete
+
+### Living Specifications (specs/)
+- Created/Updated by: architect, api-designer, frontend-design, docs-generator
+- Location: `specs/` with MANIFEST.md index
+- Files: architecture.md, api-spec.md, frontend-spec.md, implementation.md
+- Updates: Append sections with [TASK-N] prefix
+- Lifecycle: Permanent, grows with project
+
+See spec-desc.md for specification structure template.
+
 ## Quick Start
 
 ### Using Commands (Slash Commands)
@@ -70,8 +87,6 @@ Commands are shortcuts to invoke skills. Type `/` followed by the command name:
 | `/finishing-branch`     | Complete branch work and merge/PR                 |
 | `/verify`               | Verify claims with evidence before completion     |
 | `/docs-generator`       | Generate project documentation                    |
-| `/reflect`              | Capture lessons learned                           |
-| `/project-generator`    | Scaffold new NestJS project structure             |
 | `/atlassian`            | Jira/Confluence integration                       |
 | `/skill-creator`        | Create new skills                                 |
 
@@ -113,8 +128,7 @@ See `skills/SKILL FLOW.md` for the complete visual diagram.
 | `/test-generator` | `/debugger` or `/finishing-branch` | Debug or finish |
 | `/finishing-branch` | `/verify` | Verify before merge |
 | `/verify` | `/docs-generator` | Document changes |
-| `/docs-generator` | `/reflect` | Capture lessons |
-| `/reflect` | (end) | Flow complete |
+| `/docs-generator` | `/finishing-branch` or (end) | Complete workflow |
 
 ## Skills
 
@@ -140,12 +154,11 @@ Skills are detailed instruction sets that define how Claude performs specific ta
 
 #### Implementation Phase
 
-| Skill               | Purpose                                                |
-| ------------------- | ------------------------------------------------------ |
-| `coder`             | Backend implementation (Controller/Service/Repository) |
-| `coder-frontend`    | Frontend implementation (React/Vue/Angular)            |
-| `frontend-design`   | Create distinctive, production-grade UI                |
-| `project-generator` | Generate NestJS project scaffolding                    |
+| Skill             | Purpose                                                |
+| ----------------- | ------------------------------------------------------ |
+| `coder`           | Backend implementation (Controller/Service/Repository) |
+| `coder-frontend`  | Frontend implementation (React/Vue/Angular)            |
+| `frontend-design` | Create distinctive, production-grade UI                |
 
 #### Quality Phase
 
@@ -162,7 +175,6 @@ Skills are detailed instruction sets that define how Claude performs specific ta
 | ------------------------- | --------------------------------------------- |
 | `finishing-branch`        | Complete branch work, create PR/merge         |
 | `documentation-generator` | Generate project documentation                |
-| `reflect`                 | Capture lessons learned, process improvements |
 
 #### Utility
 
@@ -204,10 +216,8 @@ Every agent:
 | `verification-agent`            | verification-before-completion | Verify claims               |
 | `finishing-branch-agent`        | finishing-branch               | Complete branch work        |
 | `documentation-generator-agent` | documentation-generator        | Generate docs               |
-| `reflect-agent`                 | reflect                        | Capture lessons learned     |
 | `atlassian-skill-agent`         | atlassian-skill                | Jira/Confluence             |
 | `skill-creator-agent`           | skill-creator                  | Create new skills           |
-| `project-generator-agent`       | project-generator              | Scaffold projects           |
 
 ### Key Principle: Stop After Completion
 
@@ -355,8 +365,7 @@ After completion, agent suggests: `/code-reviewer [context]`
 3. **Use git worktrees** for isolated development
 4. **Verify before claiming completion** - Run tests and build
 5. **Review code** before merging
-6. **Reflect** after completing features to improve process
-7. **Keep skills focused** - One skill, one purpose
+6. **Keep skills focused** - One skill, one purpose
 
 ## Troubleshooting
 

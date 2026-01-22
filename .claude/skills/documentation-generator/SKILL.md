@@ -9,6 +9,42 @@ description: Generate and maintain project documentation including READMEs, ADRs
 
 Generate and maintain project documentation: READMEs, ADRs, changelogs, and JSDoc.
 
+## Living Specification Updates
+
+### specs/implementation.md
+
+**Purpose:** Documents implementation details including build process, deployment, tooling, and development workflows.
+
+**Update when:**
+- Build configuration changes
+- Deployment process changes
+- Development tooling updates
+- Environment setup changes
+
+**Read context first:**
+- Read `specs/MANIFEST.md` for project overview
+- Read all other specs (architecture, api-spec, frontend-spec) for context
+- Read source code to understand current implementation
+
+**Structure template:** Use `/home/illia/accelerator-core/spec-desc.md` if creating from scratch
+
+**Update pattern:** Append sections with `### [TASK-N] Feature Name` prefix
+
+**Example section:**
+```markdown
+### [TASK-001] CI/CD Pipeline (2026-01-22)
+
+**Pipeline:** GitHub Actions
+
+**Steps:**
+1. Lint
+2. Test
+3. Build
+4. Deploy to staging
+
+**Configuration:** `.github/workflows/deploy.yml`
+```
+
 ## Documentation Types
 
 ### 1. Library README
@@ -214,14 +250,34 @@ When you discover new patterns:
 \`\`\`
 ```
 
+## Documentation Generation Process
+
+1. **Read living specifications:**
+   - Start with `specs/MANIFEST.md` for overview
+   - Read all spec files (architecture, api-spec, frontend-spec) for context
+   - Read source code to understand implementation
+
+2. **Update all documentation:**
+   - `specs/implementation.md` - Implementation details (build, deploy, tooling)
+   - `README.md` - Project overview and setup
+   - `CHANGELOG.md` - Version history
+   - `docs/adrs/` - Architecture decisions
+   - JSDoc - Code documentation
+   - `CLAUDE.md` - Development patterns
+
+3. **Ensure consistency:**
+   - Cross-reference between docs
+   - Update dates in MANIFEST.md
+   - Keep examples accurate with current code
+
 ---
 
 ## Next Steps
 
 After documentation is complete, STOP and present these options:
 
-**Next by flow:** `/reflect [context]` - Capture lessons learned from this work.
+**Next by flow:** `/finishing-branch [context]` - Complete the branch and prepare for merge/PR.
 
 **Alternatives:**
-- `/finishing-branch [context]` - Complete the branch if not already done.
-- `/code-reviewer [context]` - Review documentation accuracy.
+- `/code-reviewer [context]` - Review documentation accuracy before finishing.
+- `/changelog-generator [context]` - Generate detailed changelog if not already done.

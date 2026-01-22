@@ -25,11 +25,11 @@ When done, provide:
 
 ### Next Steps
 
-**Next by flow:** `/reflect [context summary]` - Capture lessons learned from this work.
+**Next by flow:** `/finishing-branch [context summary]` - Complete the branch and prepare for merge/PR.
 
 **Alternatives:**
-- `/finishing-branch [context summary]` - Complete the branch if not already done.
-- `/code-reviewer [context summary]` - Review documentation accuracy.
+- `/code-reviewer [context summary]` - Review documentation accuracy before finishing.
+- `/changelog-generator [context summary]` - Generate detailed changelog if not already done.
 
 ## Constraints
 - ONLY execute the documentation-generator skill

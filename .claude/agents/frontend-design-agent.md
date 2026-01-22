@@ -25,11 +25,11 @@ When done, provide:
 
 ### Next Steps
 
-**Next by flow:** `/coder-frontend [context summary]` - Implement the designed UI components.
+**Next by flow:** `/git-worktrees [context summary]` - Create isolated workspace for implementation.
 
 **Alternatives:**
+- `/coder-frontend [context summary]` - Implement UI directly in current workspace.
 - `/brainstorm [context summary]` - Further refine the design through dialogue.
-- `/architect [context summary]` - Review frontend architecture decisions.
 
 ## Constraints
 - ONLY execute the frontend-design skill

@@ -110,7 +110,6 @@ When done, provide:
 | `coder-agent` | coder | code-reviewer |
 | `coder-frontend-agent` | coder-frontend | code-reviewer |
 | `frontend-design-agent` | frontend-design | coder-frontend |
-| `project-generator-agent` | project-generator | coder |
 
 ### Quality Phase
 | Agent | Skill | Next by Flow |
@@ -124,8 +123,7 @@ When done, provide:
 ### Finalization Phase
 | Agent | Skill | Next by Flow |
 |-------|-------|--------------|
-| `documentation-generator-agent` | documentation-generator | reflect |
-| `reflect-agent` | reflect | (end of flow) |
+| `documentation-generator-agent` | documentation-generator | finishing-branch / (end) |
 
 ### Utility
 | Agent | Skill | Next by Flow |

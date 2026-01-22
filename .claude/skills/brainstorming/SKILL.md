@@ -20,6 +20,20 @@ Start by understanding the current project context, then ask questions one at a 
 - Only one question per message - if a topic needs more exploration, break it into multiple questions
 - Focus on understanding: purpose, constraints, success criteria
 
+**For new projects - gather tech stack info:**
+If this is a new project (no existing codebase), ask about tech stack. Keep it simple - these are small projects with straightforward architecture.
+
+| Question | Options | Default |
+|----------|---------|---------|
+| Project type? | Backend / Frontend / Full-stack | - |
+| Database? (backend) | PostgreSQL+TypeORM / PostgreSQL+Prisma / MongoDB / None | PostgreSQL+TypeORM |
+| Styling? (frontend) | Tailwind CSS / CSS Modules | Tailwind CSS |
+
+**Architecture is pre-decided (don't ask):**
+- Backend: Layered Architecture (Controller → Service → Repository)
+- Frontend: Component-Based (Pages → Features → Components → Hooks)
+- Full-stack: Monorepo with `apps/backend` + `apps/frontend`
+
 **Exploring approaches:**
 - Propose 2-3 different approaches with trade-offs
 - Present options conversationally with your recommendation and reasoning
@@ -69,12 +83,23 @@ Start by understanding the current project context, then ask questions one at a 
 
 **Before presenting next steps, you MUST write the design document to a file:**
 
-1. Create the directory if it doesn't exist: `docs/analysis/brainstorm/`
-2. Write the file: `docs/analysis/brainstorm/YYYY-MM-DD-<feature-name>-design.md`
-3. Use the Design Document Template as the structure
-4. Include all design decisions, architecture, data model, API design, and open questions
+### Task Numbering Logic
 
-**Example filename:** `docs/analysis/brainstorm/2024-01-15-user-notifications-design.md`
+1. **Check if task number provided:**
+   - If coming from `/requirements-analyst`, use the task number from context (e.g., "TASK-001")
+   - If no task number: run task counter logic (same as requirements-analyst)
+
+2. **Task counter logic (if no task number provided):**
+   - If `tasks/.task-counter` exists: read the number, use it, increment and write back
+   - If missing: scan `tasks/` for existing `TASK-*` directories, use max(N) + 1, create counter file
+
+3. **Create task directory:** `tasks/TASK-{N}/` (if not already created)
+
+4. **Write design:** `tasks/TASK-{N}/design.md`
+   - Use the Design Document Template as the structure
+   - Include all design decisions, architecture, data model, API design, and open questions
+
+**Example:** For TASK-001, writes `tasks/TASK-001/design.md`
 
 This file preserves the design context so the conversation can be cleared before implementation.
 
@@ -93,8 +118,10 @@ This file preserves the design context so the conversation can be cleared before
 
 After design document is written to file, STOP and present these options:
 
-**Next by flow:** `/writing-plans [context]` - Create detailed implementation tasks from the design.
+**Next by flow:** `/writing-plans [TASK-{N} context]` - Create detailed implementation tasks from the design.
+
+**Pass to next skill:** Include the task number in your context summary (e.g., "TASK-001: User notifications design completed")
 
 **Alternatives:**
-- `/architect [context]` - Review architecture implications before creating the plan.
-- `/api-designer [context]` - Design REST APIs if the feature involves API work.
+- `/architect [TASK-{N} context]` - Review architecture implications before creating the plan.
+- `/api-designer [TASK-{N} context]` - Design REST APIs if the feature involves API work.

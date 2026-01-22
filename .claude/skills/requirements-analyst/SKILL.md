@@ -128,12 +128,30 @@ Parse requirements from various sources (Confluence, specs, user requests), deco
 
 **Before presenting next steps, you MUST write the requirements document to a file:**
 
-1. Create the directory if it doesn't exist: `docs/analysis/requirements/`
-2. Write the file: `docs/analysis/requirements/YYYY-MM-DD-<feature-name>-requirements.md`
-3. Use the Requirements Document Template from Step 5 as the structure
-4. Include all gathered requirements, task breakdown, and gap analysis
+### Task Numbering Logic
 
-**Example filename:** `docs/analysis/requirements/2024-01-15-user-authentication-requirements.md`
+1. **Read task counter:**
+   - If `tasks/.task-counter` exists: read the number, use it, increment and write back
+   - If missing: scan `tasks/` for existing `TASK-*` directories, use max(N) + 1, create counter file
+
+2. **Create task directory:** `tasks/TASK-{N}/` (e.g., `tasks/TASK-001/`)
+
+3. **Write requirements:** `tasks/TASK-{N}/requirements.md`
+   - Use the Requirements Document Template from Step 5 as the structure
+   - Include all gathered requirements, task breakdown, and gap analysis
+
+**Example:** First task creates `tasks/TASK-001/requirements.md`, increments counter to 2
+
+**Atomic counter update to prevent race conditions:**
+```bash
+# Read current counter
+current=$(cat tasks/.task-counter)
+# Create task directory
+mkdir -p tasks/TASK-$(printf "%03d" $current)
+# Write requirements file
+# Increment counter
+echo $((current + 1)) > tasks/.task-counter
+```
 
 This file preserves the analysis context so the conversation can be cleared before implementation.
 
@@ -143,8 +161,10 @@ This file preserves the analysis context so the conversation can be cleared befo
 
 After requirements document is written to file, STOP and present these options:
 
-**Next by flow:** `/brainstorm [context]` - Refine requirements into a concrete design through collaborative dialogue.
+**Next by flow:** `/brainstorm [TASK-{N} context]` - Refine requirements into a concrete design through collaborative dialogue.
+
+**Pass to next skill:** Include the task number in your context summary (e.g., "TASK-001: User authentication requirements analyzed")
 
 **Alternatives:**
-- `/architect [context]` - Skip brainstorming if requirements are clear and jump to architecture decisions.
-- `/writing-plans [context]` - Create implementation plan directly if design is already established.
+- `/architect [TASK-{N} context]` - Skip brainstorming if requirements are clear and jump to architecture decisions.
+- `/writing-plans [TASK-{N} context]` - Create implementation plan directly if design is already established.

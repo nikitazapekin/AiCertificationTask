@@ -179,31 +179,83 @@ Elegance comes from executing the vision well.
 
 ## Final Output (MANDATORY)
 
-**Before presenting next steps, you MUST write the frontend design document to a file:**
+**Before presenting next steps, you MUST update the living specification:**
 
-1. Create the directory if it doesn't exist: `docs/analysis/frontend-design/`
-2. Write the file: `docs/analysis/frontend-design/YYYY-MM-DD-<feature-name>-ui.md`
-3. Use the Design Deliverables Template and include:
-   - Aesthetic direction and rationale
-   - Typography choices (specific fonts, hierarchy)
-   - Color palette (hex values, CSS variables)
-   - Motion/animation strategy
-   - Memorable element description
-   - Component visual specs with states
-   - Responsive behavior
+### Living Specification Update Process
 
-**Example filename:** `docs/analysis/frontend-design/2024-01-15-dashboard-ui.md`
+1. **Read project context:**
+   - Read `specs/MANIFEST.md` to understand the project overview
+   - Read `specs/architecture.md` to understand system architecture
+   - Read `specs/api-spec.md` to understand API contracts
 
-This file preserves the design context so the conversation can be cleared before implementation.
+2. **Read existing frontend spec:**
+   - If `specs/frontend-spec.md` exists, read it to understand existing components and design system
+   - If it doesn't exist, you'll create it using the structure from `/home/illia/accelerator-core/spec-desc.md`
+
+3. **Get task number:**
+   - If coming from previous skills, use the task number from context (e.g., "TASK-001")
+   - Task number should be included in all section headers
+
+4. **Update frontend-spec.md:**
+   - **If file doesn't exist:** Create using the structure template from spec-desc.md, including:
+     - Design System section (colors, typography, spacing)
+     - Global theme configuration
+     - Component library structure
+   - **If file exists:** Append new components with `### [TASK-N] Component Name` prefix
+   - Include date in section: `### [TASK-001] LoginForm (2026-01-22)`
+   - Organize components by page/feature
+   - Document:
+     - Aesthetic direction and rationale
+     - Typography choices (specific fonts, hierarchy)
+     - Color palette (hex values, CSS variables)
+     - Motion/animation strategy
+     - Memorable element description
+     - Component visual specs with states
+     - Responsive behavior
+   - Update global design tokens when adding new colors/fonts
+   - Build design system incrementally
+
+5. **Update MANIFEST.md if needed:**
+   - Update "Last Updated" date for frontend-spec.md entry
+   - Add new pages/features to "Key Decisions" section if applicable
+
+**Example section in frontend-spec.md:**
+```markdown
+### [TASK-001] LoginForm (2026-01-22)
+
+**Page:** Authentication
+
+**Aesthetic:** Brutally Minimal - stark contrasts, essential elements only
+
+**Typography:**
+- Heading: Playfair Display, 32px
+- Body: Inter, 16px
+
+**Colors:**
+- Background: #000000
+- Accent: #FFFFFF
+- Error: #FF0000
+
+**Memorable Element:** Card tilts subtly toward cursor on hover
+
+**States:**
+- Default, Focused, Loading, Error
+
+**Responsive:** Stack vertically on mobile < 768px
+```
+
+This incremental update ensures living documentation that grows with the project.
 
 ---
 
 ## Next Steps
 
-After frontend design document is written to file, STOP and present these options:
+After updating specs/frontend-spec.md and specs/MANIFEST.md, STOP and present these options:
 
-**Next by flow:** `/coder-frontend [context]` - Implement the designed UI components.
+**Next by flow:** `/git-worktrees [TASK-{N} context]` - Create isolated workspace for implementation.
+
+**Pass to next skill:** Include the task number in your context summary (e.g., "TASK-001: Login UI design documented")
 
 **Alternatives:**
-- `/brainstorm [context]` - Further refine the design through dialogue.
-- `/architect [context]` - Review frontend architecture decisions.
+- `/coder-frontend [TASK-{N} context]` - Implement UI directly in current workspace.
+- `/brainstorm [TASK-{N} context]` - Further refine the design through dialogue.

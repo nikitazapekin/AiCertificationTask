@@ -25,9 +25,10 @@ When done, provide:
 
 ### Next Steps
 
-**Next by flow:** `/git-worktrees [context summary]` - Create isolated workspace for API implementation.
+**Next by flow:** `/frontend-design [context summary]` - Design UI based on the API specification.
 
 **Alternatives:**
+- `/git-worktrees [context summary]` - Skip UI design and create isolated workspace for implementation.
 - `/coder [context summary]` - Implement the API directly in current workspace.
 - `/test-generator [context summary]` - Generate API integration tests first (TDD approach).
 
