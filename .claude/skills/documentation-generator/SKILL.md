@@ -26,7 +26,7 @@ Generate and maintain project documentation: READMEs, ADRs, changelogs, and JSDo
 - Read all other specs (architecture, api-spec, frontend-spec) for context
 - Read source code to understand current implementation
 
-**Structure template:** Use `/home/illia/accelerator-core/spec-desc.md` if creating from scratch
+**Structure template:** Use `../../../spec-desc.md` if creating from scratch
 
 **Update pattern:** Append sections with `### [TASK-N] Feature Name` prefix
 

@@ -229,7 +229,7 @@ export class UserController {
 
 2. **Read existing API spec:**
    - If `specs/api-spec.md` exists, read it to understand existing endpoints
-   - If it doesn't exist, you'll create it using the structure from `/home/illia/accelerator-core/spec-desc.md`
+   - If it doesn't exist, you'll create it using the structure from `../../../spec-desc.md`
 
 3. **Get task number:**
    - If coming from previous skills, use the task number from context (e.g., "TASK-001")
