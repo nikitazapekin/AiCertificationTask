@@ -22,4 +22,4 @@
 ---
 
 *This manifest is updated automatically by architect, api-designer, and frontend-design skills.*
-*See `/home/illia/accelerator-core/spec-desc.md` for specification structure guidelines.*
+*See `../spec-desc.md` for specification structure guidelines.*
