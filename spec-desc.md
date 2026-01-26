@@ -17,16 +17,19 @@ specs/
 
 ```markdown
 # Project: {Name}
+
 {2-3 sentence core purpose}
 
 ## Specs Index
-| File | Purpose | Depends On |
-|------|---------|------------|
-| architecture.md | System design, components, data flow | - |
-| api-spec.md | Endpoints, schemas, auth | architecture |
-| frontend-spec.md | Pages, components, state | architecture, api-spec |
+
+| File             | Purpose                              | Depends On             |
+| ---------------- | ------------------------------------ | ---------------------- |
+| architecture.md  | System design, components, data flow | -                      |
+| api-spec.md      | Endpoints, schemas, auth             | architecture           |
+| frontend-spec.md | Pages, components, state             | architecture, api-spec |
 
 ## Key Decisions
+
 - Auth: JWT with refresh tokens
 - DB: PostgreSQL
 - Frontend: React + TypeScript
@@ -36,12 +39,12 @@ specs/
 
 ## Why This Works Better for AI
 
-| Factor | One Big File | Separate + Manifest |
-|--------|--------------|---------------------|
+| Factor               | One Big File            | Separate + Manifest       |
+| -------------------- | ----------------------- | ------------------------- |
 | Token cost per agent | High (reads everything) | Low (reads only relevant) |
-| Context relevance | Diluted | Focused |
-| Update complexity | Error-prone | Isolated changes |
-| Cross-referencing | Implicit | Explicit in manifest |
+| Context relevance    | Diluted                 | Focused                   |
+| Update complexity    | Error-prone             | Isolated changes          |
+| Cross-referencing    | Implicit                | Explicit in manifest      |
 
 ---
 
@@ -54,6 +57,7 @@ specs/
 
 ```markdown
 ## Component: AuthService
+
 **Purpose:** Handle user authentication
 **Depends on:** UserRepository, TokenService
 **Exposes:** login(), logout(), refreshToken()
@@ -69,7 +73,3 @@ API-designer agent:   reads MANIFEST.md → architecture.md
 Frontend agent:       reads MANIFEST.md → architecture.md → api-spec.md
 Docs-generator:       reads MANIFEST.md → all specs + source code
 ```
-
-This gives each agent **minimum necessary context** while maintaining coherence through the manifest.
-
-Would you like me to create a template structure for any of these files?
