@@ -13,6 +13,30 @@ Implement backend features, fix bugs, and refactor code following project archit
 - `architect` - Architecture decisions
 - `api-designer` - API design and DTOs
 
+## Project Structure Requirement
+
+**CRITICAL:** All backend code MUST be created inside the `backend/` directory in the project root.
+
+```
+project-root/
+├── backend/           ← ALL backend code goes here
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── services/
+│   │   ├── repositories/
+│   │   ├── entities/
+│   │   ├── dto/
+│   │   └── modules/
+│   ├── test/
+│   ├── package.json
+│   └── tsconfig.json
+└── frontend/          ← Frontend code (separate)
+```
+
+**Why:** This prevents merge conflicts when backend and frontend branches are merged. Never create `src/`, `package.json`, or other backend files directly in the project root.
+
+**Before starting:** Verify `backend/` directory exists. If not, create it first.
+
 ## Implementation Workflow
 
 ```

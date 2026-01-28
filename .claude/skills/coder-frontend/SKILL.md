@@ -9,6 +9,30 @@ description: Implement frontend features following component-based architecture 
 
 Implement frontend features following component-based architecture, modern frameworks, and best practices.
 
+## Project Structure Requirement
+
+**CRITICAL:** All frontend code MUST be created inside the `frontend/` directory in the project root.
+
+```
+project-root/
+├── backend/           ← Backend code (separate)
+└── frontend/          ← ALL frontend code goes here
+    ├── src/
+    │   ├── components/
+    │   ├── pages/
+    │   ├── hooks/
+    │   ├── api/
+    │   ├── styles/
+    │   └── utils/
+    ├── public/
+    ├── package.json
+    └── tsconfig.json
+```
+
+**Why:** This prevents merge conflicts when backend and frontend branches are merged. Never create `src/`, `package.json`, or other frontend files directly in the project root.
+
+**Before starting:** Verify `frontend/` directory exists. If not, create it first.
+
 ## Performance Guidelines
 
 **For React/Next.js projects:** Apply the performance patterns from `.claude/skills/react-best-practices/AGENTS.md`. Key priorities:

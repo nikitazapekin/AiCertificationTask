@@ -111,12 +111,41 @@ git worktree add <worktree-dir>/<feature-name>-backend -b feature/<feature-name>
 git worktree add <worktree-dir>/<feature-name>-frontend -b feature/<feature-name>-frontend
 ```
 
-## Step 5: Run Project Setup (each worktree)
+## Step 5: Verify Project Structure
+
+**CRITICAL:** Ensure the worktree has proper `backend/` and `frontend/` directories.
+
+```
+worktree-root/
+├── backend/           ← All backend code here
+│   ├── src/
+│   ├── package.json
+│   └── ...
+└── frontend/          ← All frontend code here
+    ├── src/
+    ├── package.json
+    └── ...
+```
+
+**Why:** This prevents merge conflicts when branches are merged. Backend and frontend files MUST NOT be created in the project root (no `src/`, `package.json` at root level).
+
+```bash
+# Verify or create structure
+mkdir -p backend frontend
+```
+
+## Step 6: Run Project Setup (each worktree)
 
 Auto-detect and run appropriate setup in each worktree:
 
 ```bash
-# Node.js (monorepo)
+# Node.js - backend
+if [ -f backend/package.json ]; then cd backend && npm install && cd ..; fi
+
+# Node.js - frontend
+if [ -f frontend/package.json ]; then cd frontend && npm install && cd ..; fi
+
+# Root monorepo (if exists)
 if [ -f package.json ]; then npm install; fi
 
 # Rust
@@ -129,7 +158,7 @@ if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 if [ -f go.mod ]; then go mod download; fi
 ```
 
-## Step 6: Verify Clean Baseline (each worktree)
+## Step 7: Verify Clean Baseline (each worktree)
 
 Run tests to ensure worktree starts clean:
 
@@ -148,7 +177,7 @@ npx nx test frontend
 
 **If tests pass:** Report ready.
 
-## Step 7: Report Location(s)
+## Step 8: Report Location(s)
 
 ### Single Worktree (Unified)
 
@@ -201,9 +230,11 @@ Ready for parallel implementation of <feature-name>
 | Small/medium feature, tightly coupled | Single unified worktree |
 | Large feature, independent lifecycles | Separate backend/frontend worktrees |
 | Backend-only or frontend-only work | Single worktree for that layer |
+| **New project/worktree** | Create `backend/` and `frontend/` directories first |
 
 ## Common Mistakes
 
+- **Creating files in project root** - Backend/frontend code MUST go in `backend/` and `frontend/` directories to avoid merge conflicts
 - **Skipping ignore verification** - Worktree contents get tracked
 - **Assuming directory location** - Creates inconsistency
 - **Proceeding with failing tests** - Can't distinguish new bugs from pre-existing
