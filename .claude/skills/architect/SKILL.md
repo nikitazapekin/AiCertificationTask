@@ -9,6 +9,14 @@ description: System architecture decisions for NestJS projects. Use when designi
 
 Make system architecture decisions for NestJS projects following Layered Architecture principles (Controller/Service/Repository).
 
+## Generated File Naming Convention (MANDATORY)
+
+**ANY file created by this skill MUST be prefixed with `architect-`.**
+Predefined output (`architect-architecture.md`) already follows this convention.
+Any additional ad-hoc files (summaries, notes, diagrams) MUST also follow this rule:
+- ✅ `architect-decision-log.md`
+- ❌ `DECISION_LOG.md`
+
 ## Decision Trees
 
 ### Where to Place New Code?
@@ -141,14 +149,14 @@ modules/<module>/
    - This is the entry point for all specifications
 
 2. **Read existing architecture:**
-   - If `specs/architecture.md` exists, read it to understand existing architecture
+   - If `specs/architect-architecture.md` exists, read it to understand existing architecture
    - If it doesn't exist, you'll create it using the structure from `../../../spec-desc.md`
 
 3. **Get task number:**
    - If coming from previous skills, use the task number from context (e.g., "TASK-001")
    - Task number should be included in all section headers
 
-4. **Update architecture.md:**
+4. **Update architect-architecture.md:**
    - **If file doesn't exist:** Create using the structure template from spec-desc.md
    - **If file exists:** Append new sections with `### [TASK-N] Feature Name` prefix
    - Include date in section: `### [TASK-001] User Authentication (2026-01-22)`
@@ -161,11 +169,11 @@ modules/<module>/
      - Key architectural decisions
 
 5. **Update MANIFEST.md if needed:**
-   - Update "Last Updated" date for architecture.md entry
+   - Update "Last Updated" date for architect-architecture.md entry
    - Add new modules to "Key Decisions" section if applicable
    - Update "Tech Stack" if new technologies are introduced
 
-**Example section in architecture.md:**
+**Example section in architect-architecture.md:**
 ```markdown
 ### [TASK-001] User Authentication (2026-01-22)
 
@@ -192,7 +200,7 @@ This incremental update ensures living documentation that grows with the project
 
 ## Next Steps
 
-After updating specs/architecture.md and specs/MANIFEST.md, STOP and present these options:
+After updating specs/architect-architecture.md and specs/MANIFEST.md, STOP and present these options:
 
 **Next by flow:** `/api-designer [TASK-{N} context]` - Design REST APIs based on the architecture.
 

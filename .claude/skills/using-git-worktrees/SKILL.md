@@ -129,6 +129,8 @@ worktree-root/
 
 **Why:** This prevents merge conflicts when branches are merged. Backend and frontend files MUST NOT be created in the project root (no `src/`, `package.json` at root level).
 
+**Do NOT create a root `package.json`, `node_modules`, or `package-lock.json`.** Backend and frontend are independent projects.
+
 ```bash
 # Verify or create structure
 mkdir -p backend frontend
@@ -144,9 +146,6 @@ if [ -f backend/package.json ]; then cd backend && npm install && cd ..; fi
 
 # Node.js - frontend
 if [ -f frontend/package.json ]; then cd frontend && npm install && cd ..; fi
-
-# Root monorepo (if exists)
-if [ -f package.json ]; then npm install; fi
 
 # Rust
 if [ -f Cargo.toml ]; then cargo build; fi
@@ -240,6 +239,7 @@ Ready for parallel implementation of <feature-name>
 - **Proceeding with failing tests** - Can't distinguish new bugs from pre-existing
 - **Not asking user preference** - Different features benefit from different setups
 - **Using separate worktrees for tightly coupled work** - Creates merge coordination overhead
+- **Creating root `package.json`** — No monorepo; backend and frontend install dependencies independently via `cd backend && npm install` / `cd frontend && npm install`
 
 ---
 

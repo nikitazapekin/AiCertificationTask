@@ -35,7 +35,18 @@ project-root/
 
 **Why:** This prevents merge conflicts when backend and frontend branches are merged. Never create `src/`, `package.json`, or other backend files directly in the project root.
 
+**There is no root `package.json`.** Run `npm install` inside `backend/` or `frontend/` directly, not from the project root.
+
 **Before starting:** Verify `backend/` directory exists. If not, create it first.
+
+## Generated File Naming Convention (MANDATORY)
+
+**ANY documentation or markdown file created by this skill MUST be prefixed with `coder-`:**
+- ✅ `coder-docker-setup.md`, `coder-implementation-summary.md`, `coder-migration-notes.md`
+- ❌ `DOCKER_SETUP.md`, `IMPLEMENTATION_SUMMARY.md`, `MIGRATION_NOTES.md`
+
+This applies to ALL generated documentation files — summaries, setup guides, notes, reports.
+Source code files (`.ts`, `.tsx`, `.json`, etc.) follow standard project naming conventions and are exempt.
 
 ## Implementation Workflow
 

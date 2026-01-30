@@ -9,9 +9,19 @@ description: Generate and maintain project documentation including READMEs, ADRs
 
 Generate and maintain project documentation: READMEs, ADRs, changelogs, and JSDoc.
 
+## Generated File Naming Convention (MANDATORY)
+
+**ANY file created by this skill MUST be prefixed with `docs-generator-`.**
+Predefined output (`docs-generator-implementation.md`) already follows this convention.
+Any additional ad-hoc files (summaries, notes) MUST also follow this rule:
+- ✅ `docs-generator-api-reference.md`
+- ❌ `API_REFERENCE.md`
+
+Standard project files (`README.md`, `CHANGELOG.md`) are exempt from this rule.
+
 ## Living Specification Updates
 
-### specs/implementation.md
+### specs/docs-generator-implementation.md
 
 **Purpose:** Documents implementation details including build process, deployment, tooling, and development workflows.
 
@@ -23,7 +33,7 @@ Generate and maintain project documentation: READMEs, ADRs, changelogs, and JSDo
 
 **Read context first:**
 - Read `specs/MANIFEST.md` for project overview
-- Read all other specs (architecture, api-spec, frontend-spec) for context
+- Read all other specs (architect-architecture, api-designer-spec, frontend-design-spec) for context
 - Read source code to understand current implementation
 
 **Structure template:** Use `../../../spec-desc.md` if creating from scratch
@@ -254,11 +264,11 @@ When you discover new patterns:
 
 1. **Read living specifications:**
    - Start with `specs/MANIFEST.md` for overview
-   - Read all spec files (architecture, api-spec, frontend-spec) for context
+   - Read all spec files (architect-architecture, api-designer-spec, frontend-design-spec) for context
    - Read source code to understand implementation
 
 2. **Update all documentation:**
-   - `specs/implementation.md` - Implementation details (build, deploy, tooling)
+   - `specs/docs-generator-implementation.md` - Implementation details (build, deploy, tooling)
    - `README.md` - Project overview and setup
    - `CHANGELOG.md` - Version history
    - `docs/adrs/` - Architecture decisions

@@ -28,8 +28,8 @@ When done, provide:
 **Next by flow:** `/api-designer [context summary]` - Design REST APIs based on the architecture.
 
 **Alternatives:**
-- `/writing-plans [context summary]` - Create implementation plan if APIs are already defined.
-- `/coder [context summary]` - Start implementation if architecture is simple and clear.
+- `/frontend-design [context summary]` - Design UI if skipping API design.
+- `/writing-plans [context summary]` - Create implementation plan if specs are already defined.
 
 ## Constraints
 - ONLY execute the architect skill

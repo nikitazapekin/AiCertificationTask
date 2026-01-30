@@ -7,6 +7,14 @@ description: Create distinctive, production-grade frontend interfaces with high 
 
 Create distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Focus on exceptional attention to aesthetic details and creative choices that make interfaces memorable.
 
+## Generated File Naming Convention (MANDATORY)
+
+**ANY file created by this skill MUST be prefixed with `frontend-design-`.**
+Predefined output (`frontend-design-spec.md`) already follows this convention.
+Any additional ad-hoc files (summaries, notes, mockup descriptions) MUST also follow this rule:
+- ✅ `frontend-design-color-palette.md`
+- ❌ `COLOR_PALETTE.md`
+
 ## Design Thinking Process
 
 Before any implementation, understand the context and commit to a BOLD aesthetic direction:
@@ -185,18 +193,18 @@ Elegance comes from executing the vision well.
 
 1. **Read project context:**
    - Read `specs/MANIFEST.md` to understand the project overview
-   - Read `specs/architecture.md` to understand system architecture
-   - Read `specs/api-spec.md` to understand API contracts
+   - Read `specs/architect-architecture.md` to understand system architecture
+   - Read `specs/api-designer-spec.md` to understand API contracts
 
 2. **Read existing frontend spec:**
-   - If `specs/frontend-spec.md` exists, read it to understand existing components and design system
+   - If `specs/frontend-design-spec.md` exists, read it to understand existing components and design system
    - If it doesn't exist, you'll create it using the structure from `../../../spec-desc.md`
 
 3. **Get task number:**
    - If coming from previous skills, use the task number from context (e.g., "TASK-001")
    - Task number should be included in all section headers
 
-4. **Update frontend-spec.md:**
+4. **Update frontend-design-spec.md:**
    - **If file doesn't exist:** Create using the structure template from spec-desc.md, including:
      - Design System section (colors, typography, spacing)
      - Global theme configuration
@@ -216,10 +224,10 @@ Elegance comes from executing the vision well.
    - Build design system incrementally
 
 5. **Update MANIFEST.md if needed:**
-   - Update "Last Updated" date for frontend-spec.md entry
+   - Update "Last Updated" date for frontend-design-spec.md entry
    - Add new pages/features to "Key Decisions" section if applicable
 
-**Example section in frontend-spec.md:**
+**Example section in frontend-design-spec.md:**
 ```markdown
 ### [TASK-001] LoginForm (2026-01-22)
 
@@ -250,7 +258,7 @@ This incremental update ensures living documentation that grows with the project
 
 ## Next Steps
 
-After updating specs/frontend-spec.md and specs/MANIFEST.md, STOP and present these options:
+After updating specs/frontend-design-spec.md and specs/MANIFEST.md, STOP and present these options:
 
 **Next by flow:** `/git-worktrees [TASK-{N} context]` - Create isolated workspace for implementation.
 

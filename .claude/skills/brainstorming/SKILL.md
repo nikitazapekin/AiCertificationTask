@@ -11,6 +11,14 @@ Help turn ideas into fully formed designs and specs through natural collaborativ
 
 Start by understanding the current project context, then ask questions one at a time to refine the idea. Once you understand what you're building, present the design in small sections (200-300 words), checking after each section whether it looks right so far.
 
+## Generated File Naming Convention (MANDATORY)
+
+**ANY file created by this skill MUST be prefixed with `brainstorming-`.**
+Predefined output (`brainstorming-design.md`) already follows this convention.
+Any additional ad-hoc files (summaries, notes, explorations) MUST also follow this rule:
+- ✅ `brainstorming-alternatives.md`
+- ❌ `ALTERNATIVES.md`
+
 ## The Process
 
 **Understanding the idea:**
@@ -95,11 +103,11 @@ If this is a new project (no existing codebase), ask about tech stack. Keep it s
 
 3. **Create task directory:** `tasks/TASK-{N}/` (if not already created)
 
-4. **Write design:** `tasks/TASK-{N}/design.md`
+4. **Write design:** `tasks/TASK-{N}/brainstorming-design.md`
    - Use the Design Document Template as the structure
    - Include all design decisions, architecture, data model, API design, and open questions
 
-**Example:** For TASK-001, writes `tasks/TASK-001/design.md`
+**Example:** For TASK-001, writes `tasks/TASK-001/brainstorming-design.md`
 
 This file preserves the design context so the conversation can be cleared before implementation.
 

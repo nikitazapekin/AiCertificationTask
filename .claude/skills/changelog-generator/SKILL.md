@@ -9,6 +9,14 @@ description: Generate changelog entries based on git commits and code changes. U
 
 Generate structured changelog entries based on git commits and code changes in the current branch. This skill analyzes commits since branching from main and creates properly formatted changelog entries.
 
+## Generated File Naming Convention (MANDATORY)
+
+**ANY additional documentation file created by this skill MUST be prefixed with `changelog-generator-`:**
+- ✅ `changelog-generator-notes.md`
+- ❌ `NOTES.md`
+
+Standard project files (`CHANGELOG.md`) are exempt from this rule.
+
 **Core principle:** Analyze commits → Categorize changes → Generate entry → Update CHANGELOG.md
 
 **Announce at start:** "I'm using the changelog-generator skill to document changes."

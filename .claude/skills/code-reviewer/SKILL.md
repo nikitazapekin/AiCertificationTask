@@ -9,6 +9,14 @@ description: Review code for quality, standards compliance, security issues, and
 
 Review code for quality, standards compliance, security issues, and performance problems.
 
+## Generated File Naming Convention (MANDATORY)
+
+**ANY file created by this skill MUST be prefixed with `code-reviewer-`:**
+- ✅ `code-reviewer-report.md`, `code-reviewer-findings.md`
+- ❌ `REVIEW_REPORT.md`, `FINDINGS.md`
+
+This applies to ALL generated files — review reports, summaries, findings.
+
 ## Review Categories
 
 ### 1. Architecture Compliance

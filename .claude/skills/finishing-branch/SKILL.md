@@ -9,6 +9,14 @@ description: Use when implementation is complete, all tests pass, and you need t
 
 Guide completion of development work by presenting clear options and handling chosen workflow.
 
+## Generated File Naming Convention (MANDATORY)
+
+**ANY file created by this skill MUST be prefixed with `finishing-branch-`:**
+- ✅ `finishing-branch-summary.md`, `finishing-branch-pr-description.md`
+- ❌ `BRANCH_SUMMARY.md`, `PR_DESCRIPTION.md`
+
+This applies to ALL generated files — summaries, reports.
+
 **Core principle:** Verify tests → Present options → Execute choice → Clean up.
 
 **Prerequisite:** Consider running `/changelog-generator` first to document changes before completing the branch.

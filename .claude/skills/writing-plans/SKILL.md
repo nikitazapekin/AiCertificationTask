@@ -11,6 +11,14 @@ Write comprehensive implementation plans assuming the engineer has zero context 
 
 **Announce at start:** "I'm using the writing-plans skill to create the implementation plan."
 
+## Generated File Naming Convention (MANDATORY)
+
+**ANY file created by this skill MUST be prefixed with `writing-plans-`.**
+Predefined output (`writing-plans-plan.md`) already follows this convention.
+Any additional ad-hoc files (summaries, notes) MUST also follow this rule:
+- ✅ `writing-plans-task-breakdown.md`
+- ❌ `TASK_BREAKDOWN.md`
+
 ## Task Numbering
 
 **Before creating the plan:**
@@ -25,7 +33,7 @@ Write comprehensive implementation plans assuming the engineer has zero context 
 
 3. **Create task directory:** `tasks/TASK-{N}/` (if not already created)
 
-4. **Save plan to:** `tasks/TASK-{N}/plan.md`
+4. **Save plan to:** `tasks/TASK-{N}/writing-plans-plan.md`
 
 ## Bite-Sized Task Granularity
 
@@ -181,7 +189,7 @@ project-root/
 
 After saving the plan, offer execution choice:
 
-**"Plan complete and saved to `tasks/TASK-{N}/plan.md`. Execution options:**
+**"Plan complete and saved to `tasks/TASK-{N}/writing-plans-plan.md`. Execution options:**
 
 **1. Execute Now** - Use `/coder` to implement in current workspace
 

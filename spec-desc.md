@@ -5,10 +5,10 @@
 ```
 specs/
 ├── MANIFEST.md          # Index + project overview (always read first)
-├── architecture.md      # For architect agent
-├── api-spec.md          # For api-designer agent
-├── frontend-spec.md     # For frontend-designer agent
-└── implementation.md    # Generated, for docs-generator
+├── architect-architecture.md      # For architect agent
+├── api-designer-spec.md          # For api-designer agent
+├── frontend-design-spec.md     # For frontend-designer agent
+└── docs-generator-implementation.md    # Generated, for docs-generator
 ```
 
 ---
@@ -24,9 +24,9 @@ specs/
 
 | File             | Purpose                              | Depends On             |
 | ---------------- | ------------------------------------ | ---------------------- |
-| architecture.md  | System design, components, data flow | -                      |
-| api-spec.md      | Endpoints, schemas, auth             | architecture           |
-| frontend-spec.md | Pages, components, state             | architecture, api-spec |
+| architect-architecture.md  | System design, components, data flow | -                      |
+| api-designer-spec.md      | Endpoints, schemas, auth             | architecture           |
+| frontend-design-spec.md | Pages, components, state             | architecture, api-spec |
 
 ## Key Decisions
 
@@ -69,7 +69,7 @@ specs/
 
 ```
 Architect agent:      reads MANIFEST.md only
-API-designer agent:   reads MANIFEST.md → architecture.md
-Frontend agent:       reads MANIFEST.md → architecture.md → api-spec.md
+API-designer agent:   reads MANIFEST.md → architect-architecture.md
+Frontend agent:       reads MANIFEST.md → architect-architecture.md → api-designer-spec.md
 Docs-generator:       reads MANIFEST.md → all specs + source code
 ```

@@ -11,6 +11,14 @@ Parse requirements from various sources (Confluence, specs, user requests), deco
 
 **Announce at start:** "I'm using the requirements-analyst skill to analyze and decompose these requirements."
 
+## Generated File Naming Convention (MANDATORY)
+
+**ANY file created by this skill MUST be prefixed with `requirements-analyst-`.**
+Predefined output (`requirements-analyst-requirements.md`) already follows this convention.
+Any additional ad-hoc files (summaries, notes, reports) MUST also follow this rule:
+- ✅ `requirements-analyst-gap-analysis.md`
+- ❌ `GAP_ANALYSIS.md`
+
 ## The Process
 
 ### Step 1: Gather Requirements
@@ -136,11 +144,11 @@ Parse requirements from various sources (Confluence, specs, user requests), deco
 
 2. **Create task directory:** `tasks/TASK-{N}/` (e.g., `tasks/TASK-001/`)
 
-3. **Write requirements:** `tasks/TASK-{N}/requirements.md`
+3. **Write requirements:** `tasks/TASK-{N}/requirements-analyst-requirements.md`
    - Use the Requirements Document Template from Step 5 as the structure
    - Include all gathered requirements, task breakdown, and gap analysis
 
-**Example:** First task creates `tasks/TASK-001/requirements.md`, increments counter to 2
+**Example:** First task creates `tasks/TASK-001/requirements-analyst-requirements.md`, increments counter to 2
 
 **Atomic counter update to prevent race conditions:**
 ```bash

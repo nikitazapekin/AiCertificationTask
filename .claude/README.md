@@ -52,13 +52,13 @@ User runs: /requirements-analyst [prompt]
 ### Temporary Task Docs (tasks/)
 - Created by: requirements-analyst, brainstorming, writing-plans
 - Location: `tasks/TASK-N/` (N auto-increments)
-- Files: requirements.md, design.md, plan.md
+- Files: requirements-analyst-requirements.md, brainstorming-design.md, writing-plans-plan.md
 - Lifecycle: Delete manually after implementation complete
 
 ### Living Specifications (specs/)
 - Created/Updated by: architect, api-designer, frontend-design, docs-generator
 - Location: `specs/` with MANIFEST.md index
-- Files: architecture.md, api-spec.md, frontend-spec.md, implementation.md
+- Files: architect-architecture.md, api-designer-spec.md, frontend-design-spec.md, docs-generator-implementation.md
 - Updates: Append sections with [TASK-N] prefix
 - Lifecycle: Permanent, grows with project
 
@@ -118,11 +118,12 @@ See `skills/SKILL FLOW.md` for the complete visual diagram.
 | Current Command | Next by Flow | Why |
 |-----------------|--------------|-----|
 | `/requirements-analyst` | `/brainstorm` | Turn requirements into design |
-| `/brainstorm` | `/writing-plans` | Create implementation tasks |
-| `/writing-plans` | `/architect` | Review architecture |
+| `/brainstorm` | `/architect` | Review architecture |
 | `/architect` | `/api-designer` | Design APIs |
-| `/api-designer` | `/git-worktrees` | Create workspace |
-| `/git-worktrees` | `/coder` or `/frontend-design` | Start coding |
+| `/api-designer` | `/frontend-design` | Design UI based on API |
+| `/frontend-design` | `/writing-plans` | Create implementation tasks |
+| `/writing-plans` | `/git-worktrees` | Create workspace |
+| `/git-worktrees` | `/coder` or `/coder-frontend` | Start coding |
 | `/coder` | `/code-reviewer` | Review code |
 | `/code-reviewer` | `/test-generator` | Generate tests |
 | `/test-generator` | `/debugger` or `/finishing-branch` | Debug or finish |
@@ -149,16 +150,16 @@ Skills are detailed instruction sets that define how Claude performs specific ta
 | --------------------- | ------------------------------------ |
 | `architect`           | High-level architecture decisions    |
 | `api-designer`        | REST API design, DTOs, Swagger docs  |
+| `frontend-design`     | Create distinctive, production-grade UI |
 | `writing-plans`       | Create granular implementation plans |
-| `using-git-worktrees` | Create isolated git worktrees        |
 
 #### Implementation Phase
 
-| Skill             | Purpose                                                |
-| ----------------- | ------------------------------------------------------ |
-| `coder`           | Backend implementation (Controller/Service/Repository) |
-| `coder-frontend`  | Frontend implementation (React/Vue/Angular)            |
-| `frontend-design` | Create distinctive, production-grade UI                |
+| Skill                 | Purpose                                                |
+| --------------------- | ------------------------------------------------------ |
+| `using-git-worktrees` | Create isolated git worktrees                          |
+| `coder`               | Backend implementation (Controller/Service/Repository) |
+| `coder-frontend`      | Frontend implementation (React/Vue/Angular)            |
 
 #### Quality Phase
 

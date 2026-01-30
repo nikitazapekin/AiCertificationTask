@@ -9,6 +9,14 @@ description: Design REST APIs with proper conventions, DTOs, Swagger docs, and B
 
 Design REST APIs following conventions with DTOs, Swagger documentation, and Bruno collections.
 
+## Generated File Naming Convention (MANDATORY)
+
+**ANY file created by this skill MUST be prefixed with `api-designer-`.**
+Predefined output (`api-designer-spec.md`) already follows this convention.
+Any additional ad-hoc files (summaries, notes, collections) MUST also follow this rule:
+- ✅ `api-designer-bruno-collection.md`
+- ❌ `BRUNO_COLLECTION.md`
+
 ## REST Conventions
 
 ### URL Naming
@@ -225,17 +233,17 @@ export class UserController {
 
 1. **Read project context:**
    - Read `specs/MANIFEST.md` to understand the project overview
-   - Read `specs/architecture.md` to understand system architecture
+   - Read `specs/architect-architecture.md` to understand system architecture
 
 2. **Read existing API spec:**
-   - If `specs/api-spec.md` exists, read it to understand existing endpoints
+   - If `specs/api-designer-spec.md` exists, read it to understand existing endpoints
    - If it doesn't exist, you'll create it using the structure from `../../../spec-desc.md`
 
 3. **Get task number:**
    - If coming from previous skills, use the task number from context (e.g., "TASK-001")
    - Task number should be included in all section headers
 
-4. **Update api-spec.md:**
+4. **Update api-designer-spec.md:**
    - **If file doesn't exist:** Create using the structure template from spec-desc.md
    - **If file exists:** Append new endpoints with `### [TASK-N] HTTP_METHOD /path` prefix
    - Include date in section: `### [TASK-001] POST /auth/login (2026-01-22)`
@@ -250,10 +258,10 @@ export class UserController {
    - Keep DTOs grouped logically within modules
 
 5. **Update MANIFEST.md if needed:**
-   - Update "Last Updated" date for api-spec.md entry
+   - Update "Last Updated" date for api-designer-spec.md entry
    - Add new API domains to "Key Decisions" section if applicable
 
-**Example section in api-spec.md:**
+**Example section in api-designer-spec.md:**
 ```markdown
 ### [TASK-001] POST /auth/login (2026-01-22)
 
@@ -288,7 +296,7 @@ This incremental update ensures living documentation that grows with the project
 
 ## Next Steps
 
-After updating specs/api-spec.md and specs/MANIFEST.md, STOP and present these options:
+After updating specs/api-designer-spec.md and specs/MANIFEST.md, STOP and present these options:
 
 **Next by flow:** `/frontend-design [TASK-{N} context]` - Design UI based on the API specification.
 

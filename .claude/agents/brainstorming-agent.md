@@ -25,11 +25,11 @@ When done, provide:
 
 ### Next Steps
 
-**Next by flow:** `/writing-plans [context summary]` - Create detailed implementation tasks from the design.
+**Next by flow:** `/architect [context summary]` - Review architecture implications for the design.
 
 **Alternatives:**
-- `/architect [context summary]` - Review architecture implications before creating the plan.
 - `/api-designer [context summary]` - Design REST APIs if the feature involves API work.
+- `/writing-plans [context summary]` - Create detailed implementation tasks from the design.
 
 ## Constraints
 - ONLY execute the brainstorming skill

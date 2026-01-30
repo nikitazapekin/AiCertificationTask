@@ -10,8 +10,8 @@ This document defines the recommended order of skills. Each skill stops after co
 │                        Output: tasks/TASK-N/                        │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
-│   /requirements-analyst ──────────► /brainstorm                     │
-│   (requirements.md)                 (design.md)                     │
+│   /requirements-analyst ──────────────────► /brainstorm              │
+│   (requirements-analyst-requirements.md)   (brainstorming-design.md)│
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
                                   │
@@ -21,9 +21,10 @@ This document defines the recommended order of skills. Each skill stops after co
 │                        Output: specs/ + tasks/                      │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
-│   /writing-plans ──► /architect ──► /api-designer ──► /frontend-   │
-│   (plan.md)          (arch.md)      (api-spec.md)     design       │
-│                                                        (frontend.md)│
+│   /architect ──────► /api-designer ──► /frontend-design ──► /writing│
+│   (architect-        (api-designer-    (frontend-design-    -plans │
+│    architecture.md)   spec.md)          spec.md)      (writing-   │
+│                                                  plans-plan.md)   │
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
                                   │
@@ -78,11 +79,11 @@ This document defines the recommended order of skills. Each skill stops after co
 | Current Command         | Next by Flow                             | Why                                     |
 | ----------------------- | ---------------------------------------- | --------------------------------------- |
 | `/requirements-analyst` | `/brainstorm`                            | Turn requirements into design           |
-| `/brainstorm`           | `/writing-plans`                         | Create implementation tasks from design |
-| `/writing-plans`        | `/architect`                             | Review architecture for the plan        |
+| `/brainstorm`           | `/architect`                             | Review architecture for the design      |
 | `/architect`            | `/api-designer`                          | Design APIs based on architecture       |
 | `/api-designer`         | `/frontend-design`                       | Design UI based on API design           |
-| `/frontend-design`      | `/git-worktrees`                         | Create isolated workspace               |
+| `/frontend-design`      | `/writing-plans`                         | Create implementation tasks from specs  |
+| `/writing-plans`        | `/git-worktrees`                         | Create isolated workspace               |
 | `/git-worktrees`        | `/coder` or `/coder-frontend`            | Start implementation                    |
 | `/coder-frontend`       | `/code-reviewer`                         | Review the frontend code                |
 | `/coder`                | `/code-reviewer`                         | Review the backend code                 |
@@ -139,6 +140,7 @@ This keeps the main conversation clean while preserving continuity.
 
 ```
 /brainstorm Design e-commerce app
+→ /architect Review architecture decisions
 → /writing-plans Create implementation tasks
 → /git-worktrees Create workspace
 → /coder Implement backend features
@@ -153,6 +155,7 @@ This keeps the main conversation clean while preserving continuity.
 
 ```
 /brainstorm Design user management API
+→ /architect Review architecture decisions
 → /writing-plans Create implementation tasks
 → /git-worktrees Create workspace
 → /coder Implement features
@@ -166,6 +169,8 @@ This keeps the main conversation clean while preserving continuity.
 ```
 /requirements-analyst Parse new feature spec
 → /brainstorm Design the feature
+→ /architect Review architecture
+→ /writing-plans Create implementation tasks
 → /git-worktrees Create workspace
 → /coder Implement feature
 → /code-reviewer Review code

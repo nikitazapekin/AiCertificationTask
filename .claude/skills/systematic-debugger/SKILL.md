@@ -11,6 +11,14 @@ Find root cause before attempting fixes. Random fixes waste time and create new 
 
 **Core principle:** ALWAYS find root cause before attempting fixes. Symptom fixes are failure.
 
+## Generated File Naming Convention (MANDATORY)
+
+**ANY file created by this skill MUST be prefixed with `systematic-debugger-`:**
+- ✅ `systematic-debugger-investigation.md`, `systematic-debugger-root-cause.md`
+- ❌ `DEBUG_NOTES.md`, `INVESTIGATION.md`
+
+This applies to ALL generated files — investigation reports, root cause analyses, debug logs.
+
 ## The Iron Law
 
 ```

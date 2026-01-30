@@ -94,22 +94,22 @@ When done, provide:
 | Agent | Skill | Next by Flow |
 |-------|-------|--------------|
 | `requirements-analyst-agent` | requirements-analyst | brainstorm |
-| `brainstorming-agent` | brainstorming | writing-plans |
+| `brainstorming-agent` | brainstorming | architect |
 
 ### Planning Phase
 | Agent | Skill | Next by Flow |
 |-------|-------|--------------|
-| `writing-plans-agent` | writing-plans | architect |
 | `architect-agent` | architect | api-designer |
-| `api-designer-agent` | api-designer | git-worktrees |
-| `using-git-worktrees-agent` | using-git-worktrees | coder / coder-frontend |
+| `api-designer-agent` | api-designer | frontend-design |
+| `frontend-design-agent` | frontend-design | writing-plans |
+| `writing-plans-agent` | writing-plans | git-worktrees |
 
 ### Implementation Phase
 | Agent | Skill | Next by Flow |
 |-------|-------|--------------|
+| `using-git-worktrees-agent` | using-git-worktrees | coder / coder-frontend |
 | `coder-agent` | coder | code-reviewer |
 | `coder-frontend-agent` | coder-frontend | code-reviewer |
-| `frontend-design-agent` | frontend-design | coder-frontend |
 
 ### Quality Phase
 | Agent | Skill | Next by Flow |

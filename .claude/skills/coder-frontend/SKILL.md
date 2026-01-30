@@ -31,7 +31,18 @@ project-root/
 
 **Why:** This prevents merge conflicts when backend and frontend branches are merged. Never create `src/`, `package.json`, or other frontend files directly in the project root.
 
+**There is no root `package.json`.** Run `npm install` inside `backend/` or `frontend/` directly, not from the project root.
+
 **Before starting:** Verify `frontend/` directory exists. If not, create it first.
+
+## Generated File Naming Convention (MANDATORY)
+
+**ANY documentation or markdown file created by this skill MUST be prefixed with `coder-frontend-`:**
+- ✅ `coder-frontend-component-guide.md`, `coder-frontend-setup-notes.md`
+- ❌ `COMPONENT_GUIDE.md`, `SETUP_NOTES.md`
+
+This applies to ALL generated documentation files — summaries, guides, notes, reports.
+Source code files (`.ts`, `.tsx`, `.css`, `.json`, etc.) follow standard project naming conventions and are exempt.
 
 ## Performance Guidelines
 

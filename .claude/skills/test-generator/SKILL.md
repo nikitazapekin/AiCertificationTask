@@ -9,6 +9,15 @@ description: Generate comprehensive tests (unit, integration, E2E) and run test 
 
 Generate comprehensive tests (unit, integration, E2E) following project patterns and TDD principles.
 
+## Generated File Naming Convention (MANDATORY)
+
+**ANY documentation or markdown file created by this skill MUST be prefixed with `test-generator-`:**
+- ✅ `test-generator-coverage-report.md`, `test-generator-strategy.md`
+- ❌ `COVERAGE_REPORT.md`, `TEST_STRATEGY.md`
+
+This applies to ALL generated documentation files — reports, summaries, strategies.
+Test source files (`.spec.ts`, `.test.tsx`) follow standard project naming conventions and are exempt.
+
 ## Test Types Decision Tree
 
 ```

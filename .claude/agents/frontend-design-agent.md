@@ -25,11 +25,11 @@ When done, provide:
 
 ### Next Steps
 
-**Next by flow:** `/git-worktrees [context summary]` - Create isolated workspace for implementation.
+**Next by flow:** `/writing-plans [context summary]` - Create detailed implementation tasks from the specs.
 
 **Alternatives:**
+- `/git-worktrees [context summary]` - Create isolated workspace for implementation.
 - `/coder-frontend [context summary]` - Implement UI directly in current workspace.
-- `/brainstorm [context summary]` - Further refine the design through dialogue.
 
 ## Constraints
 - ONLY execute the frontend-design skill
