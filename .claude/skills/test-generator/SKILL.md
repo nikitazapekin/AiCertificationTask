@@ -286,6 +286,6 @@ After tests are generated, STOP and present these options:
 **Next by flow:** `/debugger [context]` - Debug any failing tests to find root cause.
 
 **Alternatives:**
-- `/changelog-generator [context]` - Document changes before finishing branch.
+- `/docs-generator [context]` - Update documentation if all tests pass.
 - `/finishing-branch [context]` - Complete the branch if all tests pass.
 - `/coder [context]` - Fix implementation issues found during testing.

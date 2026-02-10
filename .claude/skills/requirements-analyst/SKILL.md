@@ -24,7 +24,6 @@ Any additional ad-hoc files (summaries, notes, reports) MUST also follow this ru
 ### Step 1: Gather Requirements
 
 **From Confluence/Documents:**
-- Use Atlassian MCP tools if available
 - Extract functional and non-functional requirements
 - Note acceptance criteria
 

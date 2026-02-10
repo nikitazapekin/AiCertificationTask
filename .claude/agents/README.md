@@ -118,18 +118,19 @@ When done, provide:
 | `test-generator-agent` | test-generator | debugger (if failures) / finishing-branch |
 | `systematic-debugger-agent` | systematic-debugger | test-generator |
 | `verification-agent` | verification-before-completion | finishing-branch |
-| `finishing-branch-agent` | finishing-branch | docs-generator |
+| `finishing-branch-agent` | finishing-branch | (end) |
 
 ### Finalization Phase
 | Agent | Skill | Next by Flow |
 |-------|-------|--------------|
-| `documentation-generator-agent` | documentation-generator | finishing-branch / (end) |
+| `documentation-generator-agent` | documentation-generator | release / finishing-branch |
+| `release-agent` | release | finishing-branch |
 
 ### Utility
 | Agent | Skill | Next by Flow |
 |-------|-------|--------------|
-| `atlassian-skill-agent` | atlassian-skill | requirements-analyst |
 | `skill-creator-agent` | skill-creator | (standalone) |
+| `accelerator-update-agent` | accelerator-update | (standalone) |
 
 ## Flow Reference
 

@@ -84,11 +84,12 @@ Commands are shortcuts to invoke skills. Type `/` followed by the command name:
 | `/code-reviewer`        | Code quality and best practices review            |
 | `/test-generator`       | Generate unit, integration, and E2E tests         |
 | `/debugger`             | Systematic debugging with root cause analysis     |
+| `/release`              | Create GitHub release with changelog              |
 | `/finishing-branch`     | Complete branch work and merge/PR                 |
 | `/verify`               | Verify claims with evidence before completion     |
 | `/docs-generator`       | Generate project documentation                    |
-| `/atlassian`            | Jira/Confluence integration                       |
 | `/skill-creator`        | Create new skills                                 |
+| `/accelerator-update`   | Update accelerator to latest version              |
 
 **Example:**
 
@@ -126,10 +127,10 @@ See `skills/SKILL FLOW.md` for the complete visual diagram.
 | `/git-worktrees` | `/coder` or `/coder-frontend` | Start coding |
 | `/coder` | `/code-reviewer` | Review code |
 | `/code-reviewer` | `/test-generator` | Generate tests |
-| `/test-generator` | `/debugger` or `/finishing-branch` | Debug or finish |
-| `/finishing-branch` | `/verify` | Verify before merge |
-| `/verify` | `/docs-generator` | Document changes |
-| `/docs-generator` | `/finishing-branch` or (end) | Complete workflow |
+| `/test-generator` | `/debugger` or `/docs-generator` | Debug or update documentation |
+| `/docs-generator` | `/release` or `/finishing-branch` | Create release or complete branch |
+| `/release` | `/finishing-branch` | Complete the branch |
+| `/finishing-branch` | (end) | Workflow complete |
 
 ## Skills
 
@@ -174,15 +175,16 @@ Skills are detailed instruction sets that define how Claude performs specific ta
 
 | Skill                     | Purpose                                       |
 | ------------------------- | --------------------------------------------- |
+| `release`                 | Create GitHub release with changelog          |
 | `finishing-branch`        | Complete branch work, create PR/merge         |
 | `documentation-generator` | Generate project documentation                |
 
 #### Utility
 
-| Skill             | Purpose                     |
-| ----------------- | --------------------------- |
-| `atlassian-skill` | Jira/Confluence integration |
-| `skill-creator`   | Create new skills           |
+| Skill                | Purpose                              |
+| -------------------- | ------------------------------------ |
+| `skill-creator`      | Create new skills                    |
+| `accelerator-update` | Update accelerator to latest version |
 
 ## Agents
 
@@ -215,10 +217,11 @@ Every agent:
 | `test-generator-agent`          | test-generator                 | Generate tests              |
 | `systematic-debugger-agent`     | systematic-debugger            | Root cause analysis         |
 | `verification-agent`            | verification-before-completion | Verify claims               |
+| `release-agent`                 | release                        | Create GitHub releases      |
 | `finishing-branch-agent`        | finishing-branch               | Complete branch work        |
 | `documentation-generator-agent` | documentation-generator        | Generate docs               |
-| `atlassian-skill-agent`         | atlassian-skill                | Jira/Confluence             |
 | `skill-creator-agent`           | skill-creator                  | Create new skills           |
+| `accelerator-update-agent`      | accelerator-update             | Update accelerator version  |
 
 ### Key Principle: Stop After Completion
 

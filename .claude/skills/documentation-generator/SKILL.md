@@ -286,8 +286,8 @@ When you discover new patterns:
 
 After documentation is complete, STOP and present these options:
 
-**Next by flow:** `/finishing-branch [context]` - Complete the branch and prepare for merge/PR.
+**Next by flow:** `/release [context]` - Create a release with changelog.
 
 **Alternatives:**
+- `/finishing-branch [context]` - Complete the branch directly without a release.
 - `/code-reviewer [context]` - Review documentation accuracy before finishing.
-- `/changelog-generator [context]` - Generate detailed changelog if not already done.

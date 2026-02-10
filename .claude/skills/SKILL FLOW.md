@@ -68,8 +68,8 @@ This document defines the recommended order of skills. Each skill stops after co
 │             PHASE 4: FINALIZATION (Updates ongoing docs)            │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
-│   /changelog-generator ──► /docs-generator ──► /finishing-branch   │
-│   (CHANGELOG.md)            (README, ADRs, etc)  (merge/PR/cleanup)│
+│   /docs-generator ──► /release ──► /finishing-branch               │
+│   (README, ADRs, specs)  (CHANGELOG + GitHub Release)  (merge/PR) │
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
 ```
@@ -88,11 +88,11 @@ This document defines the recommended order of skills. Each skill stops after co
 | `/coder-frontend`       | `/code-reviewer`                         | Review the frontend code                |
 | `/coder`                | `/code-reviewer`                         | Review the backend code                 |
 | `/code-reviewer`        | `/test-generator`                        | Generate tests for reviewed code        |
-| `/test-generator`       | `/debugger` or `/changelog-generator`    | Debug failures or document changes      |
+| `/test-generator`       | `/debugger` or `/docs-generator`         | Debug failures or update documentation  |
 | `/debugger`             | `/test-generator`                        | Re-run tests after fix                  |
-| `/changelog-generator`  | `/finishing-branch`                      | Complete the branch                     |
-| `/finishing-branch`     | `/docs-generator`                        | Document the changes                    |
-| `/docs-generator`       | `/finishing-branch` or (end)             | Complete workflow                       |
+| `/docs-generator`       | `/release` or `/finishing-branch`        | Create release or complete the branch   |
+| `/release`              | `/finishing-branch`                      | Complete the branch                     |
+| `/finishing-branch`     | (end)                                    | Workflow complete                       |
 
 ## Entry Points
 
@@ -110,8 +110,8 @@ Choose your starting point based on your situation:
 
 | Command          | When to Use                             |
 | ---------------- | --------------------------------------- |
-| `/atlassian`     | Fetch requirements from Jira/Confluence |
-| `/skill-creator` | Create a new skill                      |
+| `/skill-creator`       | Create a new skill                      |
+| `/accelerator-update`  | Update accelerator to latest version    |
 
 ## How It Works
 
@@ -147,7 +147,8 @@ This keeps the main conversation clean while preserving continuity.
 → /coder-frontend Implement frontend
 → /code-reviewer Review all code
 → /test-generator Generate tests
-→ /changelog-generator Document changes
+→ /docs-generator Update documentation
+→ /release Create release with changelog
 → /finishing-branch Complete feature
 ```
 
@@ -160,7 +161,8 @@ This keeps the main conversation clean while preserving continuity.
 → /git-worktrees Create workspace
 → /coder Implement features
 → /test-generator Generate tests
-→ /changelog-generator Document changes
+→ /docs-generator Update documentation
+→ /release Create release with changelog
 → /finishing-branch Complete
 ```
 
@@ -175,6 +177,7 @@ This keeps the main conversation clean while preserving continuity.
 → /coder Implement feature
 → /code-reviewer Review code
 → /test-generator Generate tests
-→ /changelog-generator Document changes
+→ /docs-generator Update documentation
+→ /release Create release with changelog
 → /finishing-branch Complete
 ```

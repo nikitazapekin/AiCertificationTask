@@ -19,7 +19,7 @@ This applies to ALL generated files — summaries, reports.
 
 **Core principle:** Verify tests → Present options → Execute choice → Clean up.
 
-**Prerequisite:** Consider running `/changelog-generator` first to document changes before completing the branch.
+**Prerequisite:** Consider running `/docs-generator` and `/release` first to update documentation and create a release before completing the branch.
 
 **Announce at start:** "I'm using the finishing-branch skill to complete this work."
 

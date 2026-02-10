@@ -25,11 +25,11 @@ When done, provide:
 
 ### Next Steps
 
-**Next by flow:** `/finishing-branch [context summary]` - Complete the branch and prepare for merge/PR.
+**Next by flow:** `/release [context summary]` - Create a release with changelog.
 
 **Alternatives:**
+- `/finishing-branch [context summary]` - Complete the branch directly without a release.
 - `/code-reviewer [context summary]` - Review documentation accuracy before finishing.
-- `/changelog-generator [context summary]` - Generate detailed changelog if not already done.
 
 ## Constraints
 - ONLY execute the documentation-generator skill
