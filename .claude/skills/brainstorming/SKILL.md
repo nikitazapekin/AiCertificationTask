@@ -46,6 +46,14 @@ If this is a new project (no existing codebase), ask about tech stack. Keep it s
 - Frontend: Component-Based (Pages → Features → Components → Hooks)
 - Full-stack: Monorepo with `apps/backend` + `apps/frontend`
 
+**Library vs Custom decisions (MANDATORY):**
+- When the design involves functionality that established libraries solve (logging, validation, HTTP clients, date handling, state management, auth, caching, etc.), you MUST ask the user whether they want to use an existing library or build a custom solution.
+- **Default to recommending well-known libraries** - custom implementations should require justification.
+- Use AskUserQuestion with options like: `["Use <library-name> (Recommended)", "Use <alternative-library>", "Custom implementation"]`. The built-in "Other" option lets the user suggest their own library — mention this explicitly in the question text (e.g., "Pick a library, or choose Other to suggest your own").
+- If the user chooses a library, research it (via WebSearch or Context7) to confirm it fits their stack and is actively maintained.
+- If the user wants custom, ask WHY - ensure there's a real reason (licensing, bundle size, specific requirements) and document the rationale in the design doc.
+- **Never silently decide to write custom code when a proven library exists.** This prevents reinventing the wheel (e.g., writing a custom logger instead of using Winston/Pino, or a custom validator instead of class-validator/zod).
+
 **Exploring approaches:**
 - Propose 2-3 different approaches with trade-offs
 - Present options conversationally with your recommendation and reasoning
