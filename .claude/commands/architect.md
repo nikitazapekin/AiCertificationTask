@@ -1,3 +1,10 @@
+---
+spawns: architect-agent
+phase: planning
+flow-next: api-designer
+flow-alternatives: [writing-plans, coder]
+---
+
 # Architect
 
 Spawn architect agent to make system architecture decisions.

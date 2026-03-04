@@ -1,3 +1,10 @@
+---
+spawns: documentation-generator-agent
+phase: finalization
+flow-next: release
+flow-alternatives: [finishing-branch]
+---
+
 # Documentation Generator
 
 Spawn documentation-generator agent to create and maintain documentation.

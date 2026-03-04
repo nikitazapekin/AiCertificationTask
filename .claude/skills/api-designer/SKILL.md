@@ -1,6 +1,10 @@
 ---
 name: api-designer
 description: Design REST APIs with proper conventions, DTOs, Swagger docs, and Bruno collections. Use when creating endpoints, designing DTOs, adding Swagger decorators, generating API documentation, or creating Bruno/Postman collections. Triggers on "API design", "create endpoint", "DTO", "swagger", "openapi", "bruno collection", "API documentation".
+phase: planning
+flow-next: frontend-design
+flow-alternatives: [writing-plans]
+related: [architect, frontend-design]
 ---
 
 # API Designer
@@ -298,11 +302,11 @@ This incremental update ensures living documentation that grows with the project
 
 After updating specs/api-designer-spec.md and specs/MANIFEST.md, STOP and present these options:
 
-**Next by flow:** `/frontend-design [TASK-{N} context]` - Design UI based on the API specification.
+**Next by flow:** [[/frontend-design]] `[TASK-{N} context]` - Design UI based on the API specification. See [[moc-planning]] for phase context.
 
 **Pass to next skill:** Include the task number in your context summary (e.g., "TASK-001: Authentication API endpoints documented")
 
 **Alternatives:**
-- `/git-worktrees [TASK-{N} context]` - Skip UI design and create isolated workspace for implementation.
-- `/coder [TASK-{N} context]` - Implement the API directly in current workspace.
-- `/test-generator [TASK-{N} context]` - Generate API integration tests first (TDD approach).
+- [[/git-worktrees]] `[TASK-{N} context]` - Skip UI design and create isolated workspace for implementation.
+- [[/coder]] `[TASK-{N} context]` - Implement the API directly in current workspace.
+- [[/test-generator]] `[TASK-{N} context]` - Generate API integration tests first (TDD approach).

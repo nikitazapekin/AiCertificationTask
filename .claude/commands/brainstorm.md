@@ -1,3 +1,10 @@
+---
+spawns: brainstorming-agent
+phase: understanding
+flow-next: architect
+flow-alternatives: [writing-plans, api-designer]
+---
+
 # Brainstorming
 
 Spawn brainstorming agent to explore ideas and create designs.

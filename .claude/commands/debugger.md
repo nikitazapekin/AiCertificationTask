@@ -1,3 +1,10 @@
+---
+spawns: systematic-debugger-agent
+phase: execution
+flow-next: test-generator
+flow-alternatives: [coder, coder-frontend]
+---
+
 # Systematic Debugger
 
 Spawn systematic-debugger agent to find root cause before fixing bugs.

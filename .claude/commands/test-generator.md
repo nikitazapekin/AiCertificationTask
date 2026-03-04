@@ -1,3 +1,10 @@
+---
+spawns: test-generator-agent
+phase: execution
+flow-next: docs-generator
+flow-alternatives: [debugger]
+---
+
 # Test Generator
 
 Spawn test-generator agent to create comprehensive tests.

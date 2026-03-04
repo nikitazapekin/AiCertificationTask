@@ -1,6 +1,10 @@
 ---
 name: writing-plans
 description: Use when you have a spec or requirements for a multi-step task, before touching code. Creates detailed implementation plans with bite-sized tasks for engineers with zero codebase context.
+phase: planning
+flow-next: using-git-worktrees
+flow-alternatives: [coder, coder-frontend]
+related: [brainstorming, architect]
 ---
 
 # Writing Plans
@@ -203,10 +207,10 @@ After saving the plan, offer execution choice:
 
 After the plan is complete and saved, STOP and present these options:
 
-**Next by flow:** `/architect [TASK-{N} context]` - Review architecture decisions before implementation.
+**Next by flow:** [[/architect]] `[TASK-{N} context]` - Review architecture decisions before implementation. See [[moc-planning]] for phase context.
 
 **Pass to next skill:** Include the task number in your context summary (e.g., "TASK-001: User authentication plan created")
 
 **Alternatives:**
-- `/git-worktrees [TASK-{N} context]` - Create isolated workspace for development.
-- `/coder [TASK-{N} context]` - Start implementing directly in current workspace.
+- [[/git-worktrees]] `[TASK-{N} context]` - Create isolated workspace for development.
+- [[/coder]] `[TASK-{N} context]` - Start implementing directly in current workspace.

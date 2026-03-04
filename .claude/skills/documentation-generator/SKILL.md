@@ -1,6 +1,10 @@
 ---
 name: documentation-generator
 description: Generate and maintain project documentation including READMEs, ADRs, changelogs, and code docs. Use when creating documentation, updating READMEs, writing ADRs, generating changelogs, or documenting modules/libraries. Triggers on "document", "README", "ADR", "changelog", "JSDoc", "update docs".
+phase: finalization
+flow-next: release
+flow-alternatives: [finishing-branch]
+related: [architect, api-designer]
 ---
 
 # Documentation Generator
@@ -286,8 +290,8 @@ When you discover new patterns:
 
 After documentation is complete, STOP and present these options:
 
-**Next by flow:** `/release [context]` - Create a release with changelog.
+**Next by flow:** [[/release]] `[context]` - Create a release with changelog. See [[moc-finalization]] for phase context.
 
 **Alternatives:**
-- `/finishing-branch [context]` - Complete the branch directly without a release.
-- `/code-reviewer [context]` - Review documentation accuracy before finishing.
+- [[/finishing-branch]] `[context]` - Complete the branch directly without a release.
+- [[/code-reviewer]] `[context]` - Review documentation accuracy before finishing.

@@ -1,3 +1,10 @@
+---
+spawns: requirements-analyst-agent
+phase: understanding
+flow-next: brainstorm
+flow-alternatives: [architect, writing-plans]
+---
+
 # Requirements Analyst
 
 Spawn requirements-analyst agent to analyze and decompose requirements.

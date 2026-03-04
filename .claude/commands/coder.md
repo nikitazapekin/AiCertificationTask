@@ -1,3 +1,10 @@
+---
+spawns: coder-agent
+phase: execution
+flow-next: code-reviewer
+flow-alternatives: [test-generator]
+---
+
 # Coder Backend
 
 Spawn coder agent to implement backend features following layered architecture.

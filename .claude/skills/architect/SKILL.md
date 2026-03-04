@@ -1,6 +1,10 @@
 ---
 name: architect
 description: System architecture decisions for NestJS projects. Use when designing new features, choosing patterns, evaluating scalability/security, or making technology choices. Triggers on "design", "architect", "should I use", "which pattern", "scalability", "security design".
+phase: planning
+flow-next: api-designer
+flow-alternatives: [writing-plans, coder]
+related: [brainstorming, api-designer]
 ---
 
 # Architect
@@ -202,10 +206,10 @@ This incremental update ensures living documentation that grows with the project
 
 After updating specs/architect-architecture.md and specs/MANIFEST.md, STOP and present these options:
 
-**Next by flow:** `/api-designer [TASK-{N} context]` - Design REST APIs based on the architecture.
+**Next by flow:** [[/api-designer]] `[TASK-{N} context]` - Design REST APIs based on the architecture. See [[moc-planning]] for phase context.
 
 **Pass to next skill:** Include the task number in your context summary (e.g., "TASK-001: Authentication architecture documented")
 
 **Alternatives:**
-- `/writing-plans [TASK-{N} context]` - Create implementation plan if APIs are already defined.
-- `/coder [TASK-{N} context]` - Start implementation if architecture is simple and clear.
+- [[/writing-plans]] `[TASK-{N} context]` - Create implementation plan if APIs are already defined.
+- [[/coder]] `[TASK-{N} context]` - Start implementation if architecture is simple and clear.

@@ -1,3 +1,10 @@
+---
+spawns: using-git-worktrees-agent
+phase: execution
+flow-next: coder
+flow-alternatives: [coder-frontend]
+---
+
 # Git Worktrees
 
 Spawn using-git-worktrees agent to create isolated git workspaces.

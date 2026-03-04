@@ -2,6 +2,9 @@
 name: skill-creator
 description: Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.
 license: Complete terms in LICENSE.txt
+phase: utility
+flow-alternatives: []
+related: []
 ---
 
 # Skill Creator
@@ -363,5 +366,5 @@ After skill creation/update is complete, this is a **standalone** workflow.
 
 **Suggested follow-ups:**
 - Test the new skill by using its command.
-- `/reflect [context]` - Capture learnings from the skill creation process.
-- `/docs-generator [context]` - Document the new skill if needed.
+- [[/reflect]] `[context]` - Capture learnings from the skill creation process.
+- [[/docs-generator]] `[context]` - Document the new skill if needed.

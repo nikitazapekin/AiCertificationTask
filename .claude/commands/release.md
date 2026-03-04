@@ -1,3 +1,10 @@
+---
+spawns: release-agent
+phase: finalization
+flow-next: finishing-branch
+flow-alternatives: []
+---
+
 # Release
 
 Spawn release agent to create GitHub releases with automated changelog generation.

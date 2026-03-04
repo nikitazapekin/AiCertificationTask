@@ -1,3 +1,10 @@
+---
+spawns: skill-creator-agent
+phase: utility
+flow-next:
+flow-alternatives: []
+---
+
 # Skill Creator
 
 Spawn skill-creator agent to create or update Claude skills.

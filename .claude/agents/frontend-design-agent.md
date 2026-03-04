@@ -2,6 +2,8 @@
 name: frontend-design
 description: "Use this agent to design distinctive, production-grade frontend UI with high design quality. Creates UI specifications and styling that avoids generic AI aesthetics.\n\nExamples:\n\n<example>\nContext: The user wants UI design for a feature.\nuser: \"Design the dashboard interface for analytics\"\nassistant: \"I'll use the frontend-design agent to create a distinctive UI specification.\"\n<Task tool call to frontend-design agent>\n</example>\n\n<example>\nContext: The user needs styling guidance.\nuser: \"Help me design a modern and unique login page\"\nassistant: \"I'll use the frontend-design agent to create a polished design specification.\"\n<Task tool call to frontend-design agent>\n</example>"
 model: sonnet
+invokes: frontend-design
+phase: planning
 ---
 
 # Frontend Design Agent

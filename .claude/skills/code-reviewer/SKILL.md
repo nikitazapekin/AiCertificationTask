@@ -1,6 +1,10 @@
 ---
 name: code-reviewer
 description: Review code for quality, standards compliance, security issues, and performance problems. Use when reviewing PRs, checking code quality, finding bugs, or ensuring standards compliance. Triggers on "review code", "code review", "check this", "review PR", "find issues", "code quality".
+phase: execution
+flow-next: test-generator
+flow-alternatives: [coder, coder-frontend]
+related: [coder, coder-frontend]
 ---
 
 # Code Reviewer
@@ -189,8 +193,8 @@ Format feedback as:
 
 After code review is complete, STOP and present these options:
 
-**Next by flow:** `/test-generator [context]` - Generate tests for the reviewed code.
+**Next by flow:** [[/test-generator]] `[context]` - Generate tests for the reviewed code. See [[moc-execution]] for phase context.
 
 **Alternatives:**
-- `/coder [context]` - Fix issues identified in the review.
-- `/finishing-branch [context]` - Complete branch if review passes and tests exist.
+- [[/coder]] `[context]` - Fix issues identified in the review.
+- [[/finishing-branch]] `[context]` - Complete branch if review passes and tests exist.

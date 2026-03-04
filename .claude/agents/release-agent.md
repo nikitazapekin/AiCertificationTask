@@ -18,6 +18,8 @@ assistant: \"I'll use the release agent to tag and publish the release.\"
 <Task tool call to release agent>
 </example>"
 model: haiku
+invokes: release
+phase: finalization
 ---
 
 # Release Agent

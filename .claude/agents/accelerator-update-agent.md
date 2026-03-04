@@ -25,6 +25,8 @@ assistant: \"I'll use the accelerator-update agent to upgrade your installation.
 <Task tool call to accelerator-update agent>
 </example>"
 model: haiku
+invokes: accelerator-update
+phase: utility
 ---
 
 # Accelerator Update Agent

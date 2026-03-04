@@ -1,3 +1,10 @@
+---
+spawns: finishing-branch-agent
+phase: execution
+flow-next:
+flow-alternatives: [docs-generator]
+---
+
 # Finishing Branch
 
 Spawn finishing-branch agent to complete development work.

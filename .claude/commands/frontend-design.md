@@ -1,3 +1,10 @@
+---
+spawns: frontend-design-agent
+phase: planning
+flow-next: writing-plans
+flow-alternatives: [coder-frontend]
+---
+
 # Frontend Design
 
 Spawn frontend-design agent to create distinctive UI designs.

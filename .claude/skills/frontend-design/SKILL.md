@@ -1,6 +1,10 @@
 ---
 name: frontend-design
 description: Create distinctive, production-grade frontend interfaces with high design quality. Use when designing user interfaces, creating UI specifications, or styling web components. Triggers on "frontend design", "UI design", "user interface", "UX design", "style", "beautify". Generates creative, polished design that avoids generic AI aesthetics.
+phase: planning
+flow-next: writing-plans
+flow-alternatives: [coder-frontend]
+related: [api-designer, coder-frontend]
 ---
 
 # Frontend Design
@@ -260,10 +264,10 @@ This incremental update ensures living documentation that grows with the project
 
 After updating specs/frontend-design-spec.md and specs/MANIFEST.md, STOP and present these options:
 
-**Next by flow:** `/git-worktrees [TASK-{N} context]` - Create isolated workspace for implementation.
+**Next by flow:** [[/git-worktrees]] `[TASK-{N} context]` - Create isolated workspace for implementation. See [[moc-planning]] for phase context.
 
 **Pass to next skill:** Include the task number in your context summary (e.g., "TASK-001: Login UI design documented")
 
 **Alternatives:**
-- `/coder-frontend [TASK-{N} context]` - Implement UI directly in current workspace.
-- `/brainstorm [TASK-{N} context]` - Further refine the design through dialogue.
+- [[/coder-frontend]] `[TASK-{N} context]` - Implement UI directly in current workspace.
+- [[/brainstorm]] `[TASK-{N} context]` - Further refine the design through dialogue.

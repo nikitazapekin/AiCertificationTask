@@ -1,6 +1,10 @@
 ---
 name: test-generator
 description: Generate comprehensive tests (unit, integration, E2E) and run test suites with failure analysis. Use for writing tests, test coverage, running tests, and fixing failures. Triggers on "write test", "create test", "run tests", "fix test", "test coverage", "e2e test".
+phase: execution
+flow-next: documentation-generator
+flow-alternatives: [systematic-debugger]
+related: [code-reviewer, systematic-debugger]
 ---
 
 # Test Generator
@@ -283,9 +287,9 @@ export function createMockUser(overrides: Partial<User> = {}): User {
 
 After tests are generated, STOP and present these options:
 
-**Next by flow:** `/debugger [context]` - Debug any failing tests to find root cause.
+**Next by flow:** [[/debugger]] `[context]` - Debug any failing tests to find root cause. See [[moc-execution]] for phase context.
 
 **Alternatives:**
-- `/docs-generator [context]` - Update documentation if all tests pass.
-- `/finishing-branch [context]` - Complete the branch if all tests pass.
-- `/coder [context]` - Fix implementation issues found during testing.
+- [[/docs-generator]] `[context]` - Update documentation if all tests pass.
+- [[/finishing-branch]] `[context]` - Complete the branch if all tests pass.
+- [[/coder]] `[context]` - Fix implementation issues found during testing.

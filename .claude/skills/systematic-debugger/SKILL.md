@@ -1,6 +1,10 @@
 ---
 name: systematic-debugger
 description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes. Requires root cause investigation before any fixes. Triggers on "debug", "error", "fix bug", "test failure", "investigate", "not working".
+phase: execution
+flow-next: test-generator
+flow-alternatives: [coder, coder-frontend]
+related: [test-generator, coder]
 ---
 
 # Systematic Debugger
@@ -150,9 +154,9 @@ If you catch yourself thinking:
 
 After debugging is complete and fix is verified, STOP and present these options:
 
-**Next by flow:** `/test-generator [context]` - Generate/update tests to prevent regression.
+**Next by flow:** [[/test-generator]] `[context]` - Generate/update tests to prevent regression. See [[moc-execution]] for phase context.
 
 **Alternatives:**
-- `/docs-generator [context]` - Update documentation after the fix.
-- `/code-reviewer [context]` - Review the fix for quality issues.
-- `/finishing-branch [context]` - Complete branch if fix was the last blocker.
+- [[/docs-generator]] `[context]` - Update documentation after the fix.
+- [[/code-reviewer]] `[context]` - Review the fix for quality issues.
+- [[/finishing-branch]] `[context]` - Complete branch if fix was the last blocker.

@@ -1,3 +1,10 @@
+---
+spawns: coder-frontend-agent
+phase: execution
+flow-next: code-reviewer
+flow-alternatives: [test-generator]
+---
+
 # Coder Frontend
 
 Spawn coder-frontend agent to implement frontend features.

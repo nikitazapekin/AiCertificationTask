@@ -1,6 +1,18 @@
+---
+title: Accelerator Skill Flow
+type: index
+description: Master navigation for the command → agent → skill workflow.
+---
+
 # Skill Flow Reference
 
 This document defines the recommended order of skills. Each skill stops after completion and suggests the next step - the user decides whether to continue.
+
+## Navigation
+
+The workflow progresses through four phases. [[moc-understanding]] gathers and analyzes requirements. [[moc-planning]] designs architecture and APIs. [[moc-execution]] implements, reviews, and tests code. [[moc-finalization]] handles documentation and releases.
+
+Utility tools ([[moc-utility]]) are available at any time.
 
 ## Flow Diagram
 
@@ -76,46 +88,46 @@ This document defines the recommended order of skills. Each skill stops after co
 
 ## Quick Reference: Next by Flow
 
-| Current Command         | Next by Flow                             | Why                                     |
-| ----------------------- | ---------------------------------------- | --------------------------------------- |
-| `/requirements-analyst` | `/brainstorm`                            | Turn requirements into design           |
-| `/brainstorm`           | `/architect`                             | Review architecture for the design      |
-| `/architect`            | `/api-designer`                          | Design APIs based on architecture       |
-| `/api-designer`         | `/frontend-design`                       | Design UI based on API design           |
-| `/frontend-design`      | `/writing-plans`                         | Create implementation tasks from specs  |
-| `/writing-plans`        | `/git-worktrees`                         | Create isolated workspace               |
-| `/git-worktrees`        | `/coder` or `/coder-frontend`            | Start implementation                    |
-| `/coder-frontend`       | `/code-reviewer`                         | Review the frontend code                |
-| `/coder`                | `/code-reviewer`                         | Review the backend code                 |
-| `/code-reviewer`        | `/test-generator`                        | Generate tests for reviewed code        |
-| `/test-generator`       | `/debugger` or `/docs-generator`         | Debug failures or update documentation  |
-| `/debugger`             | `/test-generator`                        | Re-run tests after fix                  |
-| `/docs-generator`       | `/release` or `/finishing-branch`        | Create release or complete the branch   |
-| `/release`              | `/finishing-branch`                      | Complete the branch                     |
-| `/finishing-branch`     | (end)                                    | Workflow complete                       |
+| Current Command | Next by Flow | Why |
+| --- | --- | --- |
+| [[/requirements-analyst]] | [[/brainstorm]] | Turn requirements into design |
+| [[/brainstorm]] | [[/architect]] | Review architecture for the design |
+| [[/architect]] | [[/api-designer]] | Design APIs based on architecture |
+| [[/api-designer]] | [[/frontend-design]] | Design UI based on API design |
+| [[/frontend-design]] | [[/writing-plans]] | Create implementation tasks from specs |
+| [[/writing-plans]] | [[/git-worktrees]] | Create isolated workspace |
+| [[/git-worktrees]] | [[/coder]] or [[/coder-frontend]] | Start implementation |
+| [[/coder-frontend]] | [[/code-reviewer]] | Review the frontend code |
+| [[/coder]] | [[/code-reviewer]] | Review the backend code |
+| [[/code-reviewer]] | [[/test-generator]] | Generate tests for reviewed code |
+| [[/test-generator]] | [[/debugger]] or [[/docs-generator]] | Debug failures or update documentation |
+| [[/debugger]] | [[/test-generator]] | Re-run tests after fix |
+| [[/docs-generator]] | [[/release]] or [[/finishing-branch]] | Create release or complete the branch |
+| [[/release]] | [[/finishing-branch]] | Complete the branch |
+| [[/finishing-branch]] | (end) | Workflow complete |
 
 ## Entry Points
 
 Choose your starting point based on your situation:
 
-| Situation                     | Start With                  |
-| ----------------------------- | --------------------------- |
-| Have requirements/specs       | `/requirements-analyst`     |
-| Have an idea to explore       | `/brainstorm`               |
-| Have a plan ready             | `/git-worktrees` → `/coder` |
-| Existing project, add feature | `/git-worktrees` → `/coder` |
-| Fix a bug                     | `/debugger`                 |
+| Situation | Start With |
+| --- | --- |
+| Have requirements/specs | [[/requirements-analyst]] |
+| Have an idea to explore | [[/brainstorm]] |
+| Have a plan ready | [[/git-worktrees]] then [[/coder]] |
+| Existing project, add feature | [[/git-worktrees]] then [[/coder]] |
+| Fix a bug | [[/debugger]] |
 
 ## Utility Commands (Any Time)
 
-| Command          | When to Use                             |
-| ---------------- | --------------------------------------- |
-| `/skill-creator`       | Create a new skill                      |
-| `/accelerator-update`  | Update accelerator to latest version    |
+| Command | When to Use |
+| --- | --- |
+| [[/skill-creator]] | Create a new skill |
+| [[/accelerator-update]] | Update accelerator to latest version |
 
 ## How It Works
 
-1. **User runs a command** (e.g., `/requirements-analyst [prompt]`)
+1. **User runs a command** (e.g., [[/requirements-analyst]] `[prompt]`)
 2. **Command spawns an agent** that runs in isolation
 3. **Agent executes the skill** following its instructions
 4. **Agent stops and outputs:**

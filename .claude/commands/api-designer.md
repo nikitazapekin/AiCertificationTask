@@ -1,3 +1,10 @@
+---
+spawns: api-designer-agent
+phase: planning
+flow-next: frontend-design
+flow-alternatives: [writing-plans]
+---
+
 # API Designer
 
 Spawn api-designer agent to design REST APIs with DTOs and Swagger docs.

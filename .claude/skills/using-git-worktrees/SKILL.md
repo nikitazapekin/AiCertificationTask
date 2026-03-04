@@ -1,6 +1,10 @@
 ---
 name: using-git-worktrees
 description: Use when starting feature work that needs isolation from current workspace - creates isolated git worktrees for backend, frontend, or both for parallel development
+phase: execution
+flow-next: coder
+flow-alternatives: [coder-frontend]
+related: [writing-plans, coder]
 ---
 
 # Using Git Worktrees
@@ -249,31 +253,31 @@ After worktree(s) created and verified, STOP and present these options:
 
 ### For Single Worktree (Unified)
 
-**Next by flow:** Start with whichever layer makes sense for the feature:
-- `/coder [context]` - Start with backend implementation
-- `/frontend-design [context]` - Start with UI design
-- `/coder-frontend [context]` - Start with frontend implementation
+**Next by flow:** Start with whichever layer makes sense for the feature: See [[moc-execution]] for phase context.
+- [[/coder]] `[context]` - Start with backend implementation
+- [[/frontend-design]] `[context]` - Start with UI design
+- [[/coder-frontend]] `[context]` - Start with frontend implementation
 
 **Note:** All changes stay in one branch, making it easy to coordinate tightly-coupled backend and frontend work.
 
 ### For Single Worktree (Backend-only)
 
-**Next by flow:** `/coder [context]` - Start backend implementation in the worktree.
+**Next by flow:** [[/coder]] `[context]` - Start backend implementation in the worktree. See [[moc-execution]] for phase context.
 
 **Alternatives:**
-- `/code-reviewer [context]` - Review existing code before implementing.
+- [[/code-reviewer]] `[context]` - Review existing code before implementing.
 
 ### For Single Worktree (Frontend-only)
 
-**Next by flow:** `/frontend-design [context]` - Design UI before frontend implementation.
+**Next by flow:** [[/frontend-design]] `[context]` - Design UI before frontend implementation. See [[moc-execution]] for phase context.
 
 **Alternatives:**
-- `/coder-frontend [context]` - Start frontend implementation directly.
+- [[/coder-frontend]] `[context]` - Start frontend implementation directly.
 
 ### For Separate Worktrees (Backend + Frontend)
 
-**Next by flow:** Start implementation in both worktrees:
-- Backend: `/coder [context]` in the backend worktree
-- Frontend: `/frontend-design [context]` or `/coder-frontend [context]` in the frontend worktree
+**Next by flow:** Start implementation in both worktrees: See [[moc-execution]] for phase context.
+- Backend: [[/coder]] `[context]` in the backend worktree
+- Frontend: [[/frontend-design]] `[context]` or [[/coder-frontend]] `[context]` in the frontend worktree
 
 **Note:** With separate worktrees, you can work on backend and frontend independently and merge when both are complete. Ideal for parallel sessions or when changes have different review cycles.

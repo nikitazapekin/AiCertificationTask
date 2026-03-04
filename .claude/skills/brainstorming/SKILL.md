@@ -1,6 +1,10 @@
 ---
 name: brainstorming
 description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
+phase: understanding
+flow-next: architect
+flow-alternatives: [writing-plans, api-designer]
+related: [requirements-analyst, writing-plans]
 ---
 
 # Brainstorming Ideas Into Designs
@@ -126,10 +130,10 @@ This file preserves the design context so the conversation can be cleared before
 
 After design document is written to file, STOP and present these options:
 
-**Next by flow:** `/writing-plans [TASK-{N} context]` - Create detailed implementation tasks from the design.
+**Next by flow:** [[/writing-plans]] `[TASK-{N} context]` - Create detailed implementation tasks from the design. See [[moc-understanding]] for phase context.
 
 **Pass to next skill:** Include the task number in your context summary (e.g., "TASK-001: User notifications design completed")
 
 **Alternatives:**
-- `/architect [TASK-{N} context]` - Review architecture implications before creating the plan.
-- `/api-designer [TASK-{N} context]` - Design REST APIs if the feature involves API work.
+- [[/architect]] `[TASK-{N} context]` - Review architecture implications before creating the plan.
+- [[/api-designer]] `[TASK-{N} context]` - Design REST APIs if the feature involves API work.

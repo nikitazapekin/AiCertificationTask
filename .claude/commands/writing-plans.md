@@ -1,3 +1,10 @@
+---
+spawns: writing-plans-agent
+phase: planning
+flow-next: git-worktrees
+flow-alternatives: [coder, coder-frontend]
+---
+
 # Writing Plans
 
 Spawn writing-plans agent to create detailed implementation plans.

@@ -1,6 +1,9 @@
 ---
 name: finishing-branch
 description: Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup
+phase: execution
+flow-alternatives: [documentation-generator]
+related: [release, code-reviewer]
 ---
 
 # Finishing Branch
@@ -156,7 +159,7 @@ git worktree remove <worktree-path>
 
 After branch is finished (merged, PR created, or kept), STOP and present these options:
 
-**Next by flow:** `/verify [context]` - Verify implementation meets requirements.
+**Next by flow:** [[/verify]] `[context]` - Verify implementation meets requirements. See [[moc-execution]] for phase context.
 
 **Alternatives:**
-- `/docs-generator [context]` - Update documentation for the changes.
+- [[/docs-generator]] `[context]` - Update documentation for the changes.

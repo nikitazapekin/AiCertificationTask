@@ -2,6 +2,8 @@
 name: api-designer
 description: "Use this agent to design REST APIs with proper conventions, DTOs, Swagger documentation, and Bruno collections. Helps with endpoint design, DTO creation, and API documentation.\n\nExamples:\n\n<example>\nContext: The user needs to design new API endpoints.\nuser: \"Design the REST API for the user management module\"\nassistant: \"I'll use the api-designer agent to create the API specifications with DTOs and Swagger docs.\"\n<Task tool call to api-designer agent>\n</example>\n\n<example>\nContext: The user wants Swagger documentation for endpoints.\nuser: \"Add Swagger decorators to my controller\"\nassistant: \"I'll use the api-designer agent to design proper API documentation.\"\n<Task tool call to api-designer agent>\n</example>"
 model: sonnet
+invokes: api-designer
+phase: planning
 ---
 
 # API Designer Agent

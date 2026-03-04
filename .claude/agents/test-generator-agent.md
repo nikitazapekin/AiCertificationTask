@@ -2,6 +2,8 @@
 name: test-generator
 description: "Use this agent to generate comprehensive tests (unit, integration, E2E) following project patterns. Creates test scaffolding with Jest, Vitest, or Pytest patterns.\n\nExamples:\n\n<example>\nContext: The user wants tests for new code.\nuser: \"Generate tests for the payment service\"\nassistant: \"I'll use the test-generator agent to create comprehensive tests.\"\n<Task tool call to test-generator agent>\n</example>\n\n<example>\nContext: The user needs E2E tests.\nuser: \"Create end-to-end tests for the checkout flow\"\nassistant: \"I'll use the test-generator agent to generate E2E test coverage.\"\n<Task tool call to test-generator agent>\n</example>"
 model: haiku
+invokes: test-generator
+phase: execution
 ---
 
 # Test Generator Agent

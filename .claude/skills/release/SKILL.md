@@ -1,6 +1,10 @@
 ---
 name: release
 description: Create GitHub releases with automated changelog generation. Use when creating a release, generating changelogs, tagging versions, or publishing to GitHub. Triggers on "create release", "new release", "publish release", "generate changelog", "tag version", "release to GitHub".
+phase: finalization
+flow-next: finishing-branch
+flow-alternatives: []
+related: [documentation-generator]
 ---
 
 # Release
@@ -238,7 +242,7 @@ Display the release summary:
 
 After release creation is complete:
 
-**Next by flow:** `/finishing-branch [release summary]` - Complete the branch and prepare for merge/PR.
+**Next by flow:** [[/finishing-branch]] `[release summary]` - Complete the branch and prepare for merge/PR. See [[moc-finalization]] for phase context.
 
 **Alternatives:**
 - No further action needed - Release is complete and published.

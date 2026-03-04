@@ -1,3 +1,10 @@
+---
+spawns: accelerator-update-agent
+phase: utility
+flow-next:
+flow-alternatives: []
+---
+
 # Accelerator Update
 
 Spawn accelerator-update agent to update the accelerator installation.

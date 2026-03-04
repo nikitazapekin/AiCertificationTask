@@ -1,6 +1,9 @@
 ---
 name: accelerator-update
 description: Update accelerator-core installation to the latest version from GitHub. Use when the user wants to check for updates, update the accelerator, or upgrade to a newer version. Handles version checking, changelog display, selective file updates with user customization preservation, and post-update verification.
+phase: utility
+flow-alternatives: []
+related: []
 ---
 
 # Accelerator Update

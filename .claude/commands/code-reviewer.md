@@ -1,3 +1,10 @@
+---
+spawns: code-reviewer-agent
+phase: execution
+flow-next: test-generator
+flow-alternatives: [coder, coder-frontend]
+---
+
 # Code Reviewer
 
 Spawn code-reviewer agent to review code for quality and issues.

@@ -1,6 +1,10 @@
 ---
 name: coder
 description: Implement features, fix bugs, and refactor code following layered architecture (Controller/Service/Repository). Use for feature implementation, bug fixes, refactoring, and business logic development. Triggers on "implement", "add feature", "fix", "refactor", "code", "build".
+phase: execution
+flow-next: code-reviewer
+flow-alternatives: [test-generator]
+related: [coder-frontend, architect]
 ---
 
 # Coder (Backend)
@@ -233,8 +237,8 @@ Before completing any implementation:
 
 After implementation is complete, STOP and present these options:
 
-**Next by flow:** `/code-reviewer [context]` - Review the implemented code for quality and issues.
+**Next by flow:** [[/code-reviewer]] `[context]` - Review the implemented code for quality and issues. See [[moc-execution]] for phase context.
 
 **Alternatives:**
-- `/test-generator [context]` - Generate tests for the implementation.
-- `/debugger [context]` - Debug if there are issues with the implementation.
+- [[/test-generator]] `[context]` - Generate tests for the implementation.
+- [[/debugger]] `[context]` - Debug if there are issues with the implementation.
