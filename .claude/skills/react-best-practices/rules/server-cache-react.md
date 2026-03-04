@@ -3,6 +3,7 @@ title: Per-Request Deduplication with React.cache()
 impact: MEDIUM
 impactDescription: deduplicates within request
 tags: server, cache, react-cache, deduplication
+related: [server-cache-lru, client-swr-dedup]
 ---
 
 ## Per-Request Deduplication with React.cache()
@@ -74,3 +75,5 @@ In Next.js, the `fetch` API is automatically extended with request memoization. 
 Use `React.cache()` to deduplicate these operations across your component tree.
 
 Reference: [React.cache documentation](https://react.dev/reference/react/cache)
+
+For cross-request caching, [[server-cache-lru]] adds TTL-based LRU caching. On the client side, [[client-swr-dedup]] provides similar deduplication via SWR.

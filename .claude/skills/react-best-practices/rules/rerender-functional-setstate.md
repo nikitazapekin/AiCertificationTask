@@ -3,6 +3,7 @@ title: Use Functional setState Updates
 impact: MEDIUM
 impactDescription: prevents stale closures and unnecessary callback recreations
 tags: react, hooks, useState, useCallback, callbacks, closures
+related: [rerender-defer-reads, advanced-event-handler-refs]
 ---
 
 ## Use Functional setState Updates
@@ -72,3 +73,5 @@ function TodoList() {
 - State doesn't depend on previous value
 
 **Note:** If your project has [React Compiler](https://react.dev/learn/react-compiler) enabled, the compiler can automatically optimize some cases, but functional updates are still recommended for correctness and to prevent stale closure bugs.
+
+Reduces the need to subscribe to current state values. For event handler stability specifically, [[advanced-event-handler-refs]] provides an alternative ref-based approach.

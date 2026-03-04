@@ -3,6 +3,7 @@ title: Defer State Reads to Usage Point
 impact: MEDIUM
 impactDescription: avoids unnecessary subscriptions
 tags: rerender, searchParams, localStorage, optimization
+related: [rerender-derived-state, rerender-functional-setstate]
 ---
 
 ## Defer State Reads to Usage Point
@@ -37,3 +38,5 @@ function ShareButton({ chatId }: { chatId: string }) {
   return <button onClick={handleShare}>Share</button>
 }
 ```
+
+Similar to [[rerender-derived-state]] — both reduce unnecessary subscriptions. For callbacks that update state, [[rerender-functional-setstate]] avoids subscribing to the current value.

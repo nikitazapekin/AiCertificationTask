@@ -3,11 +3,14 @@ title: Promise.all() for Independent Operations
 impact: CRITICAL
 impactDescription: 2-10× improvement
 tags: async, parallelization, promises, waterfalls
+related: [async-dependencies, server-parallel-fetching, async-defer-await]
 ---
 
 ## Promise.all() for Independent Operations
 
 When async operations have no interdependencies, execute them concurrently using `Promise.all()`.
+
+For operations with partial dependencies, see [[async-dependencies]] which uses `better-all` for fine-grained control. For server components, [[server-parallel-fetching]] applies the same principle through component composition.
 
 **Incorrect (sequential execution, 3 round trips):**
 
@@ -26,3 +29,5 @@ const [user, posts, comments] = await Promise.all([
   fetchComments()
 ])
 ```
+
+Before parallelizing, verify the await is necessary — [[async-defer-await]] can sometimes eliminate it entirely.

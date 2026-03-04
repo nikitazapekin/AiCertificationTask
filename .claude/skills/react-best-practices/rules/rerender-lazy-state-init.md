@@ -3,6 +3,7 @@ title: Use Lazy State Initialization
 impact: MEDIUM
 impactDescription: wasted computation on every render
 tags: react, hooks, useState, performance, initialization
+related: [js-cache-function-results]
 ---
 
 ## Use Lazy State Initialization
@@ -56,3 +57,5 @@ function UserProfile() {
 Use lazy initialization when computing initial values from localStorage/sessionStorage, building data structures (indexes, maps), reading from the DOM, or performing heavy transformations.
 
 For simple primitives (`useState(0)`), direct references (`useState(props.value)`), or cheap literals (`useState({})`), the function form is unnecessary.
+
+For caching expensive computations beyond initial state, [[js-cache-function-results]] provides module-level memoization.

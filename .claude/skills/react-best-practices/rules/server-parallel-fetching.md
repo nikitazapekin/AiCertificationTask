@@ -3,6 +3,7 @@ title: Parallel Data Fetching with Component Composition
 impact: CRITICAL
 impactDescription: eliminates server-side waterfalls
 tags: server, rsc, parallel-fetching, composition
+related: [async-parallel, async-suspense-boundaries]
 ---
 
 ## Parallel Data Fetching with Component Composition
@@ -81,3 +82,5 @@ export default function Page() {
   )
 }
 ```
+
+This is the server-component equivalent of [[async-parallel]] — composition replaces `Promise.all()`. Combine with [[async-suspense-boundaries]] for streaming individual components as they resolve.

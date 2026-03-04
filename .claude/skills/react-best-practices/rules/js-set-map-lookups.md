@@ -3,6 +3,7 @@ title: Use Set/Map for O(1) Lookups
 impact: LOW-MEDIUM
 impactDescription: O(n) to O(1)
 tags: javascript, set, map, data-structures, performance
+related: [js-index-maps]
 ---
 
 ## Use Set/Map for O(1) Lookups
@@ -22,3 +23,5 @@ items.filter(item => allowedIds.includes(item.id))
 const allowedIds = new Set(['a', 'b', 'c', ...])
 items.filter(item => allowedIds.has(item.id))
 ```
+
+For building lookup indexes from arrays, [[js-index-maps]] shows the Map-based approach for key-value access.

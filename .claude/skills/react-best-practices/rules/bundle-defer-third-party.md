@@ -3,6 +3,7 @@ title: Defer Non-Critical Third-Party Libraries
 impact: MEDIUM
 impactDescription: loads after hydration
 tags: bundle, third-party, analytics, defer
+related: [bundle-dynamic-imports, server-after-nonblocking]
 ---
 
 ## Defer Non-Critical Third-Party Libraries
@@ -47,3 +48,5 @@ export default function RootLayout({ children }) {
   )
 }
 ```
+
+Similar to [[bundle-dynamic-imports]] but specifically for third-party scripts. On the server side, [[server-after-nonblocking]] applies the same principle of deferring non-essential work.

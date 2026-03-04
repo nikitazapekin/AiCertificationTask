@@ -3,6 +3,7 @@ title: Cache Repeated Function Calls
 impact: MEDIUM
 impactDescription: avoid redundant computation
 tags: javascript, cache, memoization, performance
+related: [js-cache-property-access, js-cache-storage, rerender-lazy-state-init]
 ---
 
 ## Cache Repeated Function Calls
@@ -78,3 +79,5 @@ function onAuthChange() {
 Use a Map (not a hook) so it works everywhere: utilities, event handlers, not just React components.
 
 Reference: [How we made the Vercel Dashboard twice as fast](https://vercel.com/blog/how-we-made-the-vercel-dashboard-twice-as-fast)
+
+Same principle as [[js-cache-property-access]] and [[js-cache-storage]]. For React initial state, [[rerender-lazy-state-init]] provides component-scoped lazy initialization.

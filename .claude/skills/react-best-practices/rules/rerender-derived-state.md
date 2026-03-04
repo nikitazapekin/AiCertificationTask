@@ -3,6 +3,7 @@ title: Subscribe to Derived State
 impact: MEDIUM
 impactDescription: reduces re-render frequency
 tags: rerender, derived-state, media-query, optimization
+related: [rerender-memo, rerender-defer-reads]
 ---
 
 ## Subscribe to Derived State
@@ -27,3 +28,5 @@ function Sidebar() {
   return <nav className={isMobile ? 'mobile' : 'desktop'} />
 }
 ```
+
+Combine with [[rerender-memo]] for memoized components that only re-render when derived values change. See also [[rerender-defer-reads]] for state used only in callbacks.

@@ -3,6 +3,7 @@ title: Deduplicate Global Event Listeners
 impact: LOW
 impactDescription: single listener for N components
 tags: client, swr, event-listeners, subscription
+related: [advanced-event-handler-refs, client-passive-event-listeners]
 ---
 
 ## Deduplicate Global Event Listeners
@@ -67,8 +68,10 @@ function useKeyboardShortcut(key: string, callback: () => void) {
 
 function Profile() {
   // Multiple shortcuts will share the same listener
-  useKeyboardShortcut('p', () => { /* ... */ }) 
+  useKeyboardShortcut('p', () => { /* ... */ })
   useKeyboardShortcut('k', () => { /* ... */ })
   // ...
 }
 ```
+
+To avoid re-attaching listeners when callbacks change, [[advanced-event-handler-refs]] stores handlers in refs. For scroll/touch listeners, [[client-passive-event-listeners]] marks them passive to avoid jank.

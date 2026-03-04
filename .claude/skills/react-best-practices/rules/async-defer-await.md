@@ -3,6 +3,7 @@ title: Defer Await Until Needed
 impact: HIGH
 impactDescription: avoids blocking unused code paths
 tags: async, await, conditional, optimization
+related: [async-parallel, js-early-exit]
 ---
 
 ## Defer Await Until Needed
@@ -78,3 +79,5 @@ async function updateResource(resourceId: string, userId: string) {
 ```
 
 This optimization is especially valuable when the skipped branch is frequently taken, or when the deferred operation is expensive.
+
+This pairs well with [[js-early-exit]] for structuring functions to bail out early and avoid unnecessary work.

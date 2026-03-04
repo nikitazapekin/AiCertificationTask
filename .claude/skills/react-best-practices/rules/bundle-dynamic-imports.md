@@ -3,6 +3,7 @@ title: Dynamic Imports for Heavy Components
 impact: CRITICAL
 impactDescription: directly affects TTI and LCP
 tags: bundle, dynamic-import, code-splitting, next-dynamic
+related: [bundle-conditional, bundle-preload, async-suspense-boundaries]
 ---
 
 ## Dynamic Imports for Heavy Components
@@ -33,3 +34,5 @@ function CodePanel({ code }: { code: string }) {
   return <MonacoEditor value={code} />
 }
 ```
+
+For feature-flag gated code, [[bundle-conditional]] applies the same lazy-loading principle. To improve perceived speed, [[bundle-preload]] preloads on hover/focus. Use [[async-suspense-boundaries]] for loading states while chunks load.

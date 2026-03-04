@@ -3,6 +3,7 @@ title: Use Transitions for Non-Urgent Updates
 impact: MEDIUM
 impactDescription: maintains UI responsiveness
 tags: rerender, transitions, startTransition, performance
+related: [rendering-activity]
 ---
 
 ## Use Transitions for Non-Urgent Updates
@@ -38,3 +39,5 @@ function ScrollTracker() {
   }, [])
 }
 ```
+
+For showing/hiding content without destroying state, [[rendering-activity]] preserves component state while hidden.

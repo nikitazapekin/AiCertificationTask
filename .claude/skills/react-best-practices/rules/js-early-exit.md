@@ -3,6 +3,7 @@ title: Early Return from Functions
 impact: LOW-MEDIUM
 impactDescription: avoids unnecessary computation
 tags: javascript, functions, optimization, early-return
+related: [async-defer-await, js-length-check-first]
 ---
 
 ## Early Return from Functions
@@ -47,4 +48,6 @@ function validateUsers(users: User[]) {
 
   return { valid: true }
 }
+
+The async equivalent is [[async-defer-await]] — defer expensive work past early returns. For array operations, [[js-length-check-first]] applies the same principle.
 ```

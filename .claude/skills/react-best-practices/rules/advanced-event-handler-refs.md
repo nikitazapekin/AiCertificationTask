@@ -3,6 +3,7 @@ title: Store Event Handlers in Refs
 impact: LOW
 impactDescription: stable subscriptions
 tags: advanced, hooks, refs, event-handlers, optimization
+related: [advanced-use-latest, client-event-listeners]
 ---
 
 ## Store Event Handlers in Refs
@@ -53,3 +54,5 @@ function useWindowEvent(event: string, handler: (e) => void) {
 ```
 
 `useEffectEvent` provides a cleaner API for the same pattern: it creates a stable function reference that always calls the latest version of the handler.
+
+For a general-purpose version of this pattern, [[advanced-use-latest]] provides a `useLatest` hook. Most useful when working with [[client-event-listeners]] to avoid re-subscribing on every render.

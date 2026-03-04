@@ -3,6 +3,7 @@ title: useLatest for Stable Callback Refs
 impact: LOW
 impactDescription: prevents effect re-runs
 tags: advanced, hooks, useLatest, refs, optimization
+related: [advanced-event-handler-refs, rerender-functional-setstate]
 ---
 
 ## useLatest for Stable Callback Refs
@@ -47,3 +48,5 @@ function SearchInput({ onSearch }: { onSearch: (q: string) => void }) {
   }, [query])
 }
 ```
+
+The specialized version for event handlers is [[advanced-event-handler-refs]]. For setState callbacks specifically, [[rerender-functional-setstate]] is simpler than a ref.

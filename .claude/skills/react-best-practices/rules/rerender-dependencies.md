@@ -3,6 +3,7 @@ title: Narrow Effect Dependencies
 impact: LOW
 impactDescription: minimizes effect re-runs
 tags: rerender, useEffect, dependencies, optimization
+related: [rerender-derived-state]
 ---
 
 ## Narrow Effect Dependencies
@@ -43,3 +44,5 @@ useEffect(() => {
   }
 }, [isMobile])
 ```
+
+Similar principle to [[rerender-derived-state]] — use the most primitive form of data in dependencies to avoid false positives.

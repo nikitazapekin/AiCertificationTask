@@ -3,6 +3,7 @@ title: Preload Based on User Intent
 impact: MEDIUM
 impactDescription: reduces perceived latency
 tags: bundle, preload, user-intent, hover
+related: [bundle-dynamic-imports, bundle-conditional]
 ---
 
 ## Preload Based on User Intent
@@ -48,3 +49,5 @@ function FlagsProvider({ children, flags }: Props) {
 ```
 
 The `typeof window !== 'undefined'` check prevents bundling preloaded modules for SSR, optimizing server bundle size and build speed.
+
+Most useful when combined with [[bundle-dynamic-imports]] or [[bundle-conditional]] — preload the chunk that will be needed on the next interaction.

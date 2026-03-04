@@ -83,6 +83,35 @@ When reviewing React/Vue/Angular components or frontend code:
 
 3. **Output format**: Use the terse `file:line` format as specified in the fetched guidelines
 
+### 8. WCAG Accessibility (when reviewing UI code)
+
+When reviewing frontend code, apply WCAG 2.2 Level AA accessibility rules from the `wcag-accessibility` skill. Read the skill's `AGENTS.md` for the full compiled guide, or individual rules from `rules/` by category:
+
+**CRITICAL priority:**
+- [ ] Semantic HTML (headings hierarchy, landmarks, button vs link, lists, tables)
+- [ ] Keyboard accessibility (focus visible, tab order, interactive elements, focus trap, skip link)
+
+**HIGH priority:**
+- [ ] ARIA usage (prefer semantic HTML, accessible names, live regions, aria-hidden misuse, expanded states)
+- [ ] Color contrast (text 4.5:1, large text 3:1, UI components 3:1, color not sole indicator)
+
+**MEDIUM-HIGH priority:**
+- [ ] Forms (labels, error messages, autocomplete, fieldset/legend)
+
+**MEDIUM priority:**
+- [ ] Media (alt text, decorative images, video captions)
+- [ ] Motion (prefers-reduced-motion, no autoplay, safe transitions)
+
+**LOW-MEDIUM priority:**
+- [ ] Responsive (text resize, reflow at 320px, touch targets 44x44)
+
+Read individual rule files for detailed incorrect/correct code examples:
+```
+wcag-accessibility/rules/semantic-heading-hierarchy.md
+wcag-accessibility/rules/keyboard-focus-visible.md
+wcag-accessibility/rules/aria-labels-required.md
+```
+
 ## Code Smells
 
 | Smell | Issue | Fix |
@@ -150,9 +179,9 @@ Format feedback as:
 
 | Severity | Criteria | Examples |
 |----------|----------|----------|
-| Critical | Security issue, data loss, crash | SQL injection, missing auth |
-| Major | Bug, poor performance, maintainability | N+1 query, duplicate code |
-| Minor | Style, naming, small improvements | Variable naming, comments |
+| Critical | Security issue, data loss, crash, a11y blocker | SQL injection, missing auth, no keyboard access |
+| Major | Bug, poor performance, maintainability, a11y barrier | N+1 query, duplicate code, missing alt text, no focus visible |
+| Minor | Style, naming, small improvements, a11y enhancement | Variable naming, comments, missing autocomplete |
 
 ---
 

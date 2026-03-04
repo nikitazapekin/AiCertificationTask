@@ -3,6 +3,7 @@ title: Combine Multiple Array Iterations
 impact: LOW-MEDIUM
 impactDescription: reduces iterations
 tags: javascript, arrays, loops, performance
+related: [js-index-maps]
 ---
 
 ## Combine Multiple Array Iterations
@@ -29,4 +30,6 @@ for (const user of users) {
   if (user.isTester) testers.push(user)
   if (!user.isActive) inactive.push(user)
 }
+
+When iterations involve lookups, [[js-index-maps]] can eliminate nested loops entirely by pre-building a Map.
 ```

@@ -3,6 +3,7 @@ title: Prevent Waterfall Chains in API Routes
 impact: CRITICAL
 impactDescription: 2-10× improvement
 tags: api-routes, server-actions, waterfalls, parallelization
+related: [async-defer-await, async-parallel]
 ---
 
 ## Prevent Waterfall Chains in API Routes
@@ -36,3 +37,5 @@ export async function GET(request: Request) {
 ```
 
 For operations with more complex dependency chains, use `better-all` to automatically maximize parallelism (see Dependency-Based Parallelization).
+
+This is the API route equivalent of [[async-defer-await]] — start work early, use results late. For multiple independent fetches, combine with [[async-parallel]].

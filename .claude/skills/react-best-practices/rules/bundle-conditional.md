@@ -3,6 +3,7 @@ title: Conditional Module Loading
 impact: HIGH
 impactDescription: loads large data only when needed
 tags: bundle, conditional-loading, lazy-loading
+related: [bundle-dynamic-imports, bundle-preload]
 ---
 
 ## Conditional Module Loading
@@ -29,3 +30,5 @@ function AnimationPlayer({ enabled, setEnabled }: { enabled: boolean; setEnabled
 ```
 
 The `typeof window !== 'undefined'` check prevents bundling this module for SSR, optimizing server bundle size and build speed.
+
+This is a specialized form of [[bundle-dynamic-imports]] for feature-gated code. Combine with [[bundle-preload]] to preload the module when the user is about to activate the feature.

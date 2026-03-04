@@ -3,6 +3,7 @@ title: Use Activity Component for Show/Hide
 impact: MEDIUM
 impactDescription: preserves state/DOM
 tags: rendering, activity, visibility, state-preservation
+related: [rerender-transitions, rendering-content-visibility]
 ---
 
 ## Use Activity Component for Show/Hide
@@ -24,3 +25,5 @@ function Dropdown({ isOpen }: Props) {
 ```
 
 Avoids expensive re-renders and state loss.
+
+For non-urgent state updates, pair with [[rerender-transitions]]. For CSS-level off-screen optimization, see [[rendering-content-visibility]].

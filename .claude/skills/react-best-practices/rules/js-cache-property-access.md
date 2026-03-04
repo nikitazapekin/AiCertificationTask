@@ -3,6 +3,7 @@ title: Cache Property Access in Loops
 impact: LOW-MEDIUM
 impactDescription: reduces lookups
 tags: javascript, loops, optimization, caching
+related: [js-cache-function-results, js-cache-storage]
 ---
 
 ## Cache Property Access in Loops
@@ -26,3 +27,5 @@ for (let i = 0; i < len; i++) {
   process(value)
 }
 ```
+
+Same caching principle as [[js-cache-function-results]] (function returns) and [[js-cache-storage]] (localStorage reads).

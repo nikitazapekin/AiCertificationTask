@@ -1,0 +1,7 @@
+{
+    "context7": {
+        "description": "Up-to-date documentation and code examples for any library",
+        "requiresAuth": false,
+        "setupInstructions": "No setup required. Works out of the box via npx."
+    }
+}

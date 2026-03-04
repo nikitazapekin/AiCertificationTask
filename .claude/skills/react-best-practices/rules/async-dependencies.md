@@ -3,6 +3,7 @@ title: Dependency-Based Parallelization
 impact: CRITICAL
 impactDescription: 2-10× improvement
 tags: async, parallelization, dependencies, better-all
+related: [async-parallel, server-parallel-fetching]
 ---
 
 ## Dependency-Based Parallelization
@@ -34,3 +35,5 @@ const { user, config, profile } = await all({
 ```
 
 Reference: [https://github.com/shuding/better-all](https://github.com/shuding/better-all)
+
+For fully independent operations, [[async-parallel]] with `Promise.all()` is simpler. For server-side composition patterns, see [[server-parallel-fetching]].

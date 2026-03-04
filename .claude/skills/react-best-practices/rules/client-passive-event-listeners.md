@@ -3,6 +3,7 @@ title: Use Passive Event Listeners for Scrolling Performance
 impact: MEDIUM
 impactDescription: eliminates scroll delay caused by event listeners
 tags: client, event-listeners, scrolling, performance, touch, wheel
+related: [client-event-listeners]
 ---
 
 ## Use Passive Event Listeners for Scrolling Performance
@@ -46,3 +47,5 @@ useEffect(() => {
 **Use passive when:** tracking/analytics, logging, any listener that doesn't call `preventDefault()`.
 
 **Don't use passive when:** implementing custom swipe gestures, custom zoom controls, or any listener that needs `preventDefault()`.
+
+Often combined with [[client-event-listeners]] patterns for scroll and resize handlers.

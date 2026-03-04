@@ -3,6 +3,7 @@ title: Version and Minimize localStorage Data
 impact: MEDIUM
 impactDescription: prevents schema conflicts, reduces storage size
 tags: client, localStorage, storage, versioning, data-minimization
+related: [js-cache-storage]
 ---
 
 ## Version and Minimize localStorage Data
@@ -69,3 +70,5 @@ function cachePrefs(user: FullUser) {
 **Always wrap in try-catch:** `getItem()` and `setItem()` throw in incognito/private browsing (Safari, Firefox), when quota exceeded, or when disabled.
 
 **Benefits:** Schema evolution via versioning, reduced storage size, prevents storing tokens/PII/internal flags.
+
+For caching localStorage reads to avoid repeated synchronous access, see [[js-cache-storage]].

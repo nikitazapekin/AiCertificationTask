@@ -3,6 +3,7 @@ title: Use toSorted() Instead of sort() for Immutability
 impact: MEDIUM-HIGH
 impactDescription: prevents mutation bugs in React state
 tags: javascript, arrays, immutability, react, state, mutation
+related: [rerender-derived-state]
 ---
 
 ## Use toSorted() Instead of sort() for Immutability
@@ -55,3 +56,5 @@ const sorted = [...items].sort((a, b) => a.value - b.value)
 - `.toReversed()` - immutable reverse
 - `.toSpliced()` - immutable splice
 - `.with()` - immutable element replacement
+
+Immutable operations pair well with [[rerender-derived-state]] — derived values recompute cleanly when source data doesn't mutate.

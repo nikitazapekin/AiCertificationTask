@@ -3,6 +3,7 @@ title: Minimize Serialization at RSC Boundaries
 impact: HIGH
 impactDescription: reduces data transfer size
 tags: server, rsc, serialization, props
+related: [server-parallel-fetching]
 ---
 
 ## Minimize Serialization at RSC Boundaries
@@ -36,3 +37,5 @@ function Profile({ name }: { name: string }) {
   return <div>{name}</div>
 }
 ```
+
+When restructuring components for [[server-parallel-fetching]], also minimize what crosses the server-client boundary.

@@ -3,6 +3,7 @@ title: Cache Storage API Calls
 impact: LOW-MEDIUM
 impactDescription: reduces expensive I/O
 tags: javascript, localStorage, storage, caching, performance
+related: [js-cache-property-access, js-cache-function-results, client-localstorage-schema]
 ---
 
 ## Cache Storage API Calls
@@ -67,4 +68,6 @@ document.addEventListener('visibilitychange', () => {
     storageCache.clear()
   }
 })
+
+Same caching principle as [[js-cache-property-access]] and [[js-cache-function-results]]. For schema validation of stored data, see [[client-localstorage-schema]].
 ```

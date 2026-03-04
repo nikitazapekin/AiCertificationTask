@@ -3,6 +3,7 @@ title: Strategic Suspense Boundaries
 impact: HIGH
 impactDescription: faster initial paint
 tags: async, suspense, streaming, layout-shift
+related: [server-parallel-fetching, bundle-dynamic-imports]
 ---
 
 ## Strategic Suspense Boundaries
@@ -97,3 +98,5 @@ Both components share the same promise, so only one fetch occurs. Layout renders
 - When you want to avoid layout shift (loading → content jump)
 
 **Trade-off:** Faster initial paint vs potential layout shift. Choose based on your UX priorities.
+
+Suspense boundaries pair naturally with [[bundle-dynamic-imports]] for code-split loading states. For server-side parallel fetching, [[server-parallel-fetching]] restructures composition to avoid waterfalls.

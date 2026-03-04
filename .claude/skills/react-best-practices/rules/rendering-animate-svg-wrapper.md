@@ -3,6 +3,7 @@ title: Animate SVG Wrapper Instead of SVG Element
 impact: LOW
 impactDescription: enables hardware acceleration
 tags: rendering, svg, css, animation, performance
+related: [rendering-svg-precision]
 ---
 
 ## Animate SVG Wrapper Instead of SVG Element
@@ -45,3 +46,5 @@ function LoadingSpinner() {
 ```
 
 This applies to all CSS transforms and transitions (`transform`, `opacity`, `translate`, `scale`, `rotate`). The wrapper div allows browsers to use GPU acceleration for smoother animations.
+
+For additional SVG optimization, [[rendering-svg-precision]] reduces coordinate precision to shrink SVG size.

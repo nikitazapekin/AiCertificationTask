@@ -3,6 +3,7 @@ title: Use Loop for Min/Max Instead of Sort
 impact: LOW
 impactDescription: O(n) instead of O(n log n)
 tags: javascript, arrays, performance, sorting, algorithms
+related: [js-combine-iterations]
 ---
 
 ## Use Loop for Min/Max Instead of Sort
@@ -80,3 +81,5 @@ const max = Math.max(...numbers)
 ```
 
 This works for small arrays, but can be slower or just throw an error for very large arrays due to spread operator limitations. Maximal array length is approximately 124000 in Chrome 143 and 638000 in Safari 18; exact numbers may vary - see [the fiddle](https://jsfiddle.net/qw1jabsx/4/). Use the loop approach for reliability.
+
+When computing multiple aggregates, [[js-combine-iterations]] shows how to merge multiple passes into one loop.

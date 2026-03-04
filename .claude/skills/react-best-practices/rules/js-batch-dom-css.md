@@ -3,6 +3,7 @@ title: Batch DOM CSS Changes
 impact: MEDIUM
 impactDescription: reduces reflows/repaints
 tags: javascript, dom, css, performance, reflow
+related: [rendering-content-visibility]
 ---
 
 ## Batch DOM CSS Changes
@@ -55,3 +56,5 @@ function updateElementStyles(element: HTMLElement) {
 ```
 
 Prefer CSS classes over inline styles when possible. CSS files are cached by the browser, and classes provide better separation of concerns and are easier to maintain.
+
+For skipping off-screen rendering entirely, [[rendering-content-visibility]] avoids the need for DOM batching on hidden content.

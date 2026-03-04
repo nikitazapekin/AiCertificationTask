@@ -3,6 +3,7 @@ title: Use SWR for Automatic Deduplication
 impact: MEDIUM-HIGH
 impactDescription: automatic deduplication
 tags: client, swr, deduplication, data-fetching
+related: [server-cache-react, client-event-listeners]
 ---
 
 ## Use SWR for Automatic Deduplication
@@ -54,3 +55,5 @@ function UpdateButton() {
 ```
 
 Reference: [https://swr.vercel.app](https://swr.vercel.app)
+
+This is the client-side equivalent of [[server-cache-react]] for request deduplication. For deduplicating event handlers specifically, see [[client-event-listeners]].

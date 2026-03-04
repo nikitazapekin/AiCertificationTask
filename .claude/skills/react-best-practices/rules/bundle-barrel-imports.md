@@ -3,6 +3,7 @@ title: Avoid Barrel File Imports
 impact: CRITICAL
 impactDescription: 200-800ms import cost, slow builds
 tags: bundle, imports, tree-shaking, barrel-files, performance
+related: [bundle-dynamic-imports]
 ---
 
 ## Avoid Barrel File Imports
@@ -57,3 +58,5 @@ Direct imports provide 15-70% faster dev boot, 28% faster builds, 40% faster col
 Libraries commonly affected: `lucide-react`, `@mui/material`, `@mui/icons-material`, `@tabler/icons-react`, `react-icons`, `@headlessui/react`, `@radix-ui/react-*`, `lodash`, `ramda`, `date-fns`, `rxjs`, `react-use`.
 
 Reference: [How we optimized package imports in Next.js](https://vercel.com/blog/how-we-optimized-package-imports-in-next-js)
+
+For components that are large but rarely used, [[bundle-dynamic-imports]] goes further by lazy-loading the entire component.

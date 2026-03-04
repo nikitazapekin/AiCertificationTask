@@ -3,6 +3,7 @@ title: Hoist RegExp Creation
 impact: LOW-MEDIUM
 impactDescription: avoids recreation
 tags: javascript, regexp, optimization, memoization
+related: [js-cache-property-access]
 ---
 
 ## Hoist RegExp Creation
@@ -43,3 +44,5 @@ const regex = /foo/g
 regex.test('foo')  // true, lastIndex = 3
 regex.test('foo')  // false, lastIndex = 0
 ```
+
+Same hoisting principle as [[js-cache-property-access]] — move invariant work outside loops.

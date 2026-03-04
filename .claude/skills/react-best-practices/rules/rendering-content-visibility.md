@@ -3,6 +3,7 @@ title: CSS content-visibility for Long Lists
 impact: HIGH
 impactDescription: faster initial render
 tags: rendering, css, content-visibility, long-lists
+related: [rendering-activity]
 ---
 
 ## CSS content-visibility for Long Lists
@@ -36,3 +37,5 @@ function MessageList({ messages }: { messages: Message[] }) {
 ```
 
 For 1000 messages, browser skips layout/paint for ~990 off-screen items (10× faster initial render).
+
+For React-managed show/hide, [[rendering-activity]] offers a similar benefit at the component level.

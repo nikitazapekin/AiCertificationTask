@@ -3,6 +3,7 @@ title: Optimize SVG Precision
 impact: LOW
 impactDescription: reduces file size
 tags: rendering, svg, optimization, svgo
+related: [rendering-animate-svg-wrapper]
 ---
 
 ## Optimize SVG Precision
@@ -26,3 +27,5 @@ Reduce SVG coordinate precision to decrease file size. The optimal precision dep
 ```bash
 npx svgo --precision=1 --multipass icon.svg
 ```
+
+For animation-specific SVG optimization, [[rendering-animate-svg-wrapper]] uses a wrapping div for GPU-accelerated transforms.
