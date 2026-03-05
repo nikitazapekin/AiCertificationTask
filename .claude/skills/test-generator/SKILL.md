@@ -271,6 +271,15 @@ export function createMockUser(overrides: Partial<User> = {}): User {
 }
 ```
 
+## Pre-Completion Verification
+
+Run applicable checks from [DOD.md](../../DOD.md) (Standard tier):
+- Run all generated tests — verify they pass
+- Run lint on test files (if lint tooling exists)
+- Verify test file naming follows project conventions
+- If tests fail, fix or escalate to `/debugger`
+- Include pass/fail evidence in Context Summary
+
 ## Quality Checklist
 
 - [ ] Tests are independent (no shared state)

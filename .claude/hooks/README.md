@@ -1,113 +1,49 @@
 # Claude Code Hooks Documentation
 
-## Notification Hook
+## Active Hooks
 
-**Triggers**: When Claude sends notifications (permission requests, waiting for input)
+### SessionStart: Local Context Scanner
+**Script:** `local-context.sh`
+**Purpose:** Outputs project context (git branch, package managers, available commands, project structure) at session start.
+**Return:** Always 0 (informational only)
 
-**Purpose**: Desktop notification so you know when Claude needs interaction.
+### PreToolUse (Write|Edit): File Naming Validator
+**Script:** `file-naming-validator.sh`
+**Purpose:** Validates that .md files in `tasks/` and `specs/` follow skill-prefix naming convention.
+**Return:** 0 = valid name, 1 = warning (currently active), 2 = block (after tuning)
+**Allowlist:** README.md, CHANGELOG.md, MANIFEST.md
 
-### Setup
+### PreToolUse (Bash): Bash Validator
+**Script:** `bash-validator.sh`
+**Purpose:** Detects destructive commands: force-push, hard reset, DROP TABLE, npm publish, --no-verify.
+**Return:** 0 = safe command, 1 = warning (currently active), 2 = block (after tuning)
 
-In `.claude/settings.json` currently configured the **WSL (or Windows PowerShell)** variant.
-To switch OS — replace the `"command"` value in the `Notification` hook with the appropriate command below.
+### PostToolUse (Edit): Loop Detection
+**Script:** `loop-detection.sh`
+**Purpose:** Tracks edit count per file per session. Detects doom loops.
+**Return:** 0 = normal, 1 = warning at 7 edits, 2 = block at 10 edits
+**Tracking:** Uses `/tmp/claude-loop-detection/` (resets on reboot)
 
----
+### Notification: Desktop Alert
+**Purpose:** Desktop notification when Claude needs user attention.
+**Variants:** WSL/PowerShell (active), macOS (osascript), Linux (notify-send)
 
-### WSL (or Windows PowerShell) — current active
+## Hook Return Codes
 
-Uses Windows Toast notification via PowerShell:
+| Code | Meaning |
+|------|---------|
+| `0` | Success, continue |
+| `1` | Warning, continue (logged) |
+| `2` | Block operation (shows error) |
 
-```json
-{
-  "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "powershell.exe -Command \"[void][System.Reflection.Assembly]::LoadWithPartialName('System.Windows.Forms'); $n = New-Object System.Windows.Forms.NotifyIcon; $n.Icon = [System.Drawing.SystemIcons]::Information; $n.Visible = $true; $n.ShowBalloonTip(3000, 'Claude Code', 'Claude needs your attention', 'Info')\" 2>/dev/null || echo '🔔 Claude Code notification'",
-            "timeout": 5000
-          }
-        ]
-      }
-    ]
-  }
-}
-```
+## Tuning Strategy
 
----
+All enforcement hooks start in **warn-only mode** (exit 1). After 1-2 weeks of observing behavior:
+1. Review false positive rate
+2. Adjust patterns/thresholds if needed
+3. Switch to **block mode** (exit 2) for validated rules
 
-### macOS
-
-Uses native macOS notification with sound:
-
-```json
-{
-  "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "osascript -e 'display notification \"Claude needs your attention\" with title \"Claude Code\" sound name \"default\"'",
-            "timeout": 2000
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-Available sounds: Basso, Blow, Bottle, Frog, Funk, Glass, Hero, Morse, Ping, Pop, Purr, Sosumi, Submarine, Tink.
-
----
-
-### Ubuntu / Linux
-
-Uses `notify-send` (part of `libnotify-bin`):
-
-```json
-{
-  "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "notify-send -u normal -t 3000 'Claude Code' 'Claude needs your attention' 2>/dev/null || echo '🔔 Claude Code notification'",
-            "timeout": 2000
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-Install if missing:
-```bash
-sudo apt install libnotify-bin
-```
-
----
-
-## Hook Reference
-
-### Return Codes
-
-- `0` — Success, continue
-- `1` — Failure, but continue (logged as warning)
-- `2` — Failure, block operation (shows error to user)
-
-### Environment Variables
-
-- `CLAUDE_PROJECT_DIR` — Current project directory
-- `CLAUDE_FILE_PATHS` — Files being modified
-- `CLAUDE_TOOL_INPUT` — Tool parameters (JSON)
-- `CLAUDE_TOOL_NAME` — Name of the tool being used
-
-### Hook Types
+## Hook Types
 
 | Hook | When it fires |
 |------|--------------|
@@ -117,11 +53,10 @@ sudo apt install libnotify-bin
 | `PreToolUse` | Before a tool executes |
 | `PostToolUse` | After a tool executes |
 
-### Personal Hooks
+## Personal Hooks
 
 Use `.claude/settings.local.json` for personal hooks that shouldn't be shared with the team.
 
 ## References
 
 - [Claude Code Hooks Documentation](https://docs.anthropic.com/en/docs/claude-code/hooks)
-- [jq Manual](https://stedolan.github.io/jq/manual/)

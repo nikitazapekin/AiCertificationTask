@@ -1,5 +1,7 @@
 # Claude Code Configuration
 
+> **For agent policy rules, see [/AGENTS.md](../AGENTS.md)**
+
 This directory contains skills, commands, agents, and hooks that extend Claude Code's capabilities for this project.
 
 ## Directory Structure
@@ -86,8 +88,9 @@ Commands are shortcuts to invoke skills. Type `/` followed by the command name:
 | `/debugger`             | Systematic debugging with root cause analysis     |
 | `/release`              | Create GitHub release with changelog              |
 | `/finishing-branch`     | Complete branch work and merge/PR                 |
-| `/verify`               | Verify claims with evidence before completion     |
+| `/verify`               | Run DoD checklist and report pass/fail status     |
 | `/docs-generator`       | Generate project documentation                    |
+| `/reflect`              | Turn agent mistakes into permanent rules           |
 | `/skill-creator`        | Create new skills                                 |
 | `/accelerator-update`   | Update accelerator to latest version              |
 
@@ -169,7 +172,7 @@ Skills are detailed instruction sets that define how Claude performs specific ta
 | `code-reviewer`                  | Code quality, security, performance review |
 | `test-generator`                 | Generate comprehensive tests               |
 | `systematic-debugger`            | Root cause analysis and debugging          |
-| `verification-before-completion` | Verify claims with evidence                |
+| `verify`                         | Run DoD checklist, report pass/fail        |
 
 #### Finalization Phase
 
@@ -183,6 +186,7 @@ Skills are detailed instruction sets that define how Claude performs specific ta
 
 | Skill                | Purpose                              |
 | -------------------- | ------------------------------------ |
+| `reflect`            | Turn mistakes into permanent rules   |
 | `skill-creator`      | Create new skills                    |
 | `accelerator-update` | Update accelerator to latest version |
 
@@ -216,10 +220,11 @@ Every agent:
 | `code-reviewer-agent`           | code-reviewer                  | Code quality review         |
 | `test-generator-agent`          | test-generator                 | Generate tests              |
 | `systematic-debugger-agent`     | systematic-debugger            | Root cause analysis         |
-| `verification-agent`            | verification-before-completion | Verify claims               |
+| `verify-agent`                  | verify                         | Run DoD checklist           |
 | `release-agent`                 | release                        | Create GitHub releases      |
 | `finishing-branch-agent`        | finishing-branch               | Complete branch work        |
 | `documentation-generator-agent` | documentation-generator        | Generate docs               |
+| `reflect-agent`                 | reflect                        | Stabilize errors into rules |
 | `skill-creator-agent`           | skill-creator                  | Create new skills           |
 | `accelerator-update-agent`      | accelerator-update             | Update accelerator version  |
 
@@ -239,14 +244,13 @@ Hooks are shell commands that execute in response to Claude Code events.
 
 ### Configured Hooks
 
-| Hook                      | Trigger                  | Purpose              |
-| ------------------------- | ------------------------ | -------------------- |
-| `SessionStart`            | Session begins           | Welcome message      |
-| `Notification`            | Permission/input needed  | Desktop notification |
-| `Stop`                    | Response completed       | Completion timestamp |
-| `PreToolUse:Bash`         | Before bash command      | Visual feedback      |
-| `PreToolUse:Edit\|Write`  | Before file modification | Alert message        |
-| `PostToolUse:Write\|Edit` | After file saved         | Confirmation         |
+| Hook                      | Trigger                  | Purpose                    |
+| ------------------------- | ------------------------ | -------------------------- |
+| `SessionStart`            | Session begins           | Project context scanner    |
+| `PreToolUse:Write\|Edit`  | Before file modification | File naming validation     |
+| `PreToolUse:Bash`         | Before bash command      | Destructive command guard  |
+| `PostToolUse:Edit`        | After file edit          | Loop detection (7/10 edits)|
+| `Notification`            | Permission/input needed  | Desktop notification       |
 
 ### Hook Return Codes
 

@@ -62,9 +62,16 @@ Utility tools ([[moc-utility]]) are available at any time.
 │   │ /test-        │    │   generator   │            │               │
 │   │   generator   │    │     │         │            │               │
 │   │     │         │    │     ▼         │            │               │
-│   │     ▼         │    │ /debugger     │            │               │
-│   │ /debugger     │    │  (if needed)  │            │               │
-│   │  (if needed)  │    │     │         │            │               │
+│   │     ▼         │    │  ┌─FAIL?──┐  │            │               │
+│   │  ┌─FAIL?──┐  │    │  │fix→re- │  │            │               │
+│   │  │fix→re- │  │    │  │run(3x) │  │            │               │
+│   │  │run(3x) │  │    │  │else →  │  │            │               │
+│   │  │else →  │  │    │  │/debugger│  │            │               │
+│   │  │/debugger│  │    │  └────────┘  │            │               │
+│   │  └────────┘  │    │     │         │            │               │
+│   │     │         │    │     ▼         │            │               │
+│   │     ▼         │    │ /verify       │            │               │
+│   │ /verify       │    │     │         │            │               │
 │   │     │         │    │     ▼         │            │               │
 │   │     ▼         │    │ /finishing-   │            │               │
 │   │ /finishing-   │    │   branch      │            │               │
@@ -100,8 +107,9 @@ Utility tools ([[moc-utility]]) are available at any time.
 | [[/coder-frontend]] | [[/code-reviewer]] | Review the frontend code |
 | [[/coder]] | [[/code-reviewer]] | Review the backend code |
 | [[/code-reviewer]] | [[/test-generator]] | Generate tests for reviewed code |
-| [[/test-generator]] | [[/debugger]] or [[/docs-generator]] | Debug failures or update documentation |
+| [[/test-generator]] | [[/verify]] or [[/debugger]] | Verify DoD or debug failures |
 | [[/debugger]] | [[/test-generator]] | Re-run tests after fix |
+| [[/verify]] | [[/finishing-branch]] | Complete if all checks pass |
 | [[/docs-generator]] | [[/release]] or [[/finishing-branch]] | Create release or complete the branch |
 | [[/release]] | [[/finishing-branch]] | Complete the branch |
 | [[/finishing-branch]] | (end) | Workflow complete |
@@ -122,6 +130,7 @@ Choose your starting point based on your situation:
 
 | Command | When to Use |
 | --- | --- |
+| [[/reflect]] | Turn agent mistakes into permanent rules |
 | [[/skill-creator]] | Create a new skill |
 | [[/accelerator-update]] | Update accelerator to latest version |
 

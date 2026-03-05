@@ -84,17 +84,26 @@ Review existing codebase for:
 
 Follow project conventions and existing patterns.
 
-### Step 4: Test
+### Step 4: Test (Verify-Fix Loop)
 
 - Write unit tests for components
 - Write integration tests for features
 - Run `npx nx test <frontend-project>`
+- **If tests fail:** Read FULL error output -> Fix root cause -> Re-run tests
+- **Max 3 attempts.** If still failing after 3 fixes, escalate to `/debugger`
+- MUST NOT proceed to completion with failing tests
 
-### Step 5: Review
+### Step 5: Pre-Completion Verification
 
-- Check accessibility
+Run applicable checks from [DOD.md](../../DOD.md) (Standard tier):
+- Run tests (if test tooling exists)
+- Run lint (if lint tooling exists)
+- Run build (if build tooling exists)
+- Check accessibility compliance
 - Verify responsive behavior
-- Run linter
+- Verify file naming follows skill-prefix convention
+- If any check fails, fix or escalate — do not skip
+- Include verification evidence in Context Summary
 
 ## Component Architecture
 
@@ -424,6 +433,8 @@ export function useModal() {
 
 ## Quality Checklist
 
+Before completing, verify against [DOD.md](../../DOD.md):
+
 - [ ] Components are properly typed
 - [ ] Props have appropriate defaults
 - [ ] Accessibility attributes present
@@ -431,6 +442,7 @@ export function useModal() {
 - [ ] Loading states handled
 - [ ] Tests written
 - [ ] Lint passes
+- [ ] File naming uses `coder-frontend-` prefix for any generated docs
 
 ---
 

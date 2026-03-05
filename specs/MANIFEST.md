@@ -6,10 +6,10 @@
 
 | File | Purpose | Depends On | Last Updated |
 |------|---------|------------|--------------|
-| architecture.md | System design, components, data flow | - | - |
-| api-spec.md | Endpoints, schemas, authentication | architecture | - |
-| frontend-spec.md | Pages, components, state management | architecture, api-spec | - |
-| implementation.md | Build process, deployment, tooling | - | - |
+| architect-architecture.md | System design, components, data flow | - | - |
+| api-designer-spec.md | Endpoints, schemas, authentication | architect-architecture | - |
+| frontend-design-spec.md | Pages, components, state management | architect-architecture, api-designer-spec | - |
+| docs-generator-implementation.md | Build process, deployment, tooling | - | - |
 
 ## Key Decisions
 

@@ -156,7 +156,15 @@ wcag-accessibility/rules/aria-labels-required.md
 - Do tests cover the functionality?
 - Are tests readable and maintainable?
 
-### Step 5: Provide Feedback
+### Step 5: Pre-Completion Verification
+
+Cross-reference against [DOD.md](../../DOD.md) (Standard tier):
+- Verify tests exist and pass (if test tooling present)
+- Verify lint passes (if lint tooling present)
+- Verify file naming follows skill-prefix convention
+- Include verification evidence in review output
+
+### Step 6: Provide Feedback
 
 Format feedback as:
 

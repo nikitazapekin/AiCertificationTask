@@ -79,17 +79,23 @@ Follow established patterns:
 - Handle errors appropriately
 - Follow layered architecture
 
-### Step 4: Test
+### Step 4: Test (Verify-Fix Loop)
 
 - Write unit tests
 - Run tests
-- Fix any failures
+- **If tests fail:** Read FULL error output -> Fix root cause -> Re-run tests
+- **Max 3 attempts.** If still failing after 3 fixes, escalate to `/debugger`
+- MUST NOT proceed to completion with failing tests
 
-### Step 5: Review
+### Step 5: Pre-Completion Verification
 
-- Check code quality
-- Verify architecture compliance
-- Run linter
+Run applicable checks from [DOD.md](../../DOD.md) (Standard tier):
+- Run tests (if test tooling exists)
+- Run lint (if lint tooling exists)
+- Run build (if build tooling exists)
+- Verify file naming follows skill-prefix convention
+- If any check fails, fix or escalate — do not skip
+- Include verification evidence in Context Summary
 
 ## Architecture Compliance
 
@@ -221,7 +227,7 @@ export class ProductController {
 
 ## Quality Checklist
 
-Before completing any implementation:
+Before completing any implementation, verify against [DOD.md](../../DOD.md):
 
 - [ ] Code follows project conventions
 - [ ] Proper error handling
@@ -230,6 +236,7 @@ Before completing any implementation:
 - [ ] Lint passes
 - [ ] Tests pass
 - [ ] Build succeeds
+- [ ] File naming uses `coder-` prefix for any generated docs
 
 ---
 

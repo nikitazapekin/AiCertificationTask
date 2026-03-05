@@ -49,6 +49,12 @@ Every agent output ends with suggested next commands based on:
 - The flow defined in `skills/SKILL FLOW.md`
 - Alternative relevant commands
 
+### 5. Time Budget Awareness
+If you've made >3 tool calls without measurable progress toward the goal, pause and reassess your approach. Consider:
+- Is the current strategy working?
+- Should you try an alternative approach?
+- Should you escalate to `/debugger`?
+
 ## Agent Template
 
 Every agent follows this structure:
@@ -117,7 +123,7 @@ When done, provide:
 | `code-reviewer-agent` | code-reviewer | test-generator |
 | `test-generator-agent` | test-generator | debugger (if failures) / finishing-branch |
 | `systematic-debugger-agent` | systematic-debugger | test-generator |
-| `verification-agent` | verification-before-completion | finishing-branch |
+| `verify-agent` | verify | finishing-branch |
 | `finishing-branch-agent` | finishing-branch | (end) |
 
 ### Finalization Phase
@@ -129,6 +135,7 @@ When done, provide:
 ### Utility
 | Agent | Skill | Next by Flow |
 |-------|-------|--------------|
+| `reflect-agent` | reflect | (standalone) |
 | `skill-creator-agent` | skill-creator | (standalone) |
 | `accelerator-update-agent` | accelerator-update | (standalone) |
 
