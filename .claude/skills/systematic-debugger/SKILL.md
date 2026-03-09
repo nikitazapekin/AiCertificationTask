@@ -3,8 +3,8 @@ name: systematic-debugger
 description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes. Requires root cause investigation before any fixes. Triggers on "debug", "error", "fix bug", "test failure", "investigate", "not working".
 phase: execution
 flow-next: test-generator
-flow-alternatives: [coder, coder-frontend]
-related: [test-generator, coder]
+flow-alternatives: [coder, coder-frontend, browser-verify]
+related: [test-generator, coder, browser-verify]
 ---
 
 # Systematic Debugger

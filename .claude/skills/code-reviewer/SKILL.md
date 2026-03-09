@@ -4,7 +4,7 @@ description: Review code for quality, standards compliance, security issues, and
 phase: execution
 flow-next: test-generator
 flow-alternatives: [coder, coder-frontend]
-related: [coder, coder-frontend]
+related: [coder, coder-frontend, browser-verify]
 ---
 
 # Code Reviewer

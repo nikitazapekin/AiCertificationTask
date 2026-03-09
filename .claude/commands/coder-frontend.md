@@ -2,7 +2,7 @@
 spawns: coder-frontend-agent
 phase: execution
 flow-next: code-reviewer
-flow-alternatives: [test-generator]
+flow-alternatives: [browser-verify, test-generator]
 ---
 
 # Coder Frontend

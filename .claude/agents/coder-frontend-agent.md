@@ -30,6 +30,7 @@ When done, provide:
 **Next by flow:** `/code-reviewer [context summary]` - Review the frontend code for quality and issues.
 
 **Alternatives:**
+- `/browser-verify [context summary]` - Visually verify UI changes in the running app.
 - `/test-generator [context summary]` - Generate component and hook tests.
 - `/debugger [context summary]` - Debug any issues with the implementation.
 

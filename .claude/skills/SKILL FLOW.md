@@ -56,6 +56,10 @@ Utility tools ([[moc-utility]]) are available at any time.
 │   │   frontend    │    │     │         │            │               │
 │   │     │         │    │     ▼         │            │               │
 │   │     ▼         │    │ /code-reviewer│            │               │
+│   │ /browser-     │    │     │         │            │               │
+│   │   verify (opt)│    │               │            │               │
+│   │     │         │    │               │            │               │
+│   │     ▼         │    │               │            │               │
 │   │ /code-reviewer│    │     │         │            │               │
 │   │     │         │    │     ▼         │            │               │
 │   │     ▼         │    │ /test-        │            │               │
@@ -104,7 +108,8 @@ Utility tools ([[moc-utility]]) are available at any time.
 | [[/frontend-design]]      | [[/writing-plans]]                    | Create implementation tasks from specs |
 | [[/writing-plans]]        | [[/git-worktrees]]                    | Create isolated workspace              |
 | [[/git-worktrees]]        | [[/coder]] or [[/coder-frontend]]     | Start implementation                   |
-| [[/coder-frontend]]       | [[/code-reviewer]]                    | Review the frontend code               |
+| [[/coder-frontend]]       | [[/browser-verify]] or [[/code-reviewer]] | Verify UI in browser or review code |
+| [[/browser-verify]]       | [[/code-reviewer]]                    | Review the code after visual verify    |
 | [[/coder]]                | [[/code-reviewer]]                    | Review the backend code                |
 | [[/code-reviewer]]        | [[/test-generator]]                   | Generate tests for reviewed code       |
 | [[/test-generator]]       | [[/verify]] or [[/debugger]]          | Verify DoD or debug failures           |
@@ -166,6 +171,7 @@ This keeps the main conversation clean while preserving continuity.
 → /git-worktrees Create workspace
 → /coder Implement backend features
 → /coder-frontend Implement frontend
+→ /browser-verify Verify UI in browser
 → /code-reviewer Review all code
 → /test-generator Generate tests
 → /docs-generator Update documentation

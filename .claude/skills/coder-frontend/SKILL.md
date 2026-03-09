@@ -3,8 +3,8 @@ name: coder-frontend
 description: Implement frontend features following component-based architecture and modern best practices. Use for React/Vue/Angular implementation, component development, state management, and frontend bug fixes. Triggers on "frontend code", "implement component", "React", "Vue", "Angular", "frontend bug".
 phase: execution
 flow-next: code-reviewer
-flow-alternatives: [test-generator]
-related: [coder, frontend-design]
+flow-alternatives: [browser-verify, test-generator]
+related: [coder, frontend-design, browser-verify]
 ---
 
 # Coder Frontend
@@ -453,5 +453,6 @@ After frontend implementation is complete, STOP and present these options:
 **Next by flow:** [[/code-reviewer]] `[context]` - Review the frontend code for quality and issues. See [[moc-execution]] for phase context.
 
 **Alternatives:**
+- [[/browser-verify]] `[context]` - Visually verify UI changes in the running app before code review.
 - [[/test-generator]] `[context]` - Generate component and hook tests.
 - [[/debugger]] `[context]` - Debug any issues with the implementation.

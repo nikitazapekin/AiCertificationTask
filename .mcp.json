@@ -3,6 +3,14 @@
         "context7": {
             "command": "npx",
             "args": ["-y", "@upstash/context7-mcp"]
+        },
+        "agent-browser": {
+            "command": "npx",
+            "args": ["-y", "agent-browser", "mcp"]
+        },
+        "playwright": {
+            "command": "npx",
+            "args": ["-y", "@playwright/mcp@latest"]
         }
     }
 }

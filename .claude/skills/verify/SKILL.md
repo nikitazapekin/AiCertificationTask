@@ -4,7 +4,7 @@ description: Run full Definition of Done checklist and report pass/fail status. 
 phase: execution
 flow-next: finishing-branch
 flow-alternatives: [coder, debugger]
-related: [code-reviewer, test-generator]
+related: [code-reviewer, test-generator, browser-verify]
 ---
 
 # Verify

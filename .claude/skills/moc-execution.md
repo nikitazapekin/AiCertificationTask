@@ -17,6 +17,8 @@ The third phase implements the plans from [[moc-planning]] in isolated git workt
 
 [[/coder-frontend]] implements frontend features following component-based architecture and modern best practices.
 
+[[/browser-verify]] visually verifies UI changes in the running app using browser MCPs, catches console errors and broken interactions, and iterates fixes autonomously.
+
 [[/code-reviewer]] reviews code for quality, standards compliance, security issues, and performance problems.
 
 [[/test-generator]] generates comprehensive tests (unit, integration, E2E) and runs test suites with failure analysis.
@@ -27,13 +29,14 @@ The third phase implements the plans from [[moc-planning]] in isolated git workt
 
 ## Flow
 
-The default path is [[/git-worktrees]] then [[/coder]] or [[/coder-frontend]] then [[/code-reviewer]] then [[/test-generator]] then [[/finishing-branch]]. The [[/debugger]] is used when tests fail, creating a loop: [[/debugger]] then [[/test-generator]] until all tests pass. Backend and frontend can run in parallel using separate worktrees.
+The default path is [[/git-worktrees]] then [[/coder]] or [[/coder-frontend]] then [[/code-reviewer]] then [[/test-generator]] then [[/finishing-branch]]. For frontend work, [[/browser-verify]] can be used after [[/coder-frontend]] to visually verify UI changes before code review. The [[/debugger]] is used when tests fail, creating a loop: [[/debugger]] then [[/test-generator]] until all tests pass. Backend and frontend can run in parallel using separate worktrees.
 
 ## Loop Pattern
 
 ```
-/code-reviewer -> /test-generator -> (tests pass?) -> /finishing-branch
-                                  -> (tests fail?) -> /debugger -> /test-generator
+/coder-frontend -> /browser-verify (optional) -> /code-reviewer -> /test-generator
+  -> (tests pass?) -> /finishing-branch
+  -> (tests fail?) -> /debugger -> /test-generator
 ```
 
 ## Next Phase
