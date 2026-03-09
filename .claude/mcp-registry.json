@@ -4,14 +4,10 @@
         "requiresAuth": false,
         "setupInstructions": "No setup required. Works out of the box via npx."
     },
-    "agent-browser": {
-        "description": "Token-efficient browser control via accessibility tree with element refs. Best for fast visual verification loops — checking layout, text content, navigation, form states.",
-        "requiresAuth": false,
-        "setupInstructions": "No setup required. Works out of the box via npx."
-    },
     "playwright": {
+        "type": "mcp",
         "description": "Full browser automation with console logs, network interception, and JS evaluation. Use for deep debugging when agent-browser can't diagnose the issue.",
         "requiresAuth": false,
-        "setupInstructions": "No setup required. Works out of the box via npx."
+        "setupInstructions": "No setup required. Auto-configured in .mcp.json via npx."
     }
 }

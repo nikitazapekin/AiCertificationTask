@@ -66,6 +66,26 @@ User runs: /requirements-analyst [prompt]
 
 See spec-desc.md for specification structure template.
 
+## Prerequisites
+
+### agent-browser CLI (required for `/browser-verify`)
+
+Install the `agent-browser` CLI globally:
+
+```bash
+npm install -g agent-browser
+agent-browser install              # Downloads Chromium (first time only)
+```
+
+The agent-browser skill (instructions for Claude) is already bundled in this repo at `.claude/skills/agent-browser/` — no separate skill installation needed.
+
+### MCP Servers (auto-configured)
+
+MCP servers are configured in `.mcp.json` and require no manual setup — they install automatically via npx on first use:
+
+- **context7** — Up-to-date documentation and code examples for any library
+- **playwright** — Full browser automation with console logs, network interception, and JS evaluation (escalation tool for `/browser-verify`)
+
 ## Quick Start
 
 ### Using Commands (Slash Commands)
@@ -82,6 +102,7 @@ Commands are shortcuts to invoke skills. Type `/` followed by the command name:
 | `/git-worktrees`        | Create isolated workspaces                        |
 | `/coder`                | Implement backend features                        |
 | `/coder-frontend`       | Implement frontend features                       |
+| `/browser-verify`       | Verify UI changes visually in the running app     |
 | `/frontend-design`      | Create distinctive UI designs                     |
 | `/code-reviewer`        | Code quality and best practices review            |
 | `/test-generator`       | Generate unit, integration, and E2E tests         |
@@ -129,6 +150,8 @@ See `skills/SKILL FLOW.md` for the complete visual diagram.
 | `/writing-plans` | `/git-worktrees` | Create workspace |
 | `/git-worktrees` | `/coder` or `/coder-frontend` | Start coding |
 | `/coder` | `/code-reviewer` | Review code |
+| `/coder-frontend` | `/browser-verify` or `/code-reviewer` | Verify UI or review code |
+| `/browser-verify` | `/code-reviewer` | Review code after visual verify |
 | `/code-reviewer` | `/test-generator` | Generate tests |
 | `/test-generator` | `/debugger` or `/docs-generator` | Debug or update documentation |
 | `/docs-generator` | `/release` or `/finishing-branch` | Create release or complete branch |
@@ -164,6 +187,7 @@ Skills are detailed instruction sets that define how Claude performs specific ta
 | `using-git-worktrees` | Create isolated git worktrees                          |
 | `coder`               | Backend implementation (Controller/Service/Repository) |
 | `coder-frontend`      | Frontend implementation (React/Vue/Angular)            |
+| `browser-verify`      | Visual verification of UI changes in the running app   |
 
 #### Quality Phase
 
@@ -216,6 +240,7 @@ Every agent:
 | `using-git-worktrees-agent`     | using-git-worktrees            | Create isolated workspaces  |
 | `coder-agent`                   | coder                          | Backend implementation      |
 | `coder-frontend-agent`          | coder-frontend                 | Frontend implementation     |
+| `browser-verify-agent`          | browser-verify                 | Visual UI verification      |
 | `frontend-design-agent`         | frontend-design                | UI/UX design                |
 | `code-reviewer-agent`           | code-reviewer                  | Code quality review         |
 | `test-generator-agent`          | test-generator                 | Generate tests              |

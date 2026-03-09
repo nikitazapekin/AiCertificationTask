@@ -4,32 +4,46 @@ description: Autonomous browser-based verification of UI changes. Use after any 
 phase: execution
 flow-next: code-reviewer
 flow-alternatives: [coder-frontend, debugger]
-related: [coder-frontend, verify, systematic-debugger]
+related: [coder-frontend, verify, systematic-debugger, agent-browser]
 ---
 
 # Browser Verify
 
 Autonomous visual verification loop: make a change, observe it in the browser, decide if it works, fix if not, repeat until correct.
 
-## MCP Tools Available
+## Tools Available
 
-Two browser MCPs are configured in `.mcp.json` — both available via npx with zero setup:
+### agent-browser CLI (DEFAULT)
 
-### agent-browser (DEFAULT)
-Token-efficient. Returns accessibility tree with element refs. Best for fast checks.
-- `agent_browser_click`, `agent_browser_type`, `agent_browser_navigate`
-- `agent_browser_get_accessibility_tree` — structured page state
-- `agent_browser_screenshot` — visual snapshot
-- `agent_browser_wait`
+Token-efficient CLI using accessibility tree with element refs (`@e1`, `@e2`). Run via Bash tool. Full reference: `.claude/skills/agent-browser/SKILL.md`.
+
+**Quick reference:**
+```bash
+agent-browser open <url>              # Open URL
+agent-browser snapshot -i             # Get accessibility tree with refs
+agent-browser screenshot              # Capture viewport
+agent-browser screenshot --annotate   # Screenshot with numbered element labels
+agent-browser click @e1               # Click element by ref
+agent-browser fill @e3 "text"         # Fill input field
+agent-browser get text @e2            # Get text content
+agent-browser diff snapshot           # Compare current vs last snapshot
+agent-browser close                   # Close browser
+```
+
+**Critical:** Refs become stale after ANY navigation or DOM change. Always `agent-browser snapshot -i` before interacting after a page change.
 
 ### Playwright MCP (ESCALATION ONLY)
-Full browser control. Use only when agent-browser can't diagnose the issue.
-- `browser_navigate`, `browser_click`, `browser_type`, `browser_screenshot`
-- `browser_console_messages` — read console errors/warnings
-- `browser_network_requests` — inspect failed API calls
-- `browser_evaluate` — run JS in page context
 
-## Decision: Which MCP
+Full browser control via MCP. Use only when agent-browser can't diagnose the issue.
+
+- `mcp__playwright__browser_navigate` — navigate to URL
+- `mcp__playwright__browser_click` — click element by selector
+- `mcp__playwright__browser_screenshot` — capture screenshot
+- `mcp__playwright__browser_console_messages` — read console errors/warnings
+- `mcp__playwright__browser_network_requests` — inspect failed API calls
+- `mcp__playwright__browser_evaluate` — run JS in page context
+
+## Decision: Which Tool
 
 ```
 Start with agent-browser (always)
@@ -38,14 +52,14 @@ Start with agent-browser (always)
   |
   no
   |
-  Need console logs, network, or JS eval? ──yes──> Switch to Playwright
+  Need console logs, network, or JS eval? ──yes──> Switch to Playwright MCP
   |                                                  |
   no                                                 Fix + re-verify
   |
   Take screenshot, compare to expectation
 ```
 
-**Switch to Playwright when:**
+**Switch to Playwright MCP when:**
 - Console errors suspected but not visible in UI
 - API calls failing silently
 - Need to inspect DOM state or run JS assertions
@@ -67,23 +81,28 @@ Define success criteria: what should be visible/interactive/absent
 ```
 
 ### 2. Observe
+```bash
+agent-browser open http://localhost:3000/relevant-page
+agent-browser wait --load networkidle
+agent-browser snapshot -i    # read structure + get refs
+# If visual check needed:
+agent-browser screenshot
 ```
-Navigate to the relevant page
-Take screenshot OR read accessibility tree
-Compare actual state against success criteria
-```
+Compare actual state against success criteria.
 
 ### 3. Decide
 ```
-PASS → Report success with evidence (screenshot or tree excerpt). Stop.
+PASS → Report success with evidence (snapshot excerpt or screenshot). Stop.
 FAIL → Identify the discrepancy. Proceed to step 4.
-UNCLEAR → Take screenshot + accessibility tree for more data. Re-decide.
+UNCLEAR → Take screenshot + snapshot for more data. Re-decide.
 ```
 
 ### 4. Fix
 ```
 Make the code fix based on observed evidence
 Wait for hot-reload (~2s) or trigger rebuild
+Re-verify (refs are now stale):
+  agent-browser snapshot -i
 Return to step 2
 ```
 
@@ -97,55 +116,87 @@ Never loop more than 3 times without progress.
 
 ## Token Management
 
-Browser tools are expensive. Minimize token burn:
-
-- **Prefer accessibility tree over screenshots** for content/structure checks — far fewer tokens
+- **Prefer `snapshot -i` over `screenshot`** for content/structure checks — far fewer tokens
+- **Use `diff snapshot`** after a fix to see exactly what changed instead of re-reading the whole page
 - **Use screenshots only when** layout/styling/visual appearance matters
-- **Never take full-page screenshots** if you can target a specific element or viewport section
-- **Don't re-read the whole page** after a small change — navigate to the specific area
-- **Close browser tabs** when switching between Playwright and agent-browser to avoid state conflicts
+- **Use `get text @eN`** on specific elements instead of re-snapshotting the whole page
+- **Close browser** (`agent-browser close`) when done or before switching to Playwright MCP
+- **One tool at a time** — don't run agent-browser and Playwright simultaneously
 
 ## Patterns
 
 ### Quick visual check (most common)
-```
-1. agent_browser_navigate → app URL
-2. agent_browser_get_accessibility_tree → verify expected elements present
-3. Report PASS/FAIL
+```bash
+agent-browser open http://localhost:3000 && agent-browser wait --load networkidle
+agent-browser snapshot -i
+# Verify expected elements present in the accessibility tree
+# Report PASS/FAIL
+agent-browser close
 ```
 
 ### Style/layout verification
-```
-1. agent_browser_navigate → app URL
-2. agent_browser_screenshot → visual check
-3. Compare against design intent
-4. Report PASS/FAIL
-```
-
-### Debug failing interaction
-```
-1. agent_browser_navigate → reproduce the flow
-2. agent_browser_click / agent_browser_type → trigger the interaction
-3. If unexpected result → escalate to Playwright:
-   a. browser_console_messages → check for errors
-   b. browser_network_requests → check for failed calls
-   c. browser_evaluate → inspect DOM state
-4. Root cause identified → fix → re-verify with agent-browser
+```bash
+agent-browser open http://localhost:3000/page && agent-browser wait --load networkidle
+agent-browser screenshot --annotate
+# Compare against design intent visually
+# Report PASS/FAIL
+agent-browser close
 ```
 
-### Post-fix regression check
+### Interactive flow verification
+```bash
+agent-browser open http://localhost:3000/login && agent-browser wait --load networkidle
+agent-browser snapshot -i
+agent-browser fill @e3 "user@example.com"
+agent-browser fill @e5 "password123"
+agent-browser click @e7
+agent-browser wait --load networkidle
+agent-browser snapshot -i                    # Re-snapshot — refs are stale after navigation
+# Verify redirected to dashboard, expected content visible
+agent-browser close
 ```
-1. Fix the code
-2. Wait 2s for hot-reload
-3. agent_browser_navigate (force refresh)
-4. Verify the fix AND check nothing else broke on the same page
+
+### Verify a fix with diff
+```bash
+agent-browser open http://localhost:3000/page && agent-browser wait --load networkidle
+agent-browser snapshot -i                    # Baseline before fix
+# ... make the code fix, wait ~2s for hot-reload ...
+agent-browser open http://localhost:3000/page && agent-browser wait --load networkidle
+agent-browser diff snapshot                  # See exactly what changed
+agent-browser close
 ```
+
+### Debug failing interaction (escalate to Playwright)
+```bash
+agent-browser close                          # Close agent-browser first
+```
+Then use Playwright MCP tools:
+```
+mcp__playwright__browser_navigate → reproduce the flow
+mcp__playwright__browser_console_messages → check for errors
+mcp__playwright__browser_network_requests → check for failed API calls
+mcp__playwright__browser_evaluate → inspect DOM state
+```
+Root cause identified → fix → re-verify with agent-browser.
 
 ## Rules
 
 - **Always verify after fixing** — never assume a code change worked
+- **Always re-snapshot after DOM changes** — refs go stale on any navigation or interaction that changes the page
 - **Evidence over assumption** — report what you SAW, not what should happen
 - **One issue at a time** — fix the most visible problem first, then re-verify
 - **Don't ask the human** unless the circuit breaker triggers or you need the app URL
 - **Hot-reload awareness** — after saving a file, wait ~2s before checking the browser
-- **State conflicts** — if switching from agent-browser to Playwright, navigate fresh; don't assume the page state carried over
+- **Close before switching** — close agent-browser before using Playwright MCP and vice versa
+
+---
+
+## Next Steps
+
+After verification is complete, STOP and present these options:
+
+**Next by flow:** [[/code-reviewer]] `[context]` - Review the code for quality and issues. See [[moc-execution]] for phase context.
+
+**Alternatives:**
+- [[/coder-frontend]] `[context]` - Continue frontend implementation if more changes needed.
+- [[/debugger]] `[context]` - Deep investigation if browser-verify couldn't resolve the issue.
