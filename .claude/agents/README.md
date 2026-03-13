@@ -138,6 +138,7 @@ When done, provide:
 | `reflect-agent` | reflect | (standalone) |
 | `skill-creator-agent` | skill-creator | (standalone) |
 | `accelerator-update-agent` | accelerator-update | (standalone) |
+| `prompt-enhancer-agent` | prompt-engeneering | (standalone) |
 
 ## Flow Reference
 

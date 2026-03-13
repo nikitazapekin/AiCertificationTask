@@ -113,6 +113,7 @@ Commands are shortcuts to invoke skills. Type `/` followed by the command name:
 | `/docs-generator`       | Generate project documentation                    |
 | `/reflect`              | Turn agent mistakes into permanent rules           |
 | `/skill-creator`        | Create new skills                                 |
+| `/prompt-enhancer`      | Craft, audit, or optimize prompts for any LLM     |
 | `/accelerator-update`   | Update accelerator to latest version              |
 
 **Example:**
@@ -212,6 +213,7 @@ Skills are detailed instruction sets that define how Claude performs specific ta
 | -------------------- | ------------------------------------ |
 | `reflect`            | Turn mistakes into permanent rules   |
 | `skill-creator`      | Create new skills                    |
+| `prompt-engeneering` | Craft, audit, optimize prompts       |
 | `accelerator-update` | Update accelerator to latest version |
 
 ## Agents
@@ -251,6 +253,7 @@ Every agent:
 | `documentation-generator-agent` | documentation-generator        | Generate docs               |
 | `reflect-agent`                 | reflect                        | Stabilize errors into rules |
 | `skill-creator-agent`           | skill-creator                  | Create new skills           |
+| `prompt-enhancer-agent`         | prompt-engeneering             | Prompt engineering          |
 | `accelerator-update-agent`      | accelerator-update             | Update accelerator version  |
 
 ### Key Principle: Stop After Completion
