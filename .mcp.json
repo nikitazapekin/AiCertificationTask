@@ -1,12 +1,12 @@
 {
     "mcpServers": {
         "context7": {
-            "command": "npx",
-            "args": ["-y", "@upstash/context7-mcp"]
+            "command": "node",
+            "args": ["scripts/mcp-npx.js", "-y", "@upstash/context7-mcp"]
         },
         "playwright": {
-            "command": "npx",
-            "args": ["-y", "@playwright/mcp@latest"]
+            "command": "node",
+            "args": ["scripts/mcp-npx.js", "-y", "@playwright/mcp@latest"]
         }
     }
 }
