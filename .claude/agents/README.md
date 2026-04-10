@@ -120,6 +120,7 @@ When done, provide:
 ### Quality Phase
 | Agent | Skill | Next by Flow |
 |-------|-------|--------------|
+| `review-pr-agent` | review-pr | systematic-debugger |
 | `code-reviewer-agent` | code-reviewer | test-generator |
 | `test-generator-agent` | test-generator | debugger (if failures) / finishing-branch |
 | `systematic-debugger-agent` | systematic-debugger | test-generator |
