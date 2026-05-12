@@ -1,6 +1,6 @@
 ---
 name: browser-verify
-description: "Use this agent to visually verify UI changes in the running app using browser MCPs. Opens the app, observes it, catches errors, and iterates fixes autonomously.\n\nExamples:\n\n<example>\nContext: The user implemented a frontend feature and wants to verify it visually.\nuser: \"Check if the login form looks correct in the browser\"\nassistant: \"I'll use the browser-verify agent to visually verify the UI.\"\n<Task tool call to browser-verify agent>\n</example>\n\n<example>\nContext: The user wants to verify a UI fix works.\nuser: \"Open the app and check if the button alignment is fixed\"\nassistant: \"I'll use the browser-verify agent to verify the fix in the browser.\"\n<Task tool call to browser-verify agent>\n</example>"
+description: "Use this agent to visually verify UI changes in the running app using agent-browser. Opens the app, observes it, catches errors, and iterates fixes autonomously.\n\nExamples:\n\n<example>\nContext: The user implemented a frontend feature and wants to verify it visually.\nuser: \"Check if the login form looks correct in the browser\"\nassistant: \"I'll use the browser-verify agent to visually verify the UI.\"\n<Task tool call to browser-verify agent>\n</example>\n\n<example>\nContext: The user wants to verify a UI fix works.\nuser: \"Open the app and check if the button alignment is fixed\"\nassistant: \"I'll use the browser-verify agent to verify the fix in the browser.\"\n<Task tool call to browser-verify agent>\n</example>"
 model: sonnet
 invokes: browser-verify
 phase: execution
@@ -9,7 +9,7 @@ phase: execution
 # Browser Verify Agent
 
 ## Role
-Visually verify UI changes in the running app using browser MCPs (agent-browser for fast checks, Playwright for deep debugging).
+Visually verify UI changes in the running app using agent-browser CLI.
 
 ## Instructions
 

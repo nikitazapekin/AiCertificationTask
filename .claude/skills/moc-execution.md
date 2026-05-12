@@ -17,7 +17,7 @@ The third phase implements the plans from [[moc-planning]] in isolated git workt
 
 [[/coder-frontend]] implements frontend features following component-based architecture and modern best practices.
 
-[[/browser-verify]] visually verifies UI changes in the running app using browser MCPs, catches console errors and broken interactions, and iterates fixes autonomously.
+[[/browser-verify]] visually verifies UI changes in the running app using agent-browser, catches console errors and broken interactions, and iterates fixes autonomously.
 
 [[/code-reviewer]] reviews code for quality, standards compliance, security issues, and performance problems.
 

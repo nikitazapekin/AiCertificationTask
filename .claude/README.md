@@ -79,13 +79,6 @@ agent-browser install              # Downloads Chromium (first time only)
 
 The agent-browser skill (instructions for Claude) is already bundled in this repo at `.claude/skills/agent-browser/` — no separate skill installation needed.
 
-### MCP Servers (auto-configured)
-
-MCP servers are configured in `.mcp.json` and require no manual setup — they install automatically via npx on first use:
-
-- **context7** — Up-to-date documentation and code examples for any library
-- **playwright** — Full browser automation with console logs, network interception, and JS evaluation (escalation tool for `/browser-verify`)
-
 ## Quick Start
 
 ### Using Commands (Slash Commands)

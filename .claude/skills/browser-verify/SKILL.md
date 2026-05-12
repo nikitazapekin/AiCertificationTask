@@ -43,42 +43,9 @@ agent-browser close                   # Close browser
 - `open` already waits for `load` event — no need for extra `wait` after navigation in most cases.
 - **Avoid `wait --load networkidle`** — it hangs on sites with analytics, ads, or websockets. Use `wait 2000` or `wait <selector>` instead.
 
-### Playwright MCP (ESCALATION ONLY)
+## Decision Flow
 
-Full browser control via MCP. Use only when agent-browser can't diagnose the issue.
-
-- `mcp__playwright__browser_navigate` — navigate to URL
-- `mcp__playwright__browser_click` — click element by selector
-- `mcp__playwright__browser_screenshot` — capture screenshot
-- `mcp__playwright__browser_console_messages` — read console errors/warnings
-- `mcp__playwright__browser_network_requests` — inspect failed API calls
-- `mcp__playwright__browser_evaluate` — run JS in page context
-
-## Decision: Which Tool
-
-```
-Start with agent-browser (always)
-  |
-  Can you see the problem? ──yes──> Fix it, re-verify with agent-browser
-  |
-  no
-  |
-  Need console logs, network, or JS eval? ──yes──> Try agent-browser first:
-  |                                                  console / errors / network requests / eval
-  |                                                  |
-  |                                                  Still not enough? → Switch to Playwright MCP
-  |                                                  |
-  no                                                 Fix + re-verify
-  |
-  Take screenshot, compare to expectation
-```
-
-**Switch to Playwright MCP when:**
-- agent-browser `console`/`errors`/`network` commands don't provide enough detail
-- Interaction sequence is complex (drag, hover states, focus traps)
-- Need to run complex JS assertions in page context
-
-**Stay on agent-browser when:**
+Use agent-browser for all verification tasks:
 - Checking layout, text content, visibility
 - Clicking buttons and verifying navigation
 - Reading form states via accessibility tree
@@ -133,8 +100,7 @@ Never loop more than 3 times without progress.
 - **Use `diff snapshot`** after a fix to see exactly what changed instead of re-reading the whole page
 - **Use screenshots only when** layout/styling/visual appearance matters
 - **Use `get text @eN`** on specific elements instead of re-snapshotting the whole page
-- **Close browser** (`agent-browser close`) when done or before switching to Playwright MCP
-- **One tool at a time** — don't run agent-browser and Playwright simultaneously
+- **Close browser** (`agent-browser close`) when done
 
 ## Patterns
 
@@ -192,19 +158,6 @@ agent-browser network requests --status 5xx  # Check for server errors
 agent-browser close
 ```
 
-### Debug failing interaction (escalate to Playwright)
-```bash
-agent-browser close                          # Close agent-browser first
-```
-Then use Playwright MCP tools:
-```
-mcp__playwright__browser_navigate → reproduce the flow
-mcp__playwright__browser_console_messages → check for errors
-mcp__playwright__browser_network_requests → check for failed API calls
-mcp__playwright__browser_evaluate → inspect DOM state
-```
-Root cause identified → fix → re-verify with agent-browser.
-
 ## Rules
 
 - **Always verify after fixing** — never assume a code change worked
@@ -213,7 +166,6 @@ Root cause identified → fix → re-verify with agent-browser.
 - **One issue at a time** — fix the most visible problem first, then re-verify
 - **Don't ask the human** unless the circuit breaker triggers or you need the app URL
 - **Hot-reload awareness** — after saving a file, wait ~2s before checking the browser
-- **Close before switching** — close agent-browser before using Playwright MCP and vice versa
 - **Avoid networkidle** — use `wait 2000` or `wait <selector>` instead of `wait --load networkidle`
 
 ---

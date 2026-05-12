@@ -36,19 +36,6 @@ These may contain user customizations:
 2. If user has modified existing hooks, preserve user version
 3. Show diff for modified hooks and ask user if they want to update
 
-### MCP Configuration (MERGE + NOTIFY)
-
-These files manage MCP server configuration:
-
-- `.mcp.json` (project root) - MCP server definitions (merge, user values take precedence)
-- `.claude/mcp-registry.json` - MCP metadata and setup docs (overwrite, accelerator-managed)
-
-**Strategy:**
-1. `.mcp.json` is merged like `settings.json` — new servers are added, user's existing servers preserved
-2. `mcp-registry.json` is overwritten (it's reference metadata, not user config)
-3. After merge, compare old and new registry to detect newly added MCP servers
-4. For new servers with `requiresAuth: true`, display setup instructions and required env vars to the user
-
 ### Custom Files (PRESERVE)
 
 Any files/directories in `.claude/` not present in the accelerator:
@@ -75,10 +62,8 @@ When files conflict:
 
 1. Core files: Always use new version
 2. Settings: Merge with user values prioritized
-3. MCP config (`.mcp.json`): Merge with user values prioritized
-4. MCP registry (`mcp-registry.json`): Always use new version
-5. Hooks: Show diff, let user decide
-6. Custom files: Never touch
+3. Hooks: Show diff, let user decide
+4. Custom files: Never touch
 
 ## Verification After Update
 
