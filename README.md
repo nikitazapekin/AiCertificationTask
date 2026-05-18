@@ -109,6 +109,31 @@ python3 --version
 
 Install from [python.org](https://www.python.org/downloads/) or via package manager (`brew install python3`, `sudo apt install python3`).
 
+### RTK + jq (optional, token savings 60-90%)
+
+[RTK](https://github.com/rtk-ai/rtk) is a CLI proxy that compresses command output before it reaches the agent's context window. A PreToolUse hook automatically rewrites bash commands to RTK equivalents. If not installed, the hook silently passes through — nothing breaks.
+
+```bash
+# macOS
+brew install rtk jq
+
+# Windows
+winget install --id jqlang.jq
+# RTK: download binary from https://github.com/rtk-ai/rtk/releases
+# and add to PATH
+
+# Linux
+curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
+sudo apt install jq
+```
+
+Verify:
+
+```bash
+rtk --version
+jq --version
+```
+
 ### Context7 CLI (optional, for up-to-date library docs)
 
 Fetches current documentation for any library directly into the agent's context. Useful when writing code with APIs that may have changed since the model's training cutoff.
