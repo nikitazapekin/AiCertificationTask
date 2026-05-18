@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-05-18
+
+### Added
+- Add context graph — MOC-based skill navigation across 4 workflow phases (3ae9432)
+- Add graphs for command > agent > skill flow (3fbebda)
+- Add harness engineering: stabilization cycle, Definition of Done, golden principles, and automated hooks (bc975f0)
+- Add WCAG accessibility skill — 30 rules across 8 categories (3ae9432)
+- Add browser-verify skill (f36b5f6)
+- Add review-pr skill (2d9ec09)
+- Add ctx7 CLI skill and README (f081526)
+- Add RTK, high-performance CLI proxy that reduces LLM token consumption by 60-90% (6ab0c22)
+
+### Changed
+- Update skill-creator with evals and benchmarking (b7d05f5)
+- Update agent-browser (84516af)
+- Replace MCP usage with CLI+Skill approach (7721cb4)
+
+### Fixed
+- Fix table appearance (62c17dd)
+- Fix brainstorm to ask about libraries (68df0e0)
+- Fix agent-browser to use CLI (624b262)
+
+### Removed
+- Remove prompt enhancer (1aa103a)
+
 ## [1.0.0] - 2026-02-10
 
 ### Added
