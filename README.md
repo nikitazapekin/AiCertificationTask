@@ -1,8 +1,8 @@
-# Claude Code Configuration
+# Accelerator Core
 
-> **For agent policy rules, see [/AGENTS.md](../AGENTS.md)**
+> **For agent policy rules, see [AGENTS.md](AGENTS.md)**
 
-This directory contains skills, commands, agents, and hooks that extend Claude Code's capabilities for this project.
+A skill-based extension framework for [Claude Code](https://docs.anthropic.com/claude-code) that adds structured workflows, specialized agents, and quality hooks to your development process.
 
 ## Directory Structure
 
@@ -68,16 +68,66 @@ See spec-desc.md for specification structure template.
 
 ## Prerequisites
 
-### agent-browser CLI (required for `/browser-verify`)
+### Node.js & npm (required)
 
-Install the `agent-browser` CLI globally:
+Node.js 18+ is required. npm comes bundled with Node.js.
+
+```bash
+# Check installed version
+node -v && npm -v
+```
+
+Install from [nodejs.org](https://nodejs.org/) or via a version manager ([nvm](https://github.com/nvm-sh/nvm), [fnm](https://github.com/Schniz/fnm), [volta](https://volta.sh/)).
+
+### GitHub CLI (required for `/release`, `/finishing-branch`, `/review-pr`, `/accelerator-update`)
+
+```bash
+# macOS
+brew install gh
+
+# Windows
+winget install --id GitHub.cli
+
+# Linux (Debian/Ubuntu)
+sudo apt install gh
+```
+
+After install, authenticate:
+
+```bash
+gh auth login
+```
+
+### Python 3 (required for `/release`, `/skill-creator`, `/accelerator-update`)
+
+Python 3.8+ is used by internal scripts (changelog generation, version comparison, benchmarks).
+
+```bash
+# Check installed version
+python3 --version
+```
+
+Install from [python.org](https://www.python.org/downloads/) or via package manager (`brew install python3`, `sudo apt install python3`).
+
+### Context7 CLI (optional, for up-to-date library docs)
+
+Fetches current documentation for any library directly into the agent's context. Useful when writing code with APIs that may have changed since the model's training cutoff.
+
+```bash
+npm install -g ctx7@latest
+ctx7 login                         # Optional — higher rate limits
+```
+
+Or run without installing: `npx ctx7@latest <command>`
+
+### agent-browser CLI (required for `/browser-verify`)
 
 ```bash
 npm install -g agent-browser
 agent-browser install              # Downloads Chromium (first time only)
 ```
 
-The agent-browser skill (instructions for Claude) is already bundled in this repo at `.claude/skills/agent-browser/` — no separate skill installation needed.
+The agent-browser skill is already bundled in this repo at `.claude/skills/agent-browser/` — no separate skill installation needed.
 
 ## Quick Start
 
@@ -129,7 +179,7 @@ Each command outputs a context summary. Pass this to the next command:
 
 ## Skill Flow
 
-See `skills/SKILL FLOW.md` for the complete visual diagram.
+See `.claude/skills/SKILL FLOW.md` for the complete visual diagram.
 
 ### Quick Reference: Next by Flow
 
@@ -278,7 +328,7 @@ Hooks are shell commands that execute in response to Claude Code events.
 | `1`  | Failure, but continue (warning) |
 | `2`  | Failure, block operation        |
 
-See `hooks/README.md` for more examples.
+See `.claude/hooks/README.md` for more examples.
 
 ## Settings
 
@@ -416,6 +466,6 @@ After completion, agent suggests: `/code-reviewer [context]`
 ## References
 
 - [Claude Code Documentation](https://docs.anthropic.com/claude-code)
-- [agents/README.md](agents/README.md) - Agent architecture details
-- [hooks/README.md](hooks/README.md) - Hook configuration guide
-- [skills/SKILL FLOW.md](skills/SKILL%20FLOW.md) - Skill flow diagram
+- [.claude/agents/](.claude/agents/) - Agent architecture details
+- [.claude/hooks/README.md](.claude/hooks/README.md) - Hook configuration guide
+- [.claude/skills/SKILL FLOW.md](.claude/skills/SKILL%20FLOW.md) - Skill flow diagram
